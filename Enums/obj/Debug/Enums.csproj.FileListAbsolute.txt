@@ -1,0 +1,4 @@
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Enums\bin\Debug\Enums.dll
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Enums\bin\Debug\Enums.pdb
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Enums\obj\Debug\Enums.dll
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Enums\obj\Debug\Enums.pdb
