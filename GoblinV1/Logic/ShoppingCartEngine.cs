@@ -24,6 +24,7 @@ namespace GoblinV1.Logic
                 && c.ProductId == id);
             if (cartItem == null)
             {
+
                 // Create a new cart item if no cart item exists.                 
                 cartItem = new CartItem
                 {
@@ -80,6 +81,21 @@ namespace GoblinV1.Logic
 
             return _db.CartItems.Where(
                 c => c.CartId == ShoppingCartId).ToList();
+        }
+
+
+        public decimal GetTotal()
+        {
+            ShoppingCartId = GetCartId();
+            // Multiply product price by quantity of that product to get        
+            // the current price for each of those products in the cart.  
+            // Sum all product price totals to get the cart total.   
+            decimal? total = decimal.Zero;
+            total = (decimal?)(from cartItems in _db.CartItems
+                               where cartItems.CartId == ShoppingCartId
+                               select (int?)cartItems.Quantity *
+                               cartItems.Product.UnitPrice).Sum();
+            return total ?? decimal.Zero;
         }
     }
 }

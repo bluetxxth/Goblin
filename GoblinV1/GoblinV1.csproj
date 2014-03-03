@@ -227,12 +227,11 @@
     <Content Include="UserPages\ContactUsConfirm.aspx" />
     <Content Include="UserPages\CreateProduct.aspx" />
     <Content Include="UserPages\CreateUser.aspx" />
-    <Content Include="UserPages\DedicatedServer.aspx" />
     <Content Include="UserPages\ProductDetails.aspx" />
     <Content Include="UserPages\ProductList.aspx" />
     <Content Include="UserPages\Products.aspx" />
     <Content Include="UserPages\ShoppingCart.aspx" />
-    <Content Include="UserPages\TestPage.aspx" />
+    <Content Include="UserPages\ErrorPage.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -298,6 +297,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\InventoryControl.cs" />
     <Compile Include="Logic\ShoppingCartEngine.cs" />
     <Compile Include="MasterPages\Contact.Master.cs">
       <DependentUpon>Contact.Master</DependentUpon>
@@ -323,6 +323,7 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductStock.cs" />
     <Compile Include="Models\Shippment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -389,13 +390,6 @@
     <Compile Include="UserPages\CreateUser.aspx.designer.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserPages\DedicatedServer.aspx.cs">
-      <DependentUpon>DedicatedServer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserPages\DedicatedServer.aspx.designer.cs">
-      <DependentUpon>DedicatedServer.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserPages\ProductDetails.aspx.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -424,12 +418,12 @@
     <Compile Include="UserPages\ShoppingCart.aspx.designer.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserPages\TestPage.aspx.cs">
-      <DependentUpon>TestPage.aspx</DependentUpon>
+    <Compile Include="UserPages\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserPages\TestPage.aspx.designer.cs">
-      <DependentUpon>TestPage.aspx</DependentUpon>
+    <Compile Include="UserPages\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

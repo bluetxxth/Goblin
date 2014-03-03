@@ -2,14 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
-   <div id="ShoppingCartTitle" runat="server" class="ContentHead"><h1>Shopping Cart</h1></div>
-    <asp:GridView ID="CartList" runat="server" AutoGenerateColumns="False" ShowFooter="True" GridLines="Vertical" CellPadding="4"
-        ItemType="GoblinV1.Models.CartItem" SelectMethod="GetShoppingCartItems" 
+    <div id="ShoppingCartTitle" runat="server" class="ContentHead"><h1>Shopping Cart</h1></div>
+    <asp:GridView ID="CartList" runat="server" 
+        AutoGenerateColumns="False" 
+        ShowFooter="True" 
+        GridLines="Vertical" 
+        CellPadding="4"
+        ItemType="GoblinV1.Models.CartItem" 
+        SelectMethod="GetShoppingCartItems"
         CssClass="table table-striped table-bordered" >   
         <Columns>
-        <asp:BoundField DataField="ProductID" HeaderText="ID" SortExpression="ProductID" />        
+        <asp:BoundField DataField="ProductId" HeaderText="ID" SortExpression="ProductId" />        
         <asp:BoundField DataField="Product.ProductName" HeaderText="Name" />        
-        <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)" DataFormatString="{0:c}"/>     
+        <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)"/>     
         <asp:TemplateField   HeaderText="Quantity">            
                 <ItemTemplate>
                     <asp:TextBox ID="PurchaseQuantity" Width="40" runat="server" Text="<%#: Item.Quantity %>"></asp:TextBox> 
@@ -17,7 +22,9 @@
         </asp:TemplateField>    
         <asp:TemplateField HeaderText="Item Total">            
                 <ItemTemplate>
-                    <%#: String.Format("{0:c}", ((Convert.ToDouble(Item.Quantity)) *  Convert.ToDouble(Item.Product.UnitPrice)))%>
+              
+                    <%# String.Format("{0:c}", ((Convert.ToInt32(Item.Quantity)) *  Convert.ToDouble(Item.Product.UnitPrice))) %>
+
                 </ItemTemplate>        
         </asp:TemplateField> 
         <asp:TemplateField HeaderText="Remove Item">            

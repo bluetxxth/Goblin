@@ -6,5 +6,6 @@
     <siteMapNode url="~/UserPages/About.aspx" title="About"  description="Go to About Area" />
     <siteMapNode url ="~/UserPages/ContactUs.aspx" title="Contact Us" description="Go to Contact Us Section"/>
     <siteMapNode url ="~/UserPages/CreateUser.aspx" title="Create User" description="Go to Create User Section"/>
+    <siteMapNode url ="~/UserPages/Admin.aspx" title="Administration" description="Go to Administration"/>
   </siteMapNode>
 </siteMap>

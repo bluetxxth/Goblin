@@ -18,6 +18,7 @@ namespace GoblinV1.UserPages
             
 
             int productId;
+
             if (!String.IsNullOrEmpty(rawId) && int.TryParse(rawId, out productId))
             {
                 using (ShoppingCartEngine usersShoppingCart = new ShoppingCartEngine())
