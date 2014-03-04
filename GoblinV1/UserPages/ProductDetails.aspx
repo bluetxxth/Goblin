@@ -15,7 +15,7 @@
                     </td>
                     <td>&nbsp;</td>  
                     <td style="vertical-align: top; text-align:left;">
-                        <b>Description:</b><br /><%#:Item.Specifications%><br /><span><b>Price:</b>&nbsp;<%#: String.Format("{0:c}", Item.UnitPrice) %></span><br /><span><b>Product Number:</b>&nbsp;<%#:Item.ProductId %></span><br /></td>
+                        <b>Description:</b><br /><%#:Item.Specifications%><br /><span><b>Price:</b>&nbsp;<%#: String.Format("{0:c}", Item.UnitPrice) %></span><br /><span><b>Product Number:</b>&nbsp;<%#:Item.ProductID %></span><br /></td>
                 </tr>
             </table>
         </ItemTemplate>

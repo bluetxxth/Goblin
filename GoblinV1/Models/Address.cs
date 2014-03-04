@@ -31,7 +31,6 @@ namespace GoblinV1.Models
             this.m_Country = country;
         }
 
-
         public string StreetName { get; set; }
 
         public int StreetNo { get; set; }

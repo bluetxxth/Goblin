@@ -297,8 +297,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Logic\InventoryControl.cs" />
-    <Compile Include="Logic\ShoppingCartEngine.cs" />
+    <Compile Include="Logic\ShoppingCartEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MasterPages\Contact.Master.cs">
       <DependentUpon>Contact.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,8 +323,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="Models\PaymentType.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductStock.cs" />
     <Compile Include="Models\Shippment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -438,6 +440,10 @@
     <ProjectReference Include="..\Enums\Enums.csproj">
       <Project>{0a0cc4b4-f1d5-461d-ac54-857a09c3d12c}</Project>
       <Name>Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{74d0c20f-3a95-4443-8633-f142a9eb2b49}</Project>
+      <Name>Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

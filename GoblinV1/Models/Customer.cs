@@ -59,91 +59,32 @@ namespace GoblinV1.Models
             this.m_address = new Address();
         }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        public int ID
-        {
-            get { return m_id; }
-            set { m_id = value; }
-        }
 
-        /// <summary>
-        /// Collectoin of products
-        /// </summary>
-        public virtual ICollection<Product> Products { get; set; }
+        public int CustomerId { get; set; }
+
+        public Order Order { get; set;}
+
+        public virtual Address Address { get; set; }
 
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        public string FirstName
-        {
-            get { return m_firstName; }
-            set { m_firstName = value; }
-        }
+        public string FirstName { get; set; }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        public string MiddleName
-        {
-            get { return m_middleName; }
-            set { m_middleName = value; }
-        }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        public string LastName
-        {
-            get { return m_lastName; }
-            set { m_lastName = value; }
-        }
+        public string MiddleName { get; set; }
 
-        /// <summary>
-        /// Provides accessor and mutator 
-        /// </summary>
-        public virtual Address Address
-        {
-            get { return m_address; }
-            set { m_address = value; }
-        }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        public string Email
-        {
-            get { return m_emailAddress; }
-            set { m_emailAddress = value; }
-        }
+        public string LastName { get; set; }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        public int Phone
-        {
-            get { return m_phoneNumber; }
-            set { m_phoneNumber = value; }
-        }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        int CreditCardNo
-        {
-            get { return m_creditCardNumber; }
-            set { m_creditCardNumber = value; }
-        }
+        public string Email { get; set; }
 
-        /// <summary>
-        /// Provides accessor and mutator
-        /// </summary>
-        int BankAccountNo
-        {
-            get { return m_bankAccountNumber; }
-            set { m_bankAccountNumber = value; }
-        }
+
+        public int Phone { get; set; }
+
+
+        int CreditCardNo { get; set; }
+
+
+        int BankAccountNo { get; set; }
     }
 }

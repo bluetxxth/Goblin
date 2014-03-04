@@ -30,8 +30,6 @@ namespace GoblinV1.UserPages
                 Response.Redirect("/UserPages/ErrorPage.aspx");
 
             }
-
-           
         }
 
         protected void ProductGridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,19 +100,6 @@ namespace GoblinV1.UserPages
 
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-
-
-                //foreach (var eve in ex.EntityValidationErrors)
-                //{
-                //    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                //        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                //    foreach (var ve in eve.ValidationErrors)
-                //    {
-                //        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                //            ve.PropertyName, ve.ErrorMessage);
-                //    }
-                //}
-           
             }
         }
 
@@ -137,14 +122,14 @@ namespace GoblinV1.UserPages
             product.Stock = Convert.ToInt32(txtProductStock.Text);
 
 
-            if(product.ProductId == 0)
+            if(product.ProductID == 0)
             {
                 ctx.Products.Add(product);
 
                 try
                 {
                     ctx.SaveChanges();
-                    Response.Redirect("/UserPages/TestPage.aspx");
+                    Response.Redirect("/UserPages/ErrorPage.aspx");
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -160,7 +145,7 @@ namespace GoblinV1.UserPages
 
                     Session["Error"] = fullErrorMessage;
 
-                    Response.Redirect("/UserPages/TestPage.aspx");
+                    Response.Redirect("/UserPages/ErrorPage.aspx");
 
                     // Throw a new DbEntityValidationException with the improved exception message.
                     throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);

@@ -40,9 +40,10 @@ namespace GoblinV1.Models
             this.m_total = total;
         }
 
-
         [Key]
         public int InvoiceNo { get; set; }
+
+        public virtual Order Order { get; set;}
 
         public double SubTotal { get; set; }
 

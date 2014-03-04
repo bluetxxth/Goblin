@@ -22,7 +22,7 @@ namespace GoblinV1.UserPages
             IQueryable<Product> query = _db.Products;
             if (productId.HasValue && productId > 0)
             {
-                query = query.Where(p => p.ProductId == productId);
+                query = query.Where(product => product.ProductID == productId);
             }
             else
             {

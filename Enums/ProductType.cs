@@ -8,7 +8,6 @@ namespace Enums
 {
     public enum ProductType : int
     {
-        None,
         Subscription,
         Purchase,
     }

@@ -12,6 +12,7 @@ namespace GoblinV1.Models
         public int ShipmentId { get; set; }
         public DateTime CreatedOn { get; set; }
         public string State { get; set; }
+        public virtual Order Order { get; set; }
         public virtual Address DeliveryAddress { get; set; }
 
     }

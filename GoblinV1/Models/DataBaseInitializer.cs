@@ -40,7 +40,7 @@ namespace GoblinV1.Models
             var products = new List<Product> {
                 new Product
                 {
-                    ProductId = 1,
+                    ProductID= 1,
                     ProductName = "Basic",
                     Specifications = "This is thought for users requiring a basic need who are not going to need to utilize a data-driven web application." + 
                                   "Perfect for personal needs", 
@@ -50,7 +50,7 @@ namespace GoblinV1.Models
                },
                 new Product 
                 {
-                    ProductId = 2,
+                    ProductID = 2,
                     ProductName = "Personal",
                     Specifications = "This is thought for for thos who need to send a larger volume of email but who do not require a database",
                     ProductImagePath="plan.png",
@@ -59,7 +59,7 @@ namespace GoblinV1.Models
                },
                 new Product
                 {
-                    ProductId = 3,
+                    ProductID = 3,
                     ProductName = "Pro",
                     Specifications = "A plan with  data-driven web applications in mind for the small business needs",
                     ProductImagePath="plan.png",
@@ -68,7 +68,7 @@ namespace GoblinV1.Models
                 },
                 new Product
                 {
-                    ProductId = 4,
+                    ProductID = 4,
                     ProductName = "Dedicated",
                     Specifications = "Business grade hosting plan with reverse dns and full access to your pointer",
                     ProductImagePath="plan.png",
@@ -77,7 +77,7 @@ namespace GoblinV1.Models
                 },
                 new Product
                 {
-                    ProductId = 5,
+                    ProductID = 5,
                     ProductName = "IBM Series 6000",
                     Specifications = "16 GB Memory DDR3, 6 Cores, Single Processor 4M Cache" + 
                                   "Expandable",
@@ -87,7 +87,7 @@ namespace GoblinV1.Models
                 },
                 new Product
                 {
-                    ProductId = 6,
+                    ProductID = 6,
                     ProductName = "IBM Series 8000",
                     Specifications = "32 GB Memory DDR3, 12 Cores, Dual Processors 4M Cache",
                     ProductImagePath="server.png",
@@ -96,7 +96,7 @@ namespace GoblinV1.Models
                 },
                 new Product
                 {
-                    ProductId = 7,
+                    ProductID = 7,
                     ProductName = "IBM Series 10000",
                     Specifications = "64GB Memory DDR3, 12 Cores, Dual Processors 8M Cache",
                     ProductImagePath="server.png",
@@ -105,7 +105,7 @@ namespace GoblinV1.Models
                 },
                 new Product
                 {
-                    ProductId = 8,
+                    ProductID = 8,
                     ProductName = "IBM Series XL",
                     Specifications = "120Gb Memory DDR3, 24Cores, Dual processors 16M Cache ",
                     ProductImagePath="server.png",

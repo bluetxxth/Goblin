@@ -14,9 +14,14 @@ namespace GoblinV1.UserPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string rawId = Request.QueryString["ProductID"];
-            
+            string rawId = Request.QueryString["productID"];
 
+            Session["productId"] = rawId;
+
+            //Session["Error"] = rawId;
+
+            //Response.Redirect("/UserPages/ErrorPage.aspx");
+     
             int productId;
 
             if (!String.IsNullOrEmpty(rawId) && int.TryParse(rawId, out productId))
@@ -25,7 +30,6 @@ namespace GoblinV1.UserPages
                 {
                     usersShoppingCart.AddToCart(Convert.ToInt16(rawId));
                 }
-
             }
             else
             {
