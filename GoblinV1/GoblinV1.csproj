@@ -227,6 +227,7 @@
     <Content Include="UserPages\ContactUsConfirm.aspx" />
     <Content Include="UserPages\CreateProduct.aspx" />
     <Content Include="UserPages\CreateUser.aspx" />
+    <Content Include="UserPages\OrderConfirmation.aspx" />
     <Content Include="UserPages\ProductDetails.aspx" />
     <Content Include="UserPages\ProductList.aspx" />
     <Content Include="UserPages\Products.aspx" />
@@ -323,6 +324,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\PaymentType.cs" />
     <Compile Include="Models\Product.cs" />
@@ -391,6 +393,13 @@
     </Compile>
     <Compile Include="UserPages\CreateUser.aspx.designer.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\OrderConfirmation.aspx.cs">
+      <DependentUpon>OrderConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\OrderConfirmation.aspx.designer.cs">
+      <DependentUpon>OrderConfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\ProductDetails.aspx.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>

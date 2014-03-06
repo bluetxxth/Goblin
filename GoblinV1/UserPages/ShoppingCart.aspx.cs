@@ -17,7 +17,7 @@ namespace GoblinV1.UserPages
 {
     public partial class ShoppingCart : System.Web.UI.Page
     {
-        private string productName = null;
+  
         ShoppingCartEngine shoppingCart = new ShoppingCartEngine();
 
         private EntityMappingContext ctx = new EntityMappingContext();
@@ -27,13 +27,16 @@ namespace GoblinV1.UserPages
         {
 
             GetTotals();
-
         }
 
+
+        /// <summary>
+        /// Get the shopping cart items
+        /// </summary>
+        /// <returns>a list of shopping cart items</returns>
         public List<CartItem> GetShoppingCartItems()
         {
             ShoppingCartEngine shoppingCart = new ShoppingCartEngine();
-
 
 
             return shoppingCart.GetCartItems();
@@ -48,48 +51,45 @@ namespace GoblinV1.UserPages
            lblTotal.Text = total;
         }
 
-
-        public string GetName()
-        {
-            string productName = null;
-            productName = shoppingCart.GetName();
-
-            return productName;
-        }
-
-
-        public double  GetProductPrice()
-        {
-           int productId =  Convert.ToInt32(Session["productId"]);
-
-           var product = ctx.Products.Find(productId);
-
-          // int productCategory = Convert.ToInt32(product.Category);
-          // int productStock = Convert.ToInt32(product.Stock);
-          //string productName =  product.ProductName;
-          //string productImagePath = product.ProductImagePath;
-          //string productSpecs = product.Specifications;
-          double productUnitPrice = Convert.ToDouble(product.UnitPrice);
-
-          return productUnitPrice;
-        }
-
+        /// <summary>
+        /// Provide behavior for Continue Shopping button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnContinueShopping_Click(object sender, EventArgs e)
         {
             Response.Redirect("/UserPages/Products.aspx");
         }
 
+
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
             EntityMappingContext ctx = new EntityMappingContext();
 
+            //instantiate store engine to get cart items
+            ShoppingCartEngine cartEngine = new ShoppingCartEngine();
+
+            
+
+            //create an order status object in order to set it to submitted
             OrderStatus orderstatus = ctx.OrderStatuses.Create();
 
-    
-            orderstatus.Status = "Created" + DateTime.Now.ToString();
+            //create order
+            Order order = ctx.Orders.Create();
 
-            Response.Redirect("/UserPages/CreateUser.aspx");
+            //get the cart items
+            List<CartItem> cartItemList = cartEngine.GetCartItems();
+
+
+            Session["CartItems"] = cartItemList;
+    
             
+            orderstatus.Status = "Created " + DateTime.Now.ToString();
+
+            //Session["Error"] = orderstatus.Status;
+            //Response.Redirect("/UserPages/ErrorPage.aspx");
+
+
              try
             {
                 ctx.OrderStatuses.Add(orderstatus);
@@ -116,8 +116,17 @@ namespace GoblinV1.UserPages
 
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-           
+
             }
+             finally
+             {
+                 Response.Redirect("/UserPages/CreateUser.aspx");
+             }
+
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
 
         }
 

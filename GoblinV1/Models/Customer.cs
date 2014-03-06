@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +10,7 @@ namespace GoblinV1.Models
     /// <summary>
     /// Class that represents a customer
     /// </summary>
+    /// 
     public class Customer
     {
         private int m_id = 0;
@@ -49,7 +52,6 @@ namespace GoblinV1.Models
                         string midleName, string lastName, string streetName,
                         string emailAddress, int creditCardNumber)
         {
-
             this.m_id = id;
             this.m_phoneNumber = phoneNumber;
             this.m_firstName = firstName;
@@ -59,13 +61,15 @@ namespace GoblinV1.Models
             this.m_address = new Address();
         }
 
-
+        [Key]
         public int CustomerId { get; set; }
 
-        public Order Order { get; set;}
+        public virtual Order Order { get; set;}
 
-        public virtual Address Address { get; set; }
+        public int AddressId { get; set; }
 
+        [ForeignKey("AddressId")]
+        public virtual Address BillingAddress  { get; set; }
 
         public string FirstName { get; set; }
 

@@ -44,7 +44,7 @@ namespace GoblinV1.Logic
                     ProductId = id,
                     CartId = ShoppingCartId,
                     Product = ctx.Products.SingleOrDefault(
-                     product => product.ProductID == id),
+                    product => product.ProductID == id),
                     Quantity = 1,
                     DateCreated = DateTime.Now
                 };
@@ -80,7 +80,7 @@ namespace GoblinV1.Logic
 
                         //HttpContext.Current.Session["Error"] = "cartID: " + tempCartId.ToString();
                         //HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
-                        
+                
             }
             return HttpContext.Current.Session[CartSessionKey].ToString();
         }

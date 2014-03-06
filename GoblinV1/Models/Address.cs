@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 
 namespace GoblinV1.Models
 {
+
     public class Address
     {
         private int m_zipcode = 0;
@@ -13,6 +16,7 @@ namespace GoblinV1.Models
         private string m_streetName = null;
         private string m_city = null;
         private string m_Country = null;
+
 
         public Address()
         {
@@ -31,8 +35,14 @@ namespace GoblinV1.Models
             this.m_Country = country;
         }
 
+        [Key]
+        public virtual int AddressId { get; set; }
         public string StreetName { get; set; }
 
+        public int CustomerId { get; set; }
+
+        //[ForeignKey("CustomerId")]
+        //public Customer Customer { get; set; }
         public int StreetNo { get; set; }
 
         public string City { get; set; }
@@ -40,5 +50,6 @@ namespace GoblinV1.Models
         public string Country { get; set; }
 
         public int ZipCode { get; set; }
+
     }
 }
