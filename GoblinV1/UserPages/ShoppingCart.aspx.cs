@@ -15,6 +15,9 @@ using System.Data.Entity.Validation;
 
 namespace GoblinV1.UserPages
 {
+    /// <summary>
+    /// Class responsible for the shopping cart functions
+    /// </summary>
     public partial class ShoppingCart : System.Web.UI.Page
     {
   
@@ -42,12 +45,12 @@ namespace GoblinV1.UserPages
             return shoppingCart.GetCartItems();
         }
 
-
+        /// <summary>
+        /// Get total cost
+        /// </summary>
         public void  GetTotals()
         {
-  
            string total = Convert.ToString(shoppingCart.GetTotal());
-
            lblTotal.Text = total;
         }
 
@@ -62,6 +65,11 @@ namespace GoblinV1.UserPages
         }
 
 
+        /// <summary>
+        /// Provide behavior for checkout button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
             EntityMappingContext ctx = new EntityMappingContext();
@@ -74,12 +82,9 @@ namespace GoblinV1.UserPages
             //create an order status object in order to set it to submitted
             OrderStatus orderstatus = ctx.OrderStatuses.Create();
 
-            //create order
-            Order order = ctx.Orders.Create();
 
             //get the cart items
             List<CartItem> cartItemList = cartEngine.GetCartItems();
-
 
             Session["CartItems"] = cartItemList;
     
@@ -125,6 +130,11 @@ namespace GoblinV1.UserPages
 
         }
 
+        /// <summary>
+        /// Provide behavior for button update
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
 

@@ -13,7 +13,7 @@ namespace GoblinV1.Models
     {
         
         [Key]
-        public string ItemId { get; set; }
+        public string CartItemId { get; set; }
 
         public string CartId { get; set; }
 

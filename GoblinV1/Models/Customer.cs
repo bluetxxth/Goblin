@@ -64,12 +64,14 @@ namespace GoblinV1.Models
         [Key]
         public int CustomerId { get; set; }
 
-        public virtual Order Order { get; set;}
+        public virtual ICollection<Order> Orders { get; set; }
 
         public int AddressId { get; set; }
 
         [ForeignKey("AddressId")]
         public virtual Address BillingAddress  { get; set; }
+
+
 
         public string FirstName { get; set; }
 

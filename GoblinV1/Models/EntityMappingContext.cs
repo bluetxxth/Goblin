@@ -19,9 +19,6 @@ namespace GoblinV1.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
-
-
-        //from here below added in batch
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Invoice> Invoices { get; set; }

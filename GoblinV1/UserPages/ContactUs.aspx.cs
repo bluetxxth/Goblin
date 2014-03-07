@@ -101,7 +101,6 @@ namespace GoblinV1.UserPages
             Session["Subject"] = Subject;
             Session["MessageBody"] = MessageBody;
 
-
             try
             {
                 Server.Transfer("~/UserPages/ContactUsConfirm.aspx");

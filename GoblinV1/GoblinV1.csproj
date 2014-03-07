@@ -233,6 +233,7 @@
     <Content Include="UserPages\Products.aspx" />
     <Content Include="UserPages\ShoppingCart.aspx" />
     <Content Include="UserPages\ErrorPage.aspx" />
+    <Content Include="UserPages\UserPanel.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -298,6 +299,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\OrderEngine.cs" />
     <Compile Include="Logic\ShoppingCartEngine.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -435,6 +437,13 @@
     </Compile>
     <Compile Include="UserPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\UserPanel.aspx.cs">
+      <DependentUpon>UserPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\UserPanel.aspx.designer.cs">
+      <DependentUpon>UserPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

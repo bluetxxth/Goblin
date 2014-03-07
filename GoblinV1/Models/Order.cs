@@ -15,19 +15,28 @@ namespace GoblinV1.Models
         
         [Key]
         public int OrderId { get; set; }
-        public DateTime Created { get; set; }
+        public string Created { get; set; }
 
-        [Required( ErrorMessage= "No quantity specified")]
-        public int Qty { get; set; }
-        public string Description { get; set; }
-       
-        public double? Price { get; set; }
-        public virtual Product Products { get; set; }
-        public virtual ICollection <OrderStatus> Statuses { get; set; }
-        public virtual ICollection<CartItem> CartItems { get; set; }
+        public string Submitted { get; set; }
+
+        public string Processed { get;set; }
+
         public virtual Address Address { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }
+       
+        public int CustomerId { get; set; }
+
+         [ForeignKey("CustomerId")]
+        public virtual Customer Customers { get; set; }
+
+         public bool IsProcessed { get; set;}
+
+
+
+       
+
+  
 
     }
 }

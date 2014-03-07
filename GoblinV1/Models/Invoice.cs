@@ -49,10 +49,14 @@ namespace GoblinV1.Models
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set;}
 
-        public double SubTotal { get; set; }
+        public double? SubTotal { get; set; }
 
         public double Tax { get; set; }
 
-        public double Total { get; set; }
+        public double? Total { get; set; }
+
+        public virtual Address BillingAddress { get; set; }
+
+
     }
 }

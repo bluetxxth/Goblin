@@ -1,4 +1,5 @@
-﻿using GoblinV1.Models;
+﻿using GoblinV1.Logic;
+using GoblinV1.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -14,8 +15,10 @@ namespace GoblinV1.UserPages
     {
 
         private List<CartItem> m_items;
+        private OrderItem m_orderItem;
+        private int m_lastOrderId;
 
-        EntityMappingContext ctx = new EntityMappingContext();
+        private EntityMappingContext ctx = new EntityMappingContext();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +26,9 @@ namespace GoblinV1.UserPages
             {
 
                 m_items = (List<CartItem>)Session["CartItems"];
+
+
+
             }
             else
             {
@@ -32,87 +38,6 @@ namespace GoblinV1.UserPages
             }
         }
 
-
-        /// <summary>
-        /// Extract Cart items
-        /// </summary>
-        public void extractCartItems()
-        {
-            List<int> productIdList = new List<int>();
-
-            //get all the ids and put them on a list
-            using (var ctx = new EntityMappingContext())
-            {
-
-                //ctx.Orders.Create();
-
-                //Order order = ctx.Orders.Create();
-
-
-
-
-                Order order = new Order()
-                {
-                
-                };
-
-                //order item information
-                for (int i = 0; i < m_items.Count; i++)
-                {
-                    OrderItem orderItem = new OrderItem()
-                    {
-                      OrderId = order.OrderId,
-                      ProductId = m_items[i].ProductId,
-                      Quantity = m_items[i].Quantity,
-                      Price = m_items[i].Product.UnitPrice,
-                    
-                       
-                    };
-
-                }
-
-                //Session["Error"] = order.Description;
-                //Response.Redirect("/UserPages/ErrorPage.aspx");
-
-                try
-                {
-                    ctx.Orders.Add(order);
-                    ctx.SaveChanges();
-                    //validate
-                    ctx.Configuration.ValidateOnSaveEnabled = true;
-                }
-                catch (DbEntityValidationException ex)
-                {
-
-
-                    var errorMessages = ex.EntityValidationErrors
-                      .SelectMany(x => x.ValidationErrors)
-                      .Select(x => x.ErrorMessage);
-
-                    // Join the list to a single string.
-                    var fullErrorMessage = string.Join("; ", errorMessages);
-
-                    // Combine the original exception message with the new one.
-                    var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
-
-                    Session["Error"] = fullErrorMessage;
-
-                    Response.Redirect("/UserPages/ErrorPage.aspx");
-
-                    // Throw a new DbEntityValidationException with the improved exception message.
-                    throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-                }
-
-            }
-
-            //foreach(int productId  in productIdList)
-            //{
-
-
-
-            //}
-
-        }
 
 
 
@@ -147,7 +72,7 @@ namespace GoblinV1.UserPages
                 //Create customer
                 Customer customer = new Customer()
                 {
-                  
+
                     FirstName = txtFirstName.Text,
                     MiddleName = txtMiddleName.Text,
                     LastName = txtLastName.Text,
@@ -158,12 +83,6 @@ namespace GoblinV1.UserPages
 
                 };
 
-
-                //Change the order status
-                OrderStatus orderStatus = new OrderStatus()
-                {
-                    Status = "Submitted",
-                };
 
                 //add delivery address
                 Address deliveryAddress = new Address()
@@ -180,42 +99,85 @@ namespace GoblinV1.UserPages
                 //Shippment
                 Shippment shipment = new Shippment()
                 {
+                    CreatedOn = DateTime.Now,
                     State = "Not shipped",
+
+
                     DeliveryAddress = deliveryAddress
                 };
 
-
+                //create order
                 Order order = new Order()
                 {
+                    Created = DateTime.Now.ToString(),
                     Address = billingAddress,
-                    Created = DateTime.Now,
-
-                    Description = m_items[1].Product.Specifications,
-                    Price = m_items[1].Product.UnitPrice,
-
-
                 };
 
-               
+
+                //Session["Error"] = m_items;
+                //Response.Redirect("/UserPages/ErrorPage.aspx");
+
+
 
                 //fill order items
                 for (int i = 0; i < m_items.Count; i++)
                 {
-                    OrderItem orderItem = new OrderItem()
+
+                    m_orderItem = new OrderItem()
                     {
-                        OrderId = order.OrderId,
+
+                        // OrderId = order.OrderId,
                         ProductId = m_items[i].ProductId,
                         Quantity = m_items[i].Quantity,
                         Price = m_items[i].Product.UnitPrice,
+                        ItemName = m_items[i].Product.ProductName,
+                        Specs = m_items[i].Product.Specifications,
+
 
                     };
-                
+                    try
+                    {
+                        // Add OrderDetail to DB.
+                        ctx.OrderItems.Add(m_orderItem);
+                        ctx.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Session["Error"] = ex;
+
+                        Response.Redirect("/UserPages/ErrorPage.aspx");
+
+
+                    }
                 }
+
+                //Generate invoice
+                Invoice invoice = new Invoice()
+                {
+
+                    SubTotal = m_orderItem.Price,
+                    Tax = 0.25,
+                    Total = (m_orderItem.Price * (0.25)) + m_orderItem.Price,
+
+                    BillingAddress = billingAddress,
+
+
+                };
+
 
                 try
                 {
                     ctx.Customers.Add(customer);
+                    ctx.Orders.Add(order);
+                    ctx.Invoices.Add(invoice);
+                    ctx.Shipments.Add(shipment);
                     ctx.SaveChanges();
+
+                    m_lastOrderId = order.OrderId;
+
+                    Session["lastId"] = m_lastOrderId;
+
 
                     //Activate validation 
                     ctx.Configuration.ValidateOnSaveEnabled = true;
@@ -223,6 +185,11 @@ namespace GoblinV1.UserPages
                 }
                 catch (DbEntityValidationException ex)
                 {
+
+                    Session["Error"] = ex;
+
+                    Response.Redirect("/UserPages/ErrorPage.aspx");
+
                     var errorMessages = ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage);
 
                     //join the list to a stingle string
@@ -244,9 +211,7 @@ namespace GoblinV1.UserPages
                 {
                     Response.Redirect("/UserPages/OrderConfirmation.aspx");
                 }
-
             }
-
         }
     }
 }

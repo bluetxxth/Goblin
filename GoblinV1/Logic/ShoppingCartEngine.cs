@@ -40,7 +40,7 @@ namespace GoblinV1.Logic
                 // Create a new cart item if no cart item exists.                 
                 cartItem = new CartItem
                 {
-                    ItemId = Guid.NewGuid().ToString(),
+                    CartItemId = Guid.NewGuid().ToString(),
                     ProductId = id,
                     CartId = ShoppingCartId,
                     Product = ctx.Products.SingleOrDefault(
@@ -101,6 +101,8 @@ namespace GoblinV1.Logic
                 cart => cart.CartId == ShoppingCartId).ToList();
         }
 
+     
+
 
         public decimal GetTotal()
         {
@@ -157,5 +159,6 @@ namespace GoblinV1.Logic
 
             return productName;
         }
+
     }
 }
