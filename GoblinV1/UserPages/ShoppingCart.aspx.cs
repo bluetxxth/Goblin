@@ -61,7 +61,7 @@ namespace GoblinV1.UserPages
         /// <param name="e"></param>
         protected void btnContinueShopping_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/UserPages/Products.aspx");
+            Response.Redirect("Products.aspx");
         }
 
 
@@ -117,7 +117,7 @@ namespace GoblinV1.UserPages
 
                 Session["Error"] = fullErrorMessage;
 
-                Response.Redirect("/UserPages/ErrorPage.aspx");
+                Response.Redirect("ErrorPage.aspx");
 
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
@@ -125,7 +125,7 @@ namespace GoblinV1.UserPages
             }
              finally
              {
-                 Response.Redirect("/UserPages/CreateUser.aspx");
+                 Response.Redirect("CreateUser.aspx");
              }
 
         }

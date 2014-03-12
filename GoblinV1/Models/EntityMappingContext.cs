@@ -16,6 +16,8 @@ namespace GoblinV1.Models
         /// </summary>
         public EntityMappingContext() : base("DefaultConnection") { }
 
+        //static EntityMappingContext() { Database.SetInitializer<EntityMappingContext>(new DataBaseInitializer()); }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }

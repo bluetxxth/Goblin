@@ -13,7 +13,7 @@ namespace GoblinV1.UserPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+       
         }
 
         public IQueryable<Product> GetProduct([QueryString("productID")] int? productId)

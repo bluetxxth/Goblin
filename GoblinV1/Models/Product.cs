@@ -72,8 +72,10 @@ namespace GoblinV1.Models
         public string Options { get; set; }
 
         [Display(Name = "Price")]
+
         public double? UnitPrice { get; set; }
 
+      
         public int? CategoryId { get; set; }
 
         public virtual Category Category { get; set; }

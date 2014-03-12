@@ -14,7 +14,8 @@
         runat="server"
         SelectMethod="GetCategories">
         <ItemTemplate>
-            <b style="font-size: large; font-style: normal"><a href="/UserPages/ProductList.aspx?id=<%#: Item.CategoryID %>"><%#: Item.CategoryName %></a></b>
+            <b style="font-size: large; font-style: normal"><a href="ProductList.aspx?id=<%#:Item.CategoryID %>">
+                <%#:Item.CategoryName %></a></b>
         </ItemTemplate>
         <ItemSeparatorTemplate>
             |

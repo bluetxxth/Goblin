@@ -27,8 +27,8 @@
                     <tr>
                         <td>
                             <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
-                                <img src="/Catalog/Images/Thumbs/<%#:Item.ProductImagePath%>"
-                                    width="100" height="75" style="border: solid" /></a>
+                                <img src="../Catalog/Images/Thumbs/<%#:Item.ProductImagePath%>"
+                                    width="200" height="100" style="border: solid" /></a>
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                                 <b>Price: </b><%#:String.Format("{0:c}", Item.UnitPrice)%>
                             </span>
                             <br />
-                            <a href="/UserPages/AddToCart.aspx?productID=<%#:Item.ProductID%>">
+                            <a href="AddToCart.aspx?productID=<%#:Item.ProductID%>">
                                 <span class="ProductListItem">
                                     <b>Add To Cart<b>
                                 </span>

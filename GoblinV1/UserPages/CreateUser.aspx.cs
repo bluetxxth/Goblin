@@ -34,7 +34,7 @@ namespace GoblinV1.UserPages
             {
                 Session["Error"] = "No session passed";
 
-                Response.Redirect("/UserPages/ErrorPage.aspx");
+                Response.Redirect("ErrorPage.aspx");
             }
         }
 
@@ -146,7 +146,7 @@ namespace GoblinV1.UserPages
 
                         Session["Error"] = ex;
 
-                        Response.Redirect("/UserPages/ErrorPage.aspx");
+                        Response.Redirect("ErrorPage.aspx");
 
 
                     }
@@ -188,7 +188,7 @@ namespace GoblinV1.UserPages
 
                     Session["Error"] = ex;
 
-                    Response.Redirect("/UserPages/ErrorPage.aspx");
+                    Response.Redirect("ErrorPage.aspx");
 
                     var errorMessages = ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage);
 
@@ -201,7 +201,7 @@ namespace GoblinV1.UserPages
 
                     Session["Error"] = fullErrorMessage;
 
-                    Response.Redirect("/UserPages/ErrorPage.aspx");
+                    Response.Redirect("ErrorPage.aspx");
 
                     //Throw a new DBEntityValidationException with the imrpoved exception message
                     throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
@@ -209,7 +209,7 @@ namespace GoblinV1.UserPages
                 }
                 finally
                 {
-                    Response.Redirect("/UserPages/OrderConfirmation.aspx");
+                    Response.Redirect("OrderConfirmation.aspx");
                 }
             }
         }

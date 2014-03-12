@@ -96,19 +96,20 @@ namespace GoblinV1.UserPages
             Subject = txtSubject.Text;
             MessageBody = txtMssgBody.Text;
 
-            Session["Name"] = Name;
-            Session["Email"] = EmailAddress;
-            Session["Subject"] = Subject;
-            Session["MessageBody"] = MessageBody;
+            Session["Name"] = Name.ToString();
+            Session["Email"] = EmailAddress.ToString();
+            Session["Subject"] = Subject.ToString();
+            Session["MessageBody"] = MessageBody.ToString();
 
             try
             {
-                Server.Transfer("~/UserPages/ContactUsConfirm.aspx");
-                // Context.RewritePath("~/UserPages/ContactUsConfirm.aspx");
+                Response.Redirect("~/UserPages/ContactUsConfirm.aspx");
+     
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBody = Environment.NewLine + "Error occurred" + exc.ToString() ;
+               Session["Error"] = ex;
+               Response.Redirect("~/UserPages/ContactUsConfirm.aspx");
             }
 
             }

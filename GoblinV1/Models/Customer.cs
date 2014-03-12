@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,15 +14,7 @@ namespace GoblinV1.Models
     /// 
     public class Customer
     {
-        private int m_id = 0;
-        private int m_phoneNumber = 0;
-        private int m_creditCardNumber = 0;
-        private int m_bankAccountNumber = 0;
-        private string m_firstName = null;
-        private string m_middleName = null;
-        private string m_lastName = null;
-        private string m_emailAddress = null;
-        private Address m_address = null;
+
 
 
 
@@ -31,34 +24,6 @@ namespace GoblinV1.Models
         public Customer()
         {
 
-        }
-
-        /// <summary>
-        /// Creates an object of class customer
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="phoneNumber"></param>
-        /// <param name="zipCode"></param>
-        /// <param name="streetNumber"></param>
-        /// <param name="firstName"></param>
-        /// <param name="midleName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="streetName"></param>
-        /// <param name="city"></param>
-        /// <param name="country"></param>
-        /// <param name="emailAddress"></param>
-        /// <param name="creditCardNumber"></param>
-        public Customer(int id, int phoneNumber, string firstName,
-                        string midleName, string lastName, string streetName,
-                        string emailAddress, int creditCardNumber)
-        {
-            this.m_id = id;
-            this.m_phoneNumber = phoneNumber;
-            this.m_firstName = firstName;
-            this.m_middleName = midleName;
-            this.m_lastName = lastName;
-            this.m_emailAddress = emailAddress;
-            this.m_address = new Address();
         }
 
         [Key]
@@ -71,26 +36,37 @@ namespace GoblinV1.Models
         [ForeignKey("AddressId")]
         public virtual Address BillingAddress  { get; set; }
 
-
-
+        [Required(ErrorMessage = "Customer Name is required")]
+        [DisplayName("Customer Name")]
+        [StringLength(150)]
         public string FirstName { get; set; }
 
-
+        [Required(ErrorMessage = "Customer Middle Name is required")]
+        [DisplayName("Middle")]
+        [StringLength(150)]
         public string MiddleName { get; set; }
 
-
+        [Required(ErrorMessage = "Customer Last Name is required")]
+        [DisplayName("Last")]
+        [StringLength(150)]
         public string LastName { get; set; }
 
-
+        [Required(ErrorMessage = "Email Address is required")]
+        [DisplayName("Email Address")]
+         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
+        ErrorMessage = "Email is is not valid.")]
         public string Email { get; set; }
 
-
+        [Required(ErrorMessage = "Telephone is required")]
+        [DisplayName("Telephone")]
         public int Phone { get; set; }
 
-
+        [Required(ErrorMessage = "CC No is Required")]
+        [DisplayName("Credit Card No.")]
         int CreditCardNo { get; set; }
 
-
+        [Required(ErrorMessage = "Bank Account Required")]
+        [DisplayName("Bank Acc.")]
         int BankAccountNo { get; set; }
     }
 }

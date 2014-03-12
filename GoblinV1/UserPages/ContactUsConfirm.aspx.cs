@@ -26,32 +26,55 @@ namespace GoblinV1.UserPages
             string subject = null;
             string message = null;
 
-            try
-            {
-                //name = Convert.ToString(Session["Name"]);
-                //email = Convert.ToString(Session["Email"]);
-                //subject = Convert.ToString(Session["Subject"]);
-                //message = Convert.ToString(Session["Message"]);
 
-                name = Session["Name"].ToString();
-                email = Session["Email"].ToString();
-                subject = Session["Subject"].ToString();
-                message = Session["Message"].ToString();
+            if(Session["Name"].ToString() == null ){
 
+                lblName.Text = "Error missing data go back";
+                txtOutput.Text += "Missing name";
+              
+            }else{
+                name = "Name: " + Session["Name"].ToString();
             }
-            catch (Exception ex)
-            {
-                txtOutput.Text = Environment.NewLine + ex.ToString();
 
-                name = "Missing name";
-                email = "Missing e-mail";
-                subject = "Missing subject";
-                message = "Missing message";
+            if(Session["Email"].ToString() == null)
+            {
+                lblName.Text = "Error missing data go back";
+                txtOutput.Text += "Missing Email";
             }
-            txtOutput.Text = Environment.NewLine + name;
-            txtOutput.Text = Environment.NewLine + email;
-            txtOutput.Text = Environment.NewLine + subject;
-            txtOutput.Text = Environment.NewLine + message;
+            else
+            {
+               email =  "Email: " + Session["Email"].ToString();
+            }
+
+
+            if (Session["Subject"].ToString() == null)
+            {
+                lblName.Text = "Error missing data go back";
+                txtOutput.Text += "Missing Subject";
+            }
+            else
+            {
+               subject = "Subject: " + Session["Subject"].ToString();
+            }
+
+            if (Session["MessageBody"].ToString() == null)
+            {
+                lblName.Text = "Error missing data go back";
+                txtOutput.Text = "Missing Message body";
+            }else {
+                message= "Message: " + Session["MessageBody"].ToString();
+            }
+
+            if(name != null && email != null && subject != null && message != null ){
+                 lblName.Text += "Message Successfully sent";
+
+                txtOutput.Text = Environment.NewLine + name;
+                txtOutput.Text += Environment.NewLine + email;
+                txtOutput.Text += Environment.NewLine + subject;
+                txtOutput.Text += Environment.NewLine + message;
+          
+            }
+           
 
         }
 

@@ -21,7 +21,7 @@ namespace GoblinV1
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // Initialize the product database.
-            Database.SetInitializer(new DataBaseInitializer());
+           Database.SetInitializer(new DataBaseInitializer());
         }
     }
 }

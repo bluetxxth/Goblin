@@ -11,7 +11,7 @@
             <table>
                 <tr>
                     <td>
-                        <img src="/Catalog/Images/<%#:Item.ProductImagePath %>" style="border:solid; height:300px" alt="<%#:Item.ProductName %>"/>
+                       <img src="../Catalog/Images/<%#:Item.ProductImagePath %>" style="border:solid; height:150px"; width: "200px" alt="<%#:Item.ProductName %>"/>
                     </td>
                     <td>&nbsp;</td>  
                     <td style="vertical-align: top; text-align:left;">

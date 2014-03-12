@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GoblinV1.Models
 {
-    public class DataBaseInitializer : DropCreateDatabaseAlways<EntityMappingContext>
+    public class DataBaseInitializer : DropCreateDatabaseIfModelChanges<EntityMappingContext>
     {
 
         protected override void Seed(EntityMappingContext context)
@@ -15,6 +15,8 @@ namespace GoblinV1.Models
             GetCategories().ForEach(c => context.Categories.Add(c));
             GetProducts().ForEach(p => context.Products.Add(p));
         }
+
+
 
         private static List<Category> GetCategories()
         {
@@ -45,7 +47,7 @@ namespace GoblinV1.Models
                     Specifications = "This is thought for users requiring a basic need who are not going to need to utilize a data-driven web application." + 
                                   "Perfect for personal needs", 
                     ProductImagePath="plan.png",
-                    UnitPrice = 22.50,
+                    UnitPrice = 40,
                     CategoryId = 1
                },
                 new Product 
@@ -54,7 +56,7 @@ namespace GoblinV1.Models
                     ProductName = "Personal",
                     Specifications = "This is thought for for thos who need to send a larger volume of email but who do not require a database",
                     ProductImagePath="plan.png",
-                    UnitPrice = 15.95,
+                    UnitPrice = 50,
                      CategoryId = 1
                },
                 new Product
@@ -63,7 +65,7 @@ namespace GoblinV1.Models
                     ProductName = "Pro",
                     Specifications = "A plan with  data-driven web applications in mind for the small business needs",
                     ProductImagePath="plan.png",
-                    UnitPrice = 32.99,
+                    UnitPrice = 70,
                     CategoryId = 1
                 },
                 new Product
@@ -72,7 +74,7 @@ namespace GoblinV1.Models
                     ProductName = "Dedicated",
                     Specifications = "Business grade hosting plan with reverse dns and full access to your pointer",
                     ProductImagePath="plan.png",
-                    UnitPrice = 8.95,
+                    UnitPrice = 150,
                     CategoryId = 1
                 },
                 new Product
@@ -82,7 +84,7 @@ namespace GoblinV1.Models
                     Specifications = "16 GB Memory DDR3, 6 Cores, Single Processor 4M Cache" + 
                                   "Expandable",
                     ProductImagePath="server.png",
-                    UnitPrice = 34.95,
+                    UnitPrice = 250.50,
                     CategoryId = 2
                 },
                 new Product
@@ -91,7 +93,7 @@ namespace GoblinV1.Models
                     ProductName = "IBM Series 8000",
                     Specifications = "32 GB Memory DDR3, 12 Cores, Dual Processors 4M Cache",
                     ProductImagePath="server.png",
-                    UnitPrice = 95.00,
+                    UnitPrice = 350.50,
                     CategoryId = 2
                 },
                 new Product
@@ -100,7 +102,7 @@ namespace GoblinV1.Models
                     ProductName = "IBM Series 10000",
                     Specifications = "64GB Memory DDR3, 12 Cores, Dual Processors 8M Cache",
                     ProductImagePath="server.png",
-                    UnitPrice = 4.95,
+                    UnitPrice = 1500,
                     CategoryId = 2
                 },
                 new Product
@@ -109,7 +111,7 @@ namespace GoblinV1.Models
                     ProductName = "IBM Series XL",
                     Specifications = "120Gb Memory DDR3, 24Cores, Dual processors 16M Cache ",
                     ProductImagePath="server.png",
-                    UnitPrice = 2.95,
+                    UnitPrice = 3000,
                     CategoryId = 2
                 },
                
