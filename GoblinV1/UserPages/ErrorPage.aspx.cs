@@ -118,7 +118,6 @@ namespace GoblinV1.UserPages
             if (!(Session["Error"] == null))
             {
                 btnBack.Visible = false;
-                //Response.Redirect("CreateUser.aspx");
 
             }
         }

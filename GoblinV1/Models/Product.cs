@@ -1,4 +1,5 @@
 ﻿using Enums;
+using GoblinV1.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -64,6 +65,7 @@ namespace GoblinV1.Models
         public string ProductName { get; set; }
 
         [Required, StringLength(150)]
+        //[ExcludeChar("^[^<>.!@#%]+$")]
         public string ProductImagePath { get; set; }
 
          [Required, StringLength(10000), Display(Name = "Product Description"), DataType(DataType.MultilineText)]
@@ -72,12 +74,14 @@ namespace GoblinV1.Models
         public string Options { get; set; }
 
         [Display(Name = "Price")]
-
+        [Required(ErrorMessage = "Invalid price")]
+        //[RegularExpression(@"^\$?\d+(\.(\d{2}))?$")]
         public double? UnitPrice { get; set; }
 
-      
+        [Required(ErrorMessage = "Invalid category")]
         public int? CategoryId { get; set; }
 
+        //[Required(ErrorMessage = "Enter category")]
         public virtual Category Category { get; set; }
 
         public int Stock { get; set; }

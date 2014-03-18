@@ -30,11 +30,11 @@
                     <%# String.Format("{0:c}", ((Convert.ToInt32(Item.Quantity))) * (Convert.ToDouble(Item.Product.UnitPrice))) %>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Remove Item">
+<%--            <asp:TemplateField HeaderText="Remove Item">
                 <ItemTemplate>
                     <asp:CheckBox ID="Remove" runat="server"></asp:CheckBox>
                 </ItemTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>--%>
         </Columns>
     </asp:GridView>
     <div>
@@ -46,7 +46,7 @@
         </strong>
     </div>
     <br />
-    <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
+  <%--  <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />--%>
     <asp:Button ID="btnCheckOut" runat="server" Text="Checkout" OnClick="btnCheckOut_Click" />
     <asp:Button ID="btnContinueShopping" runat="server" Text="Continue Shopping" OnClick="btnContinueShopping_Click" />
 

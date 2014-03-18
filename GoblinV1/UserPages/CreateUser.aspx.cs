@@ -31,7 +31,7 @@ namespace GoblinV1.UserPages
 
 
         /// <summary>
-        /// 
+        /// Provides behavior for submit button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -132,7 +132,7 @@ namespace GoblinV1.UserPages
                 Order order = new Order()
                 {
                     Created = DateTime.Now.ToString(),
-                    Quantity = m_orderQuantity,
+                    Qty = m_orderQuantity,
                     //calculate the pr
                     Total = ((m_orderItem.Price * m_orderQuantity)),
                     Address = billingAddress,

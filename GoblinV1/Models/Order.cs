@@ -25,7 +25,7 @@ namespace GoblinV1.Models
 
         public virtual List<OrderItem> OrderItems { get; set; }
 
-        public int Quantity { get; set; }
+        public int Qty { get; set; }
 
         public double? Total { get; set; }
         public int CustomerId { get; set; }
@@ -34,6 +34,7 @@ namespace GoblinV1.Models
         public virtual Customer Customers { get; set; }
 
         public bool IsProcessed { get; set;}
+     
 
 
 

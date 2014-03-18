@@ -56,7 +56,7 @@ namespace GoblinV1.UserPages
                 // Combine the original exception message with the new one.
                 var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
 
-                Session["Error"] = fullErrorMessage;
+                Session["ValidationError"] = fullErrorMessage;
 
                 Response.Redirect("ErrorPage.aspx");
 

@@ -158,7 +158,7 @@
             ItemType="GoblinV1.Models.Order"
             SelectMethod="GetOrders">
 
-            <Columns>         
+            <Columns>
                 <asp:TemplateField HeaderText="Process">
                     <ItemTemplate>
                         <asp:CheckBox ID="cboxProcessed" runat="server" AutoPostBack="true" OnCheckedChanged="cboxProcessed_CheckedChanged"></asp:CheckBox>
