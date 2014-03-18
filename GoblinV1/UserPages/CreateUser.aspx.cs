@@ -27,8 +27,6 @@ namespace GoblinV1.UserPages
 
                 m_items = (List<CartItem>)Session["CartItems"];
 
-
-
             }
             else
             {
@@ -37,8 +35,6 @@ namespace GoblinV1.UserPages
                 Response.Redirect("ErrorPage.aspx");
             }
         }
-
-
 
 
         /// <summary>
@@ -62,10 +58,10 @@ namespace GoblinV1.UserPages
 
                     //Address part
                     StreetName = txtStreetName.Text,
-                    StreetNo = Convert.ToInt32(txtStreetNo.Text),
+                    StreetNo = txtStreetNo.Text,
                     City = txtCity.Text,
                     Country = txtCountry.Text,
-                    ZipCode = Convert.ToInt32(txtZipCode.Text),
+                    ZipCode = txtZipCode.Text,
 
                 };
 
@@ -76,7 +72,7 @@ namespace GoblinV1.UserPages
                     FirstName = txtFirstName.Text,
                     MiddleName = txtMiddleName.Text,
                     LastName = txtLastName.Text,
-                    Phone = Convert.ToInt32(txtTelephone.Text),
+                    Phone = txtTelephone.Text,
                     Email = txtEmail.Text,
 
                     BillingAddress = billingAddress
@@ -89,10 +85,10 @@ namespace GoblinV1.UserPages
                 {
                     //Address part
                     StreetName = txtStreetName.Text,
-                    StreetNo = Convert.ToInt32(txtStreetNo.Text),
+                    StreetNo = txtStreetNo.Text,
                     City = txtCity.Text,
                     Country = txtCountry.Text,
-                    ZipCode = Convert.ToInt32(txtZipCode.Text),
+                    ZipCode = txtZipCode.Text,
                 };
 
 
@@ -143,11 +139,9 @@ namespace GoblinV1.UserPages
                     }
                     catch (Exception ex)
                     {
-
                         Session["Error"] = ex;
 
                         Response.Redirect("ErrorPage.aspx");
-
 
                     }
                 }
@@ -183,12 +177,12 @@ namespace GoblinV1.UserPages
                     ctx.Configuration.ValidateOnSaveEnabled = true;
 
                 }
-                catch (DbEntityValidationException ex)
+                catch  (DbEntityValidationException ex)
                 {
 
-                    Session["Error"] = ex;
+                    //Session["Error"] = ex;
 
-                    Response.Redirect("ErrorPage.aspx");
+                    //Response.Redirect("ErrorPage.aspx");
 
                     var errorMessages = ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage);
 

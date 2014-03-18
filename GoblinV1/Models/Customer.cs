@@ -14,10 +14,6 @@ namespace GoblinV1.Models
     /// 
     public class Customer
     {
-
-
-
-
         /// <summary>
         /// Creates an object of type Customer
         /// </summary>
@@ -58,15 +54,16 @@ namespace GoblinV1.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Telephone is required")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         [DisplayName("Telephone")]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
         [Required(ErrorMessage = "CC No is Required")]
         [DisplayName("Credit Card No.")]
-        int CreditCardNo { get; set; }
+        string CreditCardNo { get; set; }
 
         [Required(ErrorMessage = "Bank Account Required")]
         [DisplayName("Bank Acc.")]
-        int BankAccountNo { get; set; }
+        string BankAccountNo { get; set; }
     }
 }

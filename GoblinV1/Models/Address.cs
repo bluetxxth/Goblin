@@ -52,7 +52,7 @@ namespace GoblinV1.Models
 
         [Required(ErrorMessage = "Street No. is required")]
         [DisplayName("AStreet No.")]
-        public int StreetNo { get; set; }
+        public string StreetNo { get; set; }
 
         [Required(ErrorMessage = "City Name is required")]
         [DisplayName("City Name")]
@@ -66,7 +66,7 @@ namespace GoblinV1.Models
 
         [Required(ErrorMessage = "Zipcode  is required")]
         [DisplayName("Zipcode")]
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
 
     }
 }

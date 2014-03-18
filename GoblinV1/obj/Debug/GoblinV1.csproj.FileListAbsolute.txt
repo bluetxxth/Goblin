@@ -54,3 +54,4 @@ I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1
 I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\GoblinV1\bin\Enums.pdb
 I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\GoblinV1\bin\Logic.dll
 I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\GoblinV1\bin\Logic.pdb
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\GoblinV1\bin\DataAnnotationsExtensions.dll

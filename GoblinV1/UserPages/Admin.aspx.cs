@@ -33,16 +33,9 @@ namespace GoblinV1.UserPages
             return ctx.Products.Find(productId);
         }
 
-
-
-
-
-
         public void InsertProduct(Product product)
         {
             ctx.Products.Add(product);
-
-         
 
             try
             {
@@ -53,8 +46,6 @@ namespace GoblinV1.UserPages
             }
             catch (DbEntityValidationException ex)
             {
-
-
                 var errorMessages = ex.EntityValidationErrors
                   .SelectMany(x => x.ValidationErrors)
                   .Select(x => x.ErrorMessage);
