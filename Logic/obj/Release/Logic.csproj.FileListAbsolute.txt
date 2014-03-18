@@ -1,0 +1,5 @@
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Logic\bin\Release\Logic.dll
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Logic\bin\Release\Logic.pdb
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Logic\obj\Release\Logic.csprojResolveAssemblyReference.cache
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Logic\obj\Release\Logic.dll
+I:\gabriel\work\school\civ_eng\gral_workspaces\visualstudio2014_ASP.NET\GoblinV1\Logic\obj\Release\Logic.pdb
