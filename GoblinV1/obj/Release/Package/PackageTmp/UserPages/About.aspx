@@ -3,6 +3,4 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
  <h1>About us</h1>
-
-
 </asp:Content>

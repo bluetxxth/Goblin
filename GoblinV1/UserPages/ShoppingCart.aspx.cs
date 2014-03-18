@@ -86,7 +86,7 @@ namespace GoblinV1.UserPages
             //get the cart items
             List<CartItem> cartItemList = cartEngine.GetCartItems();
 
-            Session["CartItems"] = cartItemList;
+           // Session["CartItems"] = cartItemList;
     
             
             orderstatus.Status = "Created " + DateTime.Now.ToString();

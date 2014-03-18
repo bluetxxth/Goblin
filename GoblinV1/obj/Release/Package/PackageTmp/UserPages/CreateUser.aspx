@@ -3,10 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
 
+
     <h1>Create Customer</h1>
 
-    <asp:Label ID="lblFirstName" runat="server" Text="First Name"></asp:Label>
-    <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+    <asp:Label ID="lblFirstName" runat="server" Text="First Name" ></asp:Label>
+    <asp:TextBox ID="txtFirstName" runat="server" CausesValidation="true"></asp:TextBox>
         <br/>
     <asp:Label ID="lblMiddleName" runat="server" Text="Middle Name"></asp:Label>
     <asp:TextBox ID="txtMiddleName" runat="server"></asp:TextBox>
@@ -37,6 +38,5 @@
         <br/>
          <br/>
     <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-
 
 </asp:Content>

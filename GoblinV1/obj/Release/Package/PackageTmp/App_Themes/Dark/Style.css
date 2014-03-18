@@ -20,6 +20,9 @@ body {
 	color: #333;
 }
 
+.ContentPlaceHolder1_cphMain_lblError .lblError { word-wrap: break-word; }
+
+
 /*header and header - related
 ---------------------------------------------------------------
 */

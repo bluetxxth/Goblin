@@ -16,8 +16,6 @@ namespace GoblinV1.Models
             GetProducts().ForEach(p => context.Products.Add(p));
         }
 
-
-
         private static List<Category> GetCategories()
         {
             var categories = new List<Category> {

@@ -167,10 +167,6 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="App_Data\aspnet-Gbl-20131119102907.mdf" />
-    <Content Include="App_Data\aspnet-Gbl-20131119102907_log.ldf">
-      <DependentUpon>aspnet-Gbl-20131119102907.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Themes\Dark\Contact.css" />
     <Content Include="App_Themes\Dark\Style.css" />
     <Content Include="Catalog\Images\IBM_System_x840.png" />
@@ -306,6 +302,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\ExcludeChar.cs" />
     <Compile Include="Logic\InventoryControlEngine.cs" />
     <Compile Include="Logic\OrderEngine.cs" />
     <Compile Include="Logic\ShoppingCartEngine.cs">
@@ -463,7 +460,9 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enums\Enums.csproj">
       <Project>{0a0cc4b4-f1d5-461d-ac54-857a09c3d12c}</Project>

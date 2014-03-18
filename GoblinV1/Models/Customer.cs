@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoblinV1.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -33,23 +34,26 @@ namespace GoblinV1.Models
         public virtual Address BillingAddress  { get; set; }
 
         [Required(ErrorMessage = "Customer Name is required")]
+        [ExcludeChar(@"\ ()^[<>.!@#%/]+$123456789")]
         [DisplayName("Customer Name")]
         [StringLength(150)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Customer Middle Name is required")]
+        [ExcludeChar(@"\ ()^[<>.!@#%/]+$123456789")]
         [DisplayName("Middle")]
         [StringLength(150)]
         public string MiddleName { get; set; }
 
         [Required(ErrorMessage = "Customer Last Name is required")]
+        [ExcludeChar(@"\ ()^[<>.!@#%/]+$123456789")]
         [DisplayName("Last")]
         [StringLength(150)]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email Address is required")]
         [DisplayName("Email Address")]
-         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
         ErrorMessage = "Email is is not valid.")]
         public string Email { get; set; }
 
@@ -58,7 +62,9 @@ namespace GoblinV1.Models
         [DisplayName("Telephone")]
         public string Phone { get; set; }
 
+        //accepting only visa according to this http://www.regular-expressions.info/creditcard.html
         [Required(ErrorMessage = "CC No is Required")]
+        [RegularExpression("^(?:4[0-9]{12}(?:[0-9]{3})?")]
         [DisplayName("Credit Card No.")]
         string CreditCardNo { get; set; }
 

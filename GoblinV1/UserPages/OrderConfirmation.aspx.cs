@@ -12,10 +12,9 @@ namespace GoblinV1.UserPages
 {
     public partial class OrderConfirmation : System.Web.UI.Page
     {
-
         private int m_lastOrderId;
-
         private EntityMappingContext ctx = new EntityMappingContext();
+        private ShoppingCartEngine cartEngine = new ShoppingCartEngine();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,13 +28,11 @@ namespace GoblinV1.UserPages
             {
                 if ((Session["Error"] != null))
                 {
-
                     Response.Redirect("ErrorPage.aspx");
                 }
             }
 
             txtOrderConfirmation.Text = " here is supposed to come the actual confirmation (all the order data) pulled from the DB Submit Order?";
-
         }
 
 
@@ -63,8 +60,6 @@ namespace GoblinV1.UserPages
 
          OrderEngine orderEngine = new OrderEngine();
 
-        
-
             //Change the status or the order
             var order = (from myorder in ctx.Orders
                          where myorder.OrderId == m_lastOrderId// get the corresponding order
@@ -82,7 +77,6 @@ namespace GoblinV1.UserPages
             }
             catch (DbEntityValidationException ex)
             {
-
                 var errorMessages = ex.EntityValidationErrors
                   .SelectMany(x => x.ValidationErrors)
                   .Select(x => x.ErrorMessage);
@@ -99,10 +93,11 @@ namespace GoblinV1.UserPages
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
-            finally
-            {
+        
+                //reset the cart for next order
+                cartEngine.ZeroCart();
+             
                 Response.Redirect("Products.aspx");
-            }
         }
     }
 }

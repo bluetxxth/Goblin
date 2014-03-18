@@ -14,17 +14,18 @@ namespace GoblinV1.Logic
 
 
         private EntityMappingContext ctx = new EntityMappingContext();
-
-        public const string CartSessionKey = "CartId";
-
+        public const string CartSessionKey = "CartId"; //cartID from session cookie
         private bool m_instock = false;
-
         public int MyStock { get; set; }
-
         public int MyQuantity { get; set; }
         public int ProductID { get; set; }
         public string ShoppingCartId { get; set; }
 
+
+        /// <summary>
+        /// Adds items to shoppint cart
+        /// </summary>
+        /// <param name="id"></param>
         public void AddToCart(int id)
         {
 
@@ -74,7 +75,7 @@ namespace GoblinV1.Logic
                 }
                 else
                 {
-                    HttpContext.Current.Session["Error"] = "Not in stock when creating new";
+                    HttpContext.Current.Session["StockError"] = "Not in stock when creating new";
                     HttpContext.Current.Response.Redirect("ErrorPage.aspx");
 
                 }
@@ -102,16 +103,20 @@ namespace GoblinV1.Logic
                 }
                 else
                 {
-                    HttpContext.Current.Session["Error"] = "Not in stock when adding to existing";
+                    HttpContext.Current.Session["StockError"] = "Not in stock when adding to existing";
                     HttpContext.Current.Response.Redirect("ErrorPage.aspx");
                 }
 
             }
-
+            //remove from inventory
             DiminishInventory();
             ctx.SaveChanges();
         }
 
+
+        /// <summary>
+        /// Disposes the context
+        /// </summary>
         public void Dispose()
         {
             if (ctx != null)
@@ -121,6 +126,18 @@ namespace GoblinV1.Logic
             }
         }
 
+        /// <summary>
+        /// Resets the items in the cart
+        /// </summary>
+        public void ZeroCart()
+        {
+            HttpContext.Current.Session[CartSessionKey] = null;
+        }
+
+        /// <summary>
+        /// Get cart id
+        /// </summary>
+        /// <returns></returns>
         public string GetCartId()
         {
 
@@ -296,27 +313,27 @@ namespace GoblinV1.Logic
         }
      
 
-        /// <summary>
-        /// Get the products name
-        /// </summary>
-        /// <returns></returns>
-        public string GetName()
-        {
-            string strProductId = HttpContext.Current.Session["productId"].ToString();
+        ///// <summary>
+        ///// Get the products name
+        ///// </summary>
+        ///// <returns></returns>
+        //public string GetName()
+        //{
+        //    string strProductId = HttpContext.Current.Session["productId"].ToString();
 
-            //HttpContext.Current.Session["Error"] = "productId: " + productId;
-            //HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
+        //    //HttpContext.Current.Session["Error"] = "productId: " + productId;
+        //    //HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
 
-            int intProductId = Convert.ToInt32(strProductId);
+        //    int intProductId = Convert.ToInt32(strProductId);
 
-            string productName = null;
+        //    string productName = null;
 
-            var product = ctx.Products.Find(intProductId);
+        //    var product = ctx.Products.Find(intProductId);
 
-            productName = product.ProductName;
+        //    productName = product.ProductName;
 
-            return productName;
-        }
+        //    return productName;
+        //}
 
     }
 }

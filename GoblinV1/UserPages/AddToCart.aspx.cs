@@ -19,22 +19,6 @@ namespace GoblinV1.UserPages
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //int quantity = cartEngine.GetQuantity();
-
-            ////Session["Error"] = quantity;
-            ////Response.Redirect("ErrorPage.aspx");
-
-
-
-            //if (!cartEngine.GetInventoryAvailability())
-            //{
-            //    Session["Error"] = "Product out of stock";
-            //    Response.Redirect("ErrorPage.aspx");
-            //}
-            //else
-            //{
-
-
                 string rawId = Request.QueryString["productID"];
 
                 Session["productId"] = rawId;
@@ -42,8 +26,6 @@ namespace GoblinV1.UserPages
                 //Session["Error"] = rawId;
 
                 //Response.Redirect("/UserPages/ErrorPage.aspx");
-
-
 
                 int productId;
 

@@ -13,27 +13,20 @@ namespace GoblinV1.UserPages
 {
     public partial class CreateUser : System.Web.UI.Page
     {
-
+        //instantiate store engine to get cart items
+        ShoppingCartEngine cartEngine = new ShoppingCartEngine();
         private List<CartItem> m_items;
         private OrderItem m_orderItem;
         private int m_lastOrderId;
-
+        private double m_orderTotal;
+        private int m_orderQuantity;
         private EntityMappingContext ctx = new EntityMappingContext();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["CartItems"] != null)
-            {
+            //get items from cart item list. Only Id comes from session the rest 
+            m_items = cartEngine.GetCartItems();
 
-                m_items = (List<CartItem>)Session["CartItems"];
-
-            }
-            else
-            {
-                Session["Error"] = "No session passed";
-
-                Response.Redirect("ErrorPage.aspx");
-            }
         }
 
 
@@ -98,30 +91,19 @@ namespace GoblinV1.UserPages
                     CreatedOn = DateTime.Now,
                     State = "Not shipped",
 
-
                     DeliveryAddress = deliveryAddress
                 };
-
-                //create order
-                Order order = new Order()
-                {
-                    Created = DateTime.Now.ToString(),
-                    Address = billingAddress,
-                };
-
 
                 //Session["Error"] = m_items;
                 //Response.Redirect("/UserPages/ErrorPage.aspx");
 
-
-
-                //fill order items
+                //fill order items - from the c
+                //get just the product id and the quantity. The rest I search for
                 for (int i = 0; i < m_items.Count; i++)
                 {
-
                     m_orderItem = new OrderItem()
                     {
-
+    
                         // OrderId = order.OrderId,
                         ProductId = m_items[i].ProductId,
                         Quantity = m_items[i].Quantity,
@@ -129,8 +111,9 @@ namespace GoblinV1.UserPages
                         ItemName = m_items[i].Product.ProductName,
                         Specs = m_items[i].Product.Specifications,
 
-
                     };
+
+                    m_orderQuantity = m_items[i].Quantity;
                     try
                     {
                         // Add OrderDetail to DB.
@@ -140,11 +123,20 @@ namespace GoblinV1.UserPages
                     catch (Exception ex)
                     {
                         Session["Error"] = ex;
-
                         Response.Redirect("ErrorPage.aspx");
 
                     }
                 }
+
+                //create order
+                Order order = new Order()
+                {
+                    Created = DateTime.Now.ToString(),
+                    Quantity = m_orderQuantity,
+                    //calculate the pr
+                    Total = ((m_orderItem.Price * m_orderQuantity)),
+                    Address = billingAddress,
+                };
 
                 //Generate invoice
                 Invoice invoice = new Invoice()
@@ -153,9 +145,7 @@ namespace GoblinV1.UserPages
                     SubTotal = m_orderItem.Price,
                     Tax = 0.25,
                     Total = (m_orderItem.Price * (0.25)) + m_orderItem.Price,
-
                     BillingAddress = billingAddress,
-
 
                 };
 
@@ -167,9 +157,7 @@ namespace GoblinV1.UserPages
                     ctx.Invoices.Add(invoice);
                     ctx.Shipments.Add(shipment);
                     ctx.SaveChanges();
-
                     m_lastOrderId = order.OrderId;
-
                     Session["lastId"] = m_lastOrderId;
 
 
@@ -192,8 +180,8 @@ namespace GoblinV1.UserPages
                     //combine the original exception message with the new one
 
                     var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+                    Session["ValidationError"] = fullErrorMessage;
 
-                    Session["Error"] = fullErrorMessage;
 
                     Response.Redirect("ErrorPage.aspx");
 
@@ -201,10 +189,9 @@ namespace GoblinV1.UserPages
                     throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
 
                 }
-                finally
-                {
-                    Response.Redirect("OrderConfirmation.aspx");
-                }
+
+               Response.Redirect("OrderConfirmation.aspx");
+             
             }
         }
     }
