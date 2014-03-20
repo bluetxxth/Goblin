@@ -36,8 +36,12 @@ body {
 
 #header {
 	border: 2px solid #999;
-	border-top-left-radius: 30px;
-	border-top-right-radius: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+    background-color:white;
+    height:250px;
+    position:relative;
+    background-color:black;
 }
 
 .site-logo,.site-title,.site-slogan {
@@ -70,24 +74,37 @@ body {
 /**
  * Navbar
  */
-#navbar {
-	height: 30px;
-	font-family: arial;
-	font-weight: bold;
-	margin-top:100px;
-	padding: 10px 10px 10px 8px;
-	background: #000000;
-	border-top-style:solid;
-	border-top-color: yellow;
-	border-top-width:10px;
-}
+
 
 #Menu1{
 
     margin-bottom:30px;
 }
 
-#navbar a {
+
+
+/**
+ * Navbar
+ */
+#navbar2{
+
+    width:auto;
+	height: 30px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top:100px;
+    margin-bottom:20px;
+	padding: 10px 10px 10px 8px;
+	background: #000000;
+    vertical-align:bottom;
+    position:absolute;
+    bottom:0;
+ 
+
+
+}
+
+#navbar2 a {
 	padding: 10px 10px;
 	padding-top: 5px;
 	text-decoration: none;
@@ -96,11 +113,10 @@ body {
 	border-radius: 10px;
 	color: #fff;
 }
-#navbar{
-		vertical-align:middle;
-}
 
-#navbar a:hover,#navbar a.selected {
+
+
+#navbar2 a:hover,#navbar a.selected {
 
 	background: #ffffff;
 	color:#000000;
@@ -111,18 +127,38 @@ body {
 /**
  * Navbar
  */
-#navbar2 {
+#navbar1 {
     float:right;
-    width:300px;
+    width:auto;
 	height: 30px;
 	font-family: arial;
 	font-weight: bold;
 	margin-top:0px;
 	padding: 10px 10px 10px 8px;
 	background: #000000;
-    border-radius: 50px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
     position: relative;
-    bottom:-50px;
+    bottom:0px;
+    vertical-align:top;
+}
+
+#navbar1 a {
+	padding: 10px 10px;
+	padding-top: 5px;
+	text-decoration: none;
+	vertical-align:middle;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	color: #fff;
+    vertical-align:top;
+    bottom:0;
+}
+
+#navbar1 a:hover,#navbar a.selected {
+
+	background: #ffffff;
+	color:#000000;
+	border: 2px solid #666;
 }
 
 #banner {

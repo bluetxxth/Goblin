@@ -1,7 +1,10 @@
-﻿<%@ Page Title="Register an external login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="GoblinV1.Account.RegisterExternalLogin" Async="true" %>
+﻿<%@ Page Title="Register an external login" Language="C#" MasterPageFile="~/MasterPages/FrontEnd.Master" AutoEventWireup="true" CodeBehind="RegisterExternalLogin.aspx.cs" Inherits="GoblinV1.Account.RegisterExternalLogin" Async="true" %>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-<h3>Register with your <%: ProviderName %> account</h3>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
+
+    <h3>Register with your <%: ProviderName %> account</h3>
 
     <asp:PlaceHolder runat="server">
         <div class="form-horizontal">
@@ -30,4 +33,5 @@
             </div>
         </div>
     </asp:PlaceHolder>
+
 </asp:Content>

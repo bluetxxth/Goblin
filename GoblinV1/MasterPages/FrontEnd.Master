@@ -20,15 +20,22 @@
                 <!-- Header -->
                     <header id='header'>
 
-                    <!-- menu 2 -->
-                        <nav id = 'navbar2'>
-                        </nav>
+
+                        <!--Datasources-->
+                        <asp:SiteMapDataSource ID="Account" runat="server" ShowStartingNode ="false" SiteMapProvider="Account" />
+                        <asp:SiteMapDataSource ID="AdminPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="AdminPages"/>
+                        <asp:SiteMapDataSource ID="UserPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="UserPages"/>
 
                     <!-- menu 1 -->
-                        <nav id = 'navbar'>
-                            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
-                        <!-- here it was necessary to set this to remove the SkipLink   ->>> SkipLinkText=""-->
-                            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" SkipLinkText="">
+                        <nav id = 'navbar1'>
+                            <asp:Menu ID="Menu2" runat="server" Orientation="Horizontal" RenderingMode="List" DataSourceID="Account" ></asp:Menu>
+                   
+                        </nav>
+
+             
+                    <!-- menu 2 -->
+                        <nav id = 'navbar2'>
+                            <asp:Menu ID="Menu1" runat="server" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" DataSourceID="UserPages" >
 
                             </asp:Menu>
                         </nav>

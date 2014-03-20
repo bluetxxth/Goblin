@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Account" title="Account"  description="Go to login">
+    <siteMapNode url ="~/Account/Login.aspx" title="Login" description="Go to Login"/>
+    <siteMapNode url ="~/Account/Register.aspx" title="Register" description="Go to Register"/>
+  </siteMapNode>
+</siteMap>
