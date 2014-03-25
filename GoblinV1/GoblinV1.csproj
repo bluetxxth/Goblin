@@ -78,6 +78,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Membership.OpenAuth">
       <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.2.0.0\lib\net45\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
     </Reference>
@@ -175,15 +187,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -195,18 +198,14 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Web.config" />
-    <Content Include="AdminPages\CreateProduct.aspx" />
-    <Content Include="AdminPages\CreateUser.aspx" />
-    <Content Include="App_Data\aspnet-GoblinV1-20140301120355.mdf" />
-    <Content Include="App_Data\aspnet-GoblinV1-20140301120355_log.ldf">
-      <DependentUpon>aspnet-GoblinV1-20140301120355.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Themes\Dark\Admin.css" />
     <Content Include="App_Themes\Dark\Contact.css" />
     <Content Include="App_Themes\Dark\Style.css" />
     <Content Include="Catalog\Images\IBM_System_x840.png" />
     <Content Include="Catalog\Images\icon.jpg" />
     <Content Include="Catalog\Images\plan.png" />
     <Content Include="Catalog\Images\server.png" />
+    <Content Include="Catalog\Images\Thumbs\Department.jpg" />
     <Content Include="Catalog\Images\Thumbs\plan.png" />
     <Content Include="Catalog\Images\Thumbs\server.png" />
     <Content Include="Default.aspx" />
@@ -222,7 +221,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="MasterPages\Contact.Master" />
     <Content Include="MasterPages\FrontEnd.Master" />
-    <Content Include="AdminPages\Web.config" />
+    <Content Include="MasterPages\Admin.Master" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
@@ -256,7 +255,13 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="AdminPages\Admin.aspx" />
+    <Content Include="Secure\AdminPages\Admin.aspx" />
+    <Content Include="Secure\AdminPages\Administration.aspx" />
+    <Content Include="Secure\Staff\ManageProducts.aspx" />
+    <Content Include="Secure\Staff\ManageUsers.aspx" />
+    <Content Include="Secure\Staff\Logistics.aspx" />
+    <Content Include="Secure\Staff\ProcessOrders.aspx" />
+    <Content Include="Secure\UserPagesSecured\UserAdmin.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserPages\About.aspx" />
     <Content Include="UserPages\AddToCart.aspx" />
@@ -268,15 +273,19 @@
     <Content Include="UserPages\Products.aspx" />
     <Content Include="UserPages\ShoppingCart.aspx" />
     <Content Include="UserPages\ErrorPage.aspx" />
-    <Content Include="UserPages\UserPanel.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Secure\Checkout\Web.config" />
     <Content Include="Secure\Staff\Web.config" />
+    <Content Include="Secure\AdminPages\Web.config" />
+    <Content Include="Secure\Web.config" />
+    <Content Include="Secure\UserPagesSecured\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -286,8 +295,12 @@
     <Content Include="Web.sitemap">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WebAdmin.sitemap" />
-    <Content Include="WebLogin.sitemap" />
+    <Content Include="WebAdmin.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebLogin.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\Login.aspx.cs">
@@ -325,20 +338,6 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminPages\CreateProduct.aspx.cs">
-      <DependentUpon>CreateProduct.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminPages\CreateProduct.aspx.designer.cs">
-      <DependentUpon>CreateProduct.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminPages\CreateUser.aspx.cs">
-      <DependentUpon>CreateUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminPages\CreateUser.aspx.designer.cs">
-      <DependentUpon>CreateUser.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -357,6 +356,13 @@
     <Compile Include="Logic\OrderEngine.cs" />
     <Compile Include="Logic\ShoppingCartEngine.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Contact.Master.cs">
       <DependentUpon>Contact.Master</DependentUpon>
@@ -379,6 +385,7 @@
     <Compile Include="Models\DataBaseInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EntityMappingContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
@@ -389,12 +396,54 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Shippment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AdminPages\Admin.aspx.cs">
+    <Compile Include="Secure\AdminPages\Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminPages\Admin.aspx.designer.cs">
+    <Compile Include="Secure\AdminPages\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\AdminPages\Administration.aspx.cs">
+      <DependentUpon>Administration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\AdminPages\Administration.aspx.designer.cs">
+      <DependentUpon>Administration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Staff\ManageProducts.aspx.cs">
+      <DependentUpon>ManageProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Staff\ManageProducts.aspx.designer.cs">
+      <DependentUpon>ManageProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Staff\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Staff\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Staff\Logistics.aspx.cs">
+      <DependentUpon>Logistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Staff\Logistics.aspx.designer.cs">
+      <DependentUpon>Logistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Staff\ProcessOrders.aspx.cs">
+      <DependentUpon>ProcessOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Staff\ProcessOrders.aspx.designer.cs">
+      <DependentUpon>ProcessOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\UserPagesSecured\UserAdmin.aspx.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\UserPagesSecured\UserAdmin.aspx.designer.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -481,13 +530,6 @@
     <Compile Include="UserPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserPages\UserPanel.aspx.cs">
-      <DependentUpon>UserPanel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserPages\UserPanel.aspx.designer.cs">
-      <DependentUpon>UserPanel.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -496,7 +538,9 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enums\Enums.csproj">
       <Project>{0a0cc4b4-f1d5-461d-ac54-857a09c3d12c}</Project>

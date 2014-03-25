@@ -14,8 +14,13 @@ namespace GoblinV1.Models
 
             GetCategories().ForEach(c => context.Categories.Add(c));
             GetProducts().ForEach(p => context.Products.Add(p));
+            GetDepartments().ForEach(d => context.Departments.Add(d));
         }
 
+        /// <summary>
+        /// Populate categories
+        /// </summary>
+        /// <returns></returns>
         private static List<Category> GetCategories()
         {
             var categories = new List<Category> {
@@ -35,6 +40,10 @@ namespace GoblinV1.Models
             return categories;
         }
 
+        /// <summary>
+        /// Populate products
+        /// </summary>
+        /// <returns></returns>
         private static List<Product> GetProducts()
         {
             var products = new List<Product> {
@@ -123,6 +132,83 @@ namespace GoblinV1.Models
             };
 
             return products;
+        }
+
+        /// <summary>
+        /// Populate departments
+        /// </summary>
+        /// <returns></returns>
+        private static List<Department> GetDepartments()
+        {
+
+
+            var department = new List<Department> {
+
+                new Department
+                {
+                    DepartmentId= 1,
+                    DepartmentName = "Administration",
+                    DepartmentDescription ="Administer employees",
+                    DepartmentUrl = "/AdminPages/Admin.aspx",
+                    DepartmentIcon = "department.jpg",
+               },
+
+
+                new Department
+                {
+                    DepartmentId= 2,
+                    DepartmentName = "Logistics",
+                    DepartmentDescription ="Shipments handling",
+                    DepartmentUrl = "/Staff/Logistics.aspx",
+                    DepartmentIcon = "department.jpg",
+
+
+               },
+
+                new Department
+                {
+                    DepartmentId= 3,
+                    DepartmentName = "Manage Products",
+                    DepartmentDescription ="Manage products",
+                    DepartmentUrl = "/Staff/ManageProducts.aspx",
+                    DepartmentIcon = "department.jpg",
+
+
+               },
+
+                new Department
+                {
+                    DepartmentId= 4,
+                    DepartmentName = "Proces Orders",
+                    DepartmentDescription ="Process orders",
+                    DepartmentUrl = "/Staff/ProcessOrders.aspx",
+                    DepartmentIcon = "department.jpg",
+
+
+               },
+
+                 new Department
+                {
+                    DepartmentId= 5,
+                    DepartmentName = "Manage Users",
+                    DepartmentDescription ="Administer users",
+                    DepartmentUrl = "/Staff/ManageUsers.aspx",
+                    DepartmentIcon = "department.jpg",
+               },
+
+
+                new Department
+                {
+                    DepartmentId= 6,
+                    DepartmentName = "Revenue Tracker",
+                    DepartmentDescription ="Administer users",
+                    DepartmentUrl = "/Staff/ManageUsers.aspx",
+                    DepartmentIcon = "department.jpg",
+               },
+
+            };
+
+            return department;
         }
     }
 }

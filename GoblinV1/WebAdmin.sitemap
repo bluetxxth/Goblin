@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="~/AdminPages" title="Admin"  description="Admin">
-     <siteMapNode url ="~/AdminPages/Admin.aspx" title="Admin" description="Go to Admin"/>
-     <siteMapNode url ="~/AdminPages/CreateProduct.aspx" title="Create Product" description="Go to create product"/>
-    
+  <siteMapNode url="~/Secure" title="Secure"  description="Secure area">
+    <!--<siteMapNode url ="Secure/AdminPages/Administration.aspx" title="Admin" description="Go to Admin section"/>-->
+    <!--<siteMapNode url ="~/AdminPages/Admin.aspx" title="Admin" description="Go to Admin"/>-->
+    <!--<siteMapNode url ="~/AdminPages/CreateProduct.aspx" title="Create Product" description="Go to create product"/>-->
+    <!--<siteMapNode url ="Secure/UserPagesSecured/UserAdmin.aspx" title="User Admin" description="Go toUser Admin"/>
+    <siteMapNode url ="Secure/Staff/Logistics.aspx" title="Logistics" description="Go to Logistics"/>-->
    </siteMapNode>
 </siteMap>

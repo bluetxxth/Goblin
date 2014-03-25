@@ -3,5 +3,8 @@
   <siteMapNode url="~/Account" title="Account"  description="Go to login">
     <siteMapNode url ="~/Account/Login.aspx" title="Login" description="Go to Login"/>
     <siteMapNode url ="~/Account/Register.aspx" title="Register" description="Go to Register"/>
+    <siteMapNode url ="~/Account/Manage.aspx" title="Manage" description="Go to Manage"/>
+     <siteMapNode url ="/Secure/AdminPages/Administration.aspx" title="Admin" description="Go to Admin section"/>
+    <!--<siteMapNode url ="~/Account/RegisterExternalLogin.aspx" title="Register External" description="Go to Register external logins"/>-->
   </siteMapNode>
 </siteMap>

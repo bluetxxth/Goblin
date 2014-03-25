@@ -11,6 +11,25 @@ namespace GoblinV1.Account {
     
     
     public partial class Login {
+        
+        /// <summary>
+        /// LoginStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder LoginStatus;
+        
+        /// <summary>
+        /// StatusText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal StatusText;
+        
         /// <summary>
         /// ErrorMessage control.
         /// </summary>
@@ -19,7 +38,7 @@ namespace GoblinV1.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
-      
+        
         /// <summary>
         /// FailureText control.
         /// </summary>
@@ -28,6 +47,15 @@ namespace GoblinV1.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal FailureText;
+        
+        /// <summary>
+        /// LoginForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder LoginForm;
         
         /// <summary>
         /// UserName control.
@@ -55,6 +83,15 @@ namespace GoblinV1.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox RememberMe;
+        
+        /// <summary>
+        /// LogoutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder LogoutButton;
         
         /// <summary>
         /// RegisterHyperLink control.

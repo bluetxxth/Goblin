@@ -313,27 +313,199 @@ namespace GoblinV1.Logic
         }
      
 
-        ///// <summary>
-        ///// Get the products name
-        ///// </summary>
-        ///// <returns></returns>
-        //public string GetName()
-        //{
-        //    string strProductId = HttpContext.Current.Session["productId"].ToString();
+        /// <summary>
+        /// Get the cart
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns>the corresponding cart</returns>
+        public ShoppingCartEngine GetCart(HttpContext context)
+        {
 
-        //    //HttpContext.Current.Session["Error"] = "productId: " + productId;
-        //    //HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
+            //provide this syntax to ensure correct IDisposable objects
+            using (var cart = new ShoppingCartEngine())
+            {
+                //get cart id
+                cart.ShoppingCartId = cart.GetCartId();
 
-        //    int intProductId = Convert.ToInt32(strProductId);
+                //return the cart
+                return cart;
+            }
+        }
 
-        //    string productName = null;
 
-        //    var product = ctx.Products.Find(intProductId);
+        /// <summary>
+        /// Iterate through all the rows within the shopping cart list and  remove it if marked for removal
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <param name="CartItemUpdates"></param>
+        public void UpdateShoppingCartDatabase(String cartId, List<ShoppingCartUpdates> CartItemUpdates)
+        {
+            using (var db = new Models.EntityMappingContext())
+            {
+                try
+                {
 
-        //    productName = product.ProductName;
+                    //count
+                    int CartItemCount = CartItemUpdates.Count();
 
-        //    return productName;
-        //}
+                    //get the cart items
+                    List<CartItem> cartItemList = GetCartItems();
+                    
+
+                    //traversse the cart items in the cart item list
+                    foreach (var cartItem in cartItemList)
+                    {
+                        // Iterate through all rows within shopping cart list
+                        for (int i = 0; i < cartItemList.Count; i++)
+                        {
+                            //check if the product id matches the cart's update product id
+                            if (cartItem.Product.ProductID == CartItemUpdates[i].ProductId)
+                            {
+                                //if the quantity is less than 1 or if it is marked for removal
+                                if (CartItemUpdates[i].PurchaseQuantity < 1 || CartItemUpdates[i].RemoveItem == true)
+                                {
+                                    RemoveItem(cartId, cartItem.ProductId);
+                                }
+                                else
+                                {
+                                    //update the items's purhcase quantity
+                                    UpdateItem(cartId, cartItem.ProductId, CartItemUpdates[i].PurchaseQuantity);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    throw new Exception("ERROR: Unable to Update Cart Database - " + exp.Message.ToString(), exp);
+                }
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Remove the item
+        /// </summary>
+        /// <param name="removeCartID"></param>
+        /// <param name="removeProductID"></param>
+        public void RemoveItem(string removeCartID, int removeProductID)
+        {
+
+            //get the database
+            using (var ctx = new Models.EntityMappingContext())
+            {
+                try
+                {
+                    //get item
+                    var myItem = (from myCartItem in ctx.CartItems where myCartItem.CartId == removeCartID && myCartItem.Product.ProductID == removeProductID select myCartItem).FirstOrDefault();
+                    
+                    if (myItem != null)
+                    {
+                        // Remove Item.
+                        ctx.CartItems.Remove(myItem);
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (Exception exp)
+                {
+                    throw new Exception("ERROR: Unable to Remove Cart Item - " + exp.Message.ToString(), exp);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Updates the cart items
+        /// </summary>
+        /// <param name="updateCartID"></param>
+        /// <param name="updateProductID"></param>
+        /// <param name="quantity"></param>
+        public void UpdateItem(string updateCartID, int updateProductID, int quantity)
+        {
+
+            //startup context
+            using (var ctx = new Models.EntityMappingContext())
+            {
+                try
+                {
+                    //get the item
+                    var myItem = (from myCartItem in ctx.CartItems where myCartItem.CartId == updateCartID && myCartItem.Product.ProductID == updateProductID select myCartItem).FirstOrDefault();
+                    if (myItem != null)
+                    {
+                        //set the quantity
+                        myItem.Quantity = quantity;
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (Exception exp)
+                {
+                    throw new Exception("ERROR: Unable to Update Cart Item - " + exp.Message.ToString(), exp);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Empties shopping cart
+        /// </summary>
+        public void EmptyCart()
+        {
+            ShoppingCartId = GetCartId();
+            var cartItems = ctx.CartItems.Where(
+                c => c.CartId == ShoppingCartId);
+            foreach (var cartItem in cartItems)
+            {
+                ctx.CartItems.Remove(cartItem);
+            }
+            // Save changes.             
+            ctx.SaveChanges();
+        }
+
+
+        /// <summary>
+        /// Counter for the shopping cart
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount()
+        {
+            ShoppingCartId = GetCartId();
+
+            // Get the count of each item in the cart and sum them up          
+            int? count = (from cartItems in ctx.CartItems
+                          where cartItems.CartId == ShoppingCartId
+                          select (int?)cartItems.Quantity).Sum();
+            // Return 0 if all entries are null         
+            return count ?? 0;
+        }
+
+
+        /// <summary>
+        /// Structure with options for for shopping cart Update
+        /// </summary>
+        public struct ShoppingCartUpdates
+        {
+            public int ProductId;
+            public int PurchaseQuantity;
+            public bool RemoveItem;
+        }
+
+
+        /// <summary>
+        /// Use existing cart id to find  shopping cart of the user
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <param name="userName"></param>
+        public void MigrateCart(string cartId, string userName)
+        {
+            var shoppingCart = ctx.CartItems.Where(c => c.CartId == cartId);
+            foreach (CartItem item in shoppingCart)
+            {
+                item.CartId = userName;
+            }
+            HttpContext.Current.Session[CartSessionKey] = userName;
+            ctx.SaveChanges();
+        }
 
     }
 }

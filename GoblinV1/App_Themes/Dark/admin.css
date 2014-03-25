@@ -1,0 +1,75 @@
+﻿#leftSide{
+    float:left;
+}
+
+
+#rightSide{
+    float:left;
+}
+
+/* 
+   Part below this CSS file was built using samples + techniques described by Rachel Andrew in her book:
+   The CSS Anthology: 101 Essential Tips, Tricks & Hacks
+*
+
+/* Navigation */
+
+#leftSide {
+	width: 200px;
+
+	left: 1em;
+	width: 13em;	
+	position:absolute;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:90%;
+}
+#leftSide ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#leftSide li {
+	border-bottom: 1px solid white;
+}
+#leftSide li a  {
+	display: block;
+	padding: 5px 5px 5px 0.5em;
+	border-left: 12px solid silver;
+	border-right: 1px solid #711515;
+	background-color: #000000;
+	color: #ffffff;
+	text-decoration: none;
+}
+#leftSide li a:hover {
+	background-color: white;
+	color: #000000;
+}
+#leftSide ul ul {
+	margin-left: 12px;
+}
+#leftSide ul ul li {
+	border-bottom: 1px solid #711515;
+	margin:0;
+	background-color: #ED9F9F;
+	color: #711515;
+}
+#leftSide ul ul a:link, #navigation ul ul a:visited {
+	background-color: #ED9F9F;
+	color: #711515;
+}
+#leftSide ul ul a:hover {
+	background-color: #711515;
+	color: #FFFFFF;
+}
+
+#header .breadcrumb {
+	font: 90% Arial, Helvetica, Georgia, "Times New Roman", Times, serif;
+	color: black;
+	background-color: transparent;
+	float: right;
+	margin-right: 2em;
+	margin-top: 0.8em;
+	font-weight:bold;
+}
+
+

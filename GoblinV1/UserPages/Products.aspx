@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
     <hgroup>
-        <h1><%: Page.Title %>
+        <h1><%:Page.Title %>
         </h1>
     </hgroup>
 

@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
 
-     <h2><%: Title %>.</h2>
+    <h2><%: Title %>.</h2>
 
     <div class="row">
         <div class="col-md-8">
@@ -14,11 +14,24 @@
                 <div class="form-horizontal">
                     <h4>Use a local account to log in.</h4>
                     <hr />
-                      <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+
+                    <!--show the login status added by Gabriel Nieva-->
+                    <asp:PlaceHolder runat="server" ID="LoginStatus" Visible="false">
+                        <p>
+                            <asp:Literal runat="server" ID="StatusText" />
+                        </p>
+                    </asp:PlaceHolder>
+
+                    <!--Display error message-->
+                    <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
                             <asp:Literal runat="server" ID="FailureText" />
                         </p>
                     </asp:PlaceHolder>
+
+                    <asp:PlaceHolder runat="server" ID="LoginForm" Visible="false">
+
+                    <!--Form group for user name field-->
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">User name</asp:Label>
                         <div class="col-md-10">
@@ -27,6 +40,8 @@
                                 CssClass="text-danger" ErrorMessage="The user name field is required." />
                         </div>
                     </div>
+
+                    <!--Form group for password field  -->
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
                         <div class="col-md-10">
@@ -34,6 +49,8 @@
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." />
                         </div>
                     </div>
+
+                    <!--Form group for remember me section-->
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">
@@ -42,11 +59,25 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--Form group for login button-->
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default" />
                         </div>
                     </div>
+
+                    </asp:PlaceHolder>
+
+                    <!--Logout button added by Gabriel Nieva-->
+                    <asp:PlaceHolder runat="server" ID="LogoutButton" Visible="false">
+                        <div>
+                            <div>
+                                <asp:Button runat="server" OnClick="SignOut" Text="Log out" />
+                            </div>
+                        </div>
+                    </asp:PlaceHolder>
+
                 </div>
                 <p>
                     <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register</asp:HyperLink>

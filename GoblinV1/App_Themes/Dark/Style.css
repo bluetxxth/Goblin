@@ -7,6 +7,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Shojumaru);
 @import url(../css);
+@import url(../Admin.css);
 
 /**
  * Structure
@@ -21,6 +22,16 @@ body {
 }
 
 .ContentPlaceHolder1_cphMain_lblError .lblError { word-wrap: break-word; }
+
+
+#leftSide{
+    float:left;
+}
+
+
+#rightSide{
+    float:left;
+}
 
 
 /*header and header - related
@@ -81,51 +92,45 @@ body {
     margin-bottom:30px;
 }
 
+/*  Navigation
+ ----------------------------------------------------------
+*/
 
+/*  Cart counter 
+-----------------------
+*/
 
-/**
- * Navbar
- */
-#navbar2{
-
+#cartCounterHolder{
+    float:right;
     width:auto;
 	height: 30px;
 	font-family: arial;
 	font-weight: bold;
-	margin-top:100px;
-    margin-bottom:20px;
+	margin-top:5px;
 	padding: 10px 10px 10px 8px;
 	background: #000000;
-    vertical-align:bottom;
-    position:absolute;
-    bottom:0;
- 
-
-
+    border-radius: 0px 0px 0px 0px;
+    position: relative;
+    bottom:0px;
+    vertical-align:top;
 }
 
-#navbar2 a {
-	padding: 10px 10px;
+#cartCounterHolder a{
+
+    padding: 10px 10px;
 	padding-top: 5px;
 	text-decoration: none;
 	vertical-align:middle;
 	border: 2px solid transparent;
 	border-radius: 10px;
 	color: #fff;
-}
-
-
-
-#navbar2 a:hover,#navbar a.selected {
-
-	background: #ffffff;
-	color:#000000;
-	border: 2px solid #666;
+    vertical-align:top;
+    bottom:0;
 }
 
 
 /**
- * Navbar
+ * Navbar 1
  */
 #navbar1 {
     float:right;
@@ -161,6 +166,85 @@ body {
 	border: 2px solid #666;
 }
 
+/**
+ * Navbar 2
+ */
+#navbar2{
+
+    float:left;
+    width:auto;
+	height: 30px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top:100px;
+    margin-bottom:20px;
+	padding: 10px 10px 10px 8px;
+	background: #000000;
+    vertical-align:bottom;
+    position:absolute;
+    bottom:0;
+ 
+}
+
+#navbar2 a {
+	padding: 10px 10px;
+	padding-top: 5px;
+	text-decoration: none;
+	vertical-align:middle;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	color: #fff;
+}
+
+
+
+#navbar2 a:hover,#navbar a.selected {
+
+	background: #ffffff;
+	color:#000000;
+	border: 2px solid #666;
+}
+
+
+/**
+ * Navbar 3
+ */
+#navbar3{
+    clear: both;
+    float:right;
+    width:auto;
+	height: 30px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top:130px;
+    margin-bottom:10px;
+	padding: 10px 10px 10px 8px;
+	background: #000000;
+    vertical-align:bottom;
+    bottom:0;
+ 
+
+
+}
+
+#navbar3 a {
+ 
+	padding: 10px 10px;
+	padding-top: 5px;
+	text-decoration: none;
+	vertical-align:middle;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	color: #fff;
+}
+
+#navbar3 a:hover,#navbar a.selected {
+
+	background: #ffffff;
+	color:#000000;
+	border: 2px solid #666;
+}
+
 #banner {
 	display: table;
 	margin-bottom: 10px;
@@ -180,17 +264,19 @@ ul{
 	margin: 20px auto;
 	width: 80%;
 	background-color: #fff;
-	border: 1px solid #999;
 	
 	margin-left:auto;
 	margin-right:auto;
 	padding:25px;
-	min-height: 50em;
-	box-shadow: 10px 100px 10px #888;
+	min-height: 35em;
+	/*box-shadow: 10px 100px 10px #888;
 	box-shadow: 10px 10px 10px #888;
 	box-shadow: 10px 10px 10px #888;
+
+    border: 1px solid #999;
 	border: dotted 1px;
 	border-radius: 0px;
+           */
 }
 
 article{

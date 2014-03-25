@@ -11,6 +11,10 @@
     <div class="form-horizontal">
         <h4>Create a new account.</h4>
         <hr />
+        <p>
+            <asp:Literal runat="server" ID="StatusMessage" />
+        </p>  
+
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">User name</asp:Label>
