@@ -15,6 +15,7 @@
 /* Navigation */
 
 #leftSide {
+
     float:left;
 	width: auto;
 	left: 1em;
@@ -73,3 +74,54 @@
 	font-weight:bold;
 }
 
+.horizontalSperator{
+
+}
+
+.verticalSeparator{
+    float:left;
+    width:10px;
+    min-height: 35em;
+
+}
+
+/*  parent fieldset
+-------------------------------
+ */
+.adminParentFieldset{
+    float:left;
+    margin-left:10px;
+    margin-top:50px;
+    width:900px;
+    color:black;
+
+}
+
+/*  fieldsets
+-------------------------------
+ */
+.adminFieldset{
+    float:left;
+    margin-left:10px;
+    margin-top:50px;
+    min-height:30px;
+    min-width:400px;
+    color:black;
+}
+
+/*this is for the legend of the fieldset*/
+.legend{
+    font-size:16px;
+    font-weight:bold;
+}
+
+.leftAdminArea{
+    float:left;
+    width: 400px;
+}
+
+.rightAdminArea{
+    float:left;
+    margin-left:50px;
+    width: 400px;
+}

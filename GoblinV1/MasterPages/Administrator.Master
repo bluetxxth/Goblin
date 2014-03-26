@@ -29,28 +29,26 @@
 
                             <asp:SiteMapDataSource ID="UserPages" runat="server" ShowStartingNode="false" SiteMapProvider="UserPages" />
 
+                            <asp:SiteMapDataSource ID="WebAdministrator" runat="server" ShowStartingNode="false" SiteMapProvider="WebAdministrator" />
 
                             <!-- menu 1 -->
                             <nav id='navbar1'>
                                 <asp:Menu ID="Menu2" runat="server" Orientation="Horizontal" RenderingMode="List"
                                     DataSourceID="Account">
                                 </asp:Menu>
-
                             </nav>
-
 
                             <!-- menu 2 -->
                             <nav id='navbar2'>
                                 <asp:Menu ID="Menu1" runat="server" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" DataSourceID="UserPages">
                                 </asp:Menu>
-
                             </nav>
 
                             <!-- menu 3 -->
-                            <nav id='navbar3'>
-                                <asp:Menu ID="Menu3" runat="server" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" DataSourceID="AdminPages">
-                                </asp:Menu>
-                            </nav>
+                      <nav id = 'navbar3'>
+                            <asp:Menu ID="Menu3" runat="server" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" DataSourceID="AdminPages" >
+                            </asp:Menu>
+                      </nav>
 
                             <div id="search">
                             </div>
@@ -61,19 +59,18 @@
                     <!-- end menu wrapper-->
 
                   
-
                     <!-- main section-->
                     <div id='main'>
         
 
                          <!--left side menu-->
                         <div id="leftSide">
-                            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                            <%--<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />--%>
                             <ul>
                                 <li>
-                                    <asp:HyperLink runat="server" ID="lnkHome" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
+                                    <asp:HyperLink runat="server" ID="lnkHome" NavigateUrl="~/Secure/Roles/Default.aspx">Home</asp:HyperLink>
                                 </li>
-                                <asp:Repeater runat="server" ID="menu" DataSourceID="AdminPages">
+                                <asp:Repeater runat="server" ID="menu" DataSourceID="WebAdministrator">
                                     <ItemTemplate>
                                         <li>
                                             <asp:HyperLink ID="lnkMenuItem" runat="server" NavigateUrl='<%# Eval("Url") %>'><%# Eval("Title") %></asp:HyperLink>
@@ -104,7 +101,7 @@
                     <!-- footer section-->
                     <div id='footerwraper'>
                         <footer id='footer1'>
-                            test
+                          
                         </footer>
                         <div id='footer2'>
                             <span class="sitefooter">Copyright (c) Gabriel Nieva&nbsp;&nbsp;</span>

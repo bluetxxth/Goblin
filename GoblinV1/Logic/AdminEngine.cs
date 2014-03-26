@@ -30,7 +30,7 @@ namespace GoblinV1.Logic
         }
 
         /// <summary>
-        /// Provides accessor and mutator for RoleManager
+        /// Provides accessor and mutator for m_roleManager
         /// </summary>
         public RoleManager<IdentityRole> MyRoleManager
         {
@@ -38,16 +38,29 @@ namespace GoblinV1.Logic
             set { m_roleManager = value; }
         }
 
+        /// <summary>
+        /// Provide accessor and mutator to m_context
+        /// </summary>
         public ApplicationDbContext MyAppContext
         {
             get { return m_context; }
             set { m_context = value; }
         }
 
+
+        /// <summary>
+        /// Provide accessor and mutator to m_userManager
+        /// </summary>
         public UserManager MyUserManager 
         {
             get { return m_userManager; }
             set { m_userManager = value; }
+        }
+
+        IdentityDbContext MyIdentityDBCOntext
+        {
+            get { return m_idbctx; }
+            set { m_idbctx = value; }
         }
 
 
@@ -188,11 +201,38 @@ namespace GoblinV1.Logic
         {
             var user = new ApplicationUser() { UserName = userName };
 
-
-
             var selectedUser = MyUserManager.FindByName(user.UserName);
 
             MyUserManager.RemoveFromRole(selectedUser.Id, roleName);
+        }
+
+        /// <summary>
+        /// Create roles
+        /// </summary>
+        /// <param name="roleName">a string represetning the name of the role to be created</param>
+        public void createRole(string roleName)
+        {
+            //check if the role exists
+            if (!MyRoleManager.RoleExists(roleName))
+            {
+                //create role
+                CreateRole(roleName);
+            }
+        }
+
+        /// <summary>
+        /// Create roles
+        /// </summary>
+        /// <param name="roleName">a string represetning the name of the role to be created</param>
+        public void removeRole(string roleName)
+        {
+            //check if the role exists
+            if (MyRoleManager.RoleExists(roleName))
+            {
+                var role = m_idbctx.Roles.Where(d => d.Name == roleName).FirstOrDefault();
+                m_idbctx.Roles.Remove(role);
+                m_idbctx.SaveChanges();
+            }
         }
 
 

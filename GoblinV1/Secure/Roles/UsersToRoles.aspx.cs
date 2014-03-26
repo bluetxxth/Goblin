@@ -1,6 +1,5 @@
 ﻿using GoblinV1.Logic;
 using GoblinV1.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +7,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GoblinV1.Secure.AdminPages
+namespace GoblinV1.Secure._Roles
 {
-    public partial class Administrator : System.Web.UI.Page
+    public partial class AssignUsersToRoles : System.Web.UI.Page
     {
-        //ApplicationDbContext context = new ApplicationDbContext();
-
-        //UserManager userManager = new UserManager();
-
         private AdminEngine m_adminEngine = new AdminEngine();
 
 
@@ -75,9 +70,9 @@ namespace GoblinV1.Secure.AdminPages
             //get the selected user value from the dropdown list
             string selectedUserName = drpUserList.SelectedValue;
 
-            var user = new ApplicationUser() { UserName = selectedUserName};
+            var user = new ApplicationUser() { UserName = selectedUserName };
 
-           // string[] selectedUserRoles = m_adminEngine.MyUserManager.GetRoles(selectedUserName).ToArray();
+            // string[] selectedUserRoles = m_adminEngine.MyUserManager.GetRoles(selectedUserName).ToArray();
 
             List<string> selectedUserRoles = m_adminEngine.getIdentityUserRoles(user);
 
@@ -126,7 +121,7 @@ namespace GoblinV1.Secure.AdminPages
             {
 
                 //add user to role for identity if checked
-                m_adminEngine.addUserToRole(selectedUserName,  roleName);
+                m_adminEngine.addUserToRole(selectedUserName, roleName);
 
                 //display a status message
                 ActionStatus.Text = string.Format("User {0} was added to role {1}", selectedUserName, roleName);
@@ -134,9 +129,9 @@ namespace GoblinV1.Secure.AdminPages
             else
             {
                 //Remove user from role if checked
-           
 
-               //remove user to role if checked
+
+                //remove user to role if checked
                 m_adminEngine.removeUserFromRole(selectedUserName, roleName);
 
                 // Display a status message 

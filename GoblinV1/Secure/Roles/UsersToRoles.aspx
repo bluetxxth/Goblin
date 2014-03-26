@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Administrator.Master" AutoEventWireup="true" CodeBehind="Administrator.aspx.cs" Inherits="GoblinV1.Secure.AdminPages.Administrator" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Administrator.Master" AutoEventWireup="true" CodeBehind="UsersToRoles.aspx.cs" Inherits="GoblinV1.Secure._Roles.AssignUsersToRoles" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
-
-    <!--right side-->
+      <!--right side-->
     <div id="rightSide">
         <!--parent fieldset-->
         <fieldset class="adminParentFieldset">
@@ -30,35 +28,7 @@
                 </fieldset>
                 <!--end roleManager-->
 
-                <!--View Roles-->
-                <fieldset class="adminFieldset">
-                    <legend class="legend">view roles</legend>
-
-                </fieldset>
-
-                <!--Add Roles-->
-                <fieldset class="adminFieldset">
-                    <legend class="legend">Add Roles</legend>
-
-                </fieldset>
-
-            </div>
-            
-            <!--right area-->
-            <div class="rightAdminArea">
-
-                <!--Remove Roles-->
-                <fieldset class="adminFieldset">
-                    <legend class="legend">Remove roles</legend>
-
-                </fieldset>
-
-                <!--change Roles-->
-                <fieldset class="adminFieldset">
-                    <legend class="legend">Change roles</legend>
-
-                </fieldset>
-            </div>
+             
 
         </fieldset>
         <!--end parent fieldset-->

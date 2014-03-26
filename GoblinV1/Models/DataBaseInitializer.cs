@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GoblinV1.Logic;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,6 +10,17 @@ namespace GoblinV1.Models
 {
     public class DataBaseInitializer : DropCreateDatabaseIfModelChanges<EntityMappingContext>
     {
+        //private AdminEngine m_adminEngine = new AdminEngine();
+
+        //protected override void SeedAdmin(IdentityDbContext idbctx)
+        //{
+        //    GetAdmin().ForEach(d => idbctx.Admins.Add(d));
+        //}
+
+        // private static List<Admin> GetAdmin()
+        //{
+
+        //}
 
         protected override void Seed(EntityMappingContext context)
         {
@@ -15,7 +28,11 @@ namespace GoblinV1.Models
             GetCategories().ForEach(c => context.Categories.Add(c));
             GetProducts().ForEach(p => context.Products.Add(p));
             GetDepartments().ForEach(d => context.Departments.Add(d));
+      
+
         }
+
+
 
         /// <summary>
         /// Populate categories
@@ -149,7 +166,7 @@ namespace GoblinV1.Models
                     DepartmentId= 1,
                     DepartmentName = "Administration",
                     DepartmentDescription ="Administer employees",
-                    DepartmentUrl = "/AdminPages/Administrator.aspx",
+                    DepartmentUrl = "/Roles/Default.aspx",
                     DepartmentIcon = "department.jpg",
                },
 

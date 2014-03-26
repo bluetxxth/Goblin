@@ -67,6 +67,15 @@ namespace GoblinV1.MasterPages {
         protected global::System.Web.UI.WebControls.SiteMapDataSource UserPages;
         
         /// <summary>
+        /// WebAdministrator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapDataSource WebAdministrator;
+        
+        /// <summary>
         /// Menu2 control.
         /// </summary>
         /// <remarks>
@@ -92,15 +101,6 @@ namespace GoblinV1.MasterPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Menu Menu3;
-        
-        /// <summary>
-        /// SiteMapDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource1;
         
         /// <summary>
         /// lnkHome control.

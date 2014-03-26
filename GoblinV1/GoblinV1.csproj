@@ -259,11 +259,14 @@
     <Content Include="Global.asax" />
     <Content Include="Secure\AdminPages\Administrator.aspx" />
     <Content Include="Secure\AdminPages\AdminPanel.aspx" />
+    <Content Include="Secure\Roles\Default.aspx" />
     <Content Include="Secure\Staff\ManageProducts.aspx" />
     <Content Include="Secure\Staff\ManageUsers.aspx" />
     <Content Include="Secure\Staff\Logistics.aspx" />
     <Content Include="Secure\Staff\ProcessOrders.aspx" />
     <Content Include="Secure\UserPagesSecured\UserAdmin.aspx" />
+    <Content Include="Secure\Roles\UsersToRoles.aspx" />
+    <Content Include="Secure\Roles\RoleManager.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserPages\About.aspx" />
     <Content Include="UserPages\AddToCart.aspx" />
@@ -288,6 +291,7 @@
     <Content Include="Secure\AdminPages\Web.config" />
     <Content Include="Secure\Web.config" />
     <Content Include="Secure\UserPagesSecured\Web.config" />
+    <Content Include="Secure\Roles\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -303,6 +307,7 @@
     <Content Include="WebLogin.sitemap">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebAdministrator.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\Login.aspx.cs">
@@ -397,6 +402,7 @@
     </Compile>
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EntityMappingContext.cs" />
+    <Compile Include="Models\IdentityDBInitializer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Order.cs" />
@@ -419,6 +425,13 @@
     </Compile>
     <Compile Include="Secure\AdminPages\AdminPanel.aspx.designer.cs">
       <DependentUpon>AdminPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Roles\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Roles\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Staff\ManageProducts.aspx.cs">
       <DependentUpon>ManageProducts.aspx</DependentUpon>
@@ -454,6 +467,20 @@
     </Compile>
     <Compile Include="Secure\UserPagesSecured\UserAdmin.aspx.designer.cs">
       <DependentUpon>UserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Roles\UsersToRoles.aspx.cs">
+      <DependentUpon>UsersToRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Roles\UsersToRoles.aspx.designer.cs">
+      <DependentUpon>UsersToRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Roles\RoleManager.aspx.cs">
+      <DependentUpon>RoleManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Roles\RoleManager.aspx.designer.cs">
+      <DependentUpon>RoleManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -550,7 +577,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Secure\`Roles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enums\Enums.csproj">
