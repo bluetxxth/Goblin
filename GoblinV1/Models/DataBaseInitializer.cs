@@ -149,7 +149,7 @@ namespace GoblinV1.Models
                     DepartmentId= 1,
                     DepartmentName = "Administration",
                     DepartmentDescription ="Administer employees",
-                    DepartmentUrl = "/AdminPages/Admin.aspx",
+                    DepartmentUrl = "/AdminPages/Administrator.aspx",
                     DepartmentIcon = "department.jpg",
                },
 

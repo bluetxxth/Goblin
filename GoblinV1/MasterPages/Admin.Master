@@ -1,15 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="GoblinV1.MasterPages.Admin" %>
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
-    <!--Front end style-->
     <link href="../App_Themes/Dark/Style.css" rel="stylesheet" />
-    <!--Admin style-->
-    <link href="../App_Themes/Dark/Admin.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -26,9 +23,11 @@
 
                         <!--Datasources-->
                         <asp:SiteMapDataSource ID="Account" runat="server" ShowStartingNode ="false" SiteMapProvider="Account" />
-                        <asp:SiteMapDataSource ID="AdminPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="AdminPages"/>
+
+                          <asp:SiteMapDataSource ID="AdminPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="AdminPages"/>
+
                         <asp:SiteMapDataSource ID="UserPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="UserPages"/>
-                       
+
                     <!-- menu 1 -->
                         <nav id = 'navbar1'>
                             <asp:Menu ID="Menu2" runat="server" Orientation="Horizontal" RenderingMode="List" 

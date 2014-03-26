@@ -10,7 +10,7 @@
 namespace GoblinV1.Secure.AdminPages {
     
     
-    public partial class Administration {
+    public partial class AdminPanel {
         
         /// <summary>
         /// adminListView control.

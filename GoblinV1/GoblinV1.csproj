@@ -199,6 +199,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Web.config" />
     <Content Include="App_Themes\Dark\Admin.css" />
+    <Content Include="App_Themes\Dark\AdminStyle.css" />
     <Content Include="App_Themes\Dark\Contact.css" />
     <Content Include="App_Themes\Dark\Style.css" />
     <Content Include="Catalog\Images\IBM_System_x840.png" />
@@ -221,6 +222,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="MasterPages\Contact.Master" />
     <Content Include="MasterPages\FrontEnd.Master" />
+    <Content Include="MasterPages\Administrator.Master" />
     <Content Include="MasterPages\Admin.Master" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
@@ -255,8 +257,8 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Secure\AdminPages\Admin.aspx" />
-    <Content Include="Secure\AdminPages\Administration.aspx" />
+    <Content Include="Secure\AdminPages\Administrator.aspx" />
+    <Content Include="Secure\AdminPages\AdminPanel.aspx" />
     <Content Include="Secure\Staff\ManageProducts.aspx" />
     <Content Include="Secure\Staff\ManageUsers.aspx" />
     <Content Include="Secure\Staff\Logistics.aspx" />
@@ -351,6 +353,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\AdminEngine.cs" />
     <Compile Include="Logic\ExcludeChar.cs" />
     <Compile Include="Logic\InventoryControlEngine.cs" />
     <Compile Include="Logic\OrderEngine.cs" />
@@ -363,6 +366,13 @@
     </Compile>
     <Compile Include="MasterPages\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Administrator.Master.cs">
+      <DependentUpon>Administrator.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Administrator.Master.designer.cs">
+      <DependentUpon>Administrator.Master</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Contact.Master.cs">
       <DependentUpon>Contact.Master</DependentUpon>
@@ -396,19 +406,19 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Shippment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Secure\AdminPages\Admin.aspx.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
+    <Compile Include="Secure\AdminPages\Administrator.aspx.cs">
+      <DependentUpon>Administrator.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\AdminPages\Admin.aspx.designer.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
+    <Compile Include="Secure\AdminPages\Administrator.aspx.designer.cs">
+      <DependentUpon>Administrator.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\AdminPages\Administration.aspx.cs">
-      <DependentUpon>Administration.aspx</DependentUpon>
+    <Compile Include="Secure\AdminPages\AdminPanel.aspx.cs">
+      <DependentUpon>AdminPanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\AdminPages\Administration.aspx.designer.cs">
-      <DependentUpon>Administration.aspx</DependentUpon>
+    <Compile Include="Secure\AdminPages\AdminPanel.aspx.designer.cs">
+      <DependentUpon>AdminPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Staff\ManageProducts.aspx.cs">
       <DependentUpon>ManageProducts.aspx</DependentUpon>
@@ -540,6 +550,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Secure\`Roles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enums\Enums.csproj">

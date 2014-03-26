@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Administration" Language="C#" MasterPageFile="~/MasterPages/Admin.Master" AutoEventWireup="true" CodeBehind="Administration.aspx.cs" Inherits="GoblinV1.Secure.AdminPages.Administration" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Admin.Master" AutoEventWireup="true" CodeBehind="AdminPanel.aspx.cs" Inherits="GoblinV1.Secure.AdminPages.AdminPanel" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+ 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
-
-        <asp:ListView ID="adminListView" runat="server"
+     <asp:ListView ID="adminListView" runat="server"
         
         DataKeyNames="DepartmentId" GroupItemCount="3"
         ItemType="GoblinV1.Models.Department" SelectMethod="GetDepartments">

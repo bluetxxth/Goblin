@@ -1,5 +1,5 @@
 ﻿#leftSide{
-    float:left;
+   
 }
 
 
@@ -15,12 +15,12 @@
 /* Navigation */
 
 #leftSide {
-	width: 200px;
-
+    float:left;
+	width: auto;
 	left: 1em;
 	width: 13em;	
-	position:absolute;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight:bold;
 	font-size:90%;
 }
 #leftSide ul {
@@ -34,7 +34,7 @@
 #leftSide li a  {
 	display: block;
 	padding: 5px 5px 5px 0.5em;
-	border-left: 12px solid silver;
+	border-left: 12px solid #000000;
 	border-right: 1px solid #711515;
 	background-color: #000000;
 	color: #ffffff;
@@ -42,6 +42,7 @@
 }
 #leftSide li a:hover {
 	background-color: white;
+    font-weight:bold;
 	color: #000000;
 }
 #leftSide ul ul {
@@ -71,5 +72,4 @@
 	margin-top: 0.8em;
 	font-weight:bold;
 }
-
 

@@ -1,19 +1,24 @@
-﻿using GoblinV1.Models;
-using Microsoft.AspNet.Identity;
+﻿using GoblinV1.Logic;
+using GoblinV1.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace GoblinV1.Secure.AdminPages
 {
-    public partial class Admin : System.Web.UI.Page
+    public partial class Administrator : System.Web.UI.Page
     {
-        
+        //ApplicationDbContext context = new ApplicationDbContext();
+
+        //UserManager userManager = new UserManager();
+
+        private AdminEngine m_adminEngine = new AdminEngine();
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -21,6 +26,12 @@ namespace GoblinV1.Secure.AdminPages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(
+            //    new RoleStore<IdentityRole>(context));
+
+
+
             //check if the page is the result of a postback
             if (!Page.IsPostBack)
             {
@@ -36,13 +47,14 @@ namespace GoblinV1.Secure.AdminPages
 
         }
 
+
         /// <summary>
         /// 
         /// </summary>
         private void BindUserTolist()
         {
             //get all the user accounts
-            MembershipUserCollection users = Membership.GetAllUsers();
+            List<ApplicationUser> users = m_adminEngine.getApplicationUserList(); ;
             drpUserList.DataSource = users;
             drpUserList.DataBind();
 
@@ -53,32 +65,36 @@ namespace GoblinV1.Secure.AdminPages
         /// </summary>
         private void BindRolesToList()
         {
-
-            //IEnumerable is a collection of a specified type
-            string[] roles = Roles.GetAllRoles();
+            List<string> roles = m_adminEngine.getIdentityRoleList();
             rptUsersRoleList.DataSource = roles;
             rptUsersRoleList.DataBind();
 
         }
 
+
         /// <summary>
-        /// 
+        /// Check for roles for selected user
         /// </summary>
         private void checRolesForSelectedUser()
         {
+
             //get the selected user value from the dropdown list
             string selectedUserName = drpUserList.SelectedValue;
 
-            //get the  registered roles for the user
-            string[] selectedUserRoles = Roles.GetRolesForUser(selectedUserName);
+            var user = new ApplicationUser() { UserName = selectedUserName};
+
+           // string[] selectedUserRoles = m_adminEngine.MyUserManager.GetRoles(selectedUserName).ToArray();
+
+            List<string> selectedUserRoles = m_adminEngine.getIdentityUserRoles(user);
 
             //loop through the repeater's Items and check or uncheck the checkbox as needed
-            foreach (RepeaterItem repeaterItem in rptUsersRoleList.Items){
+            foreach (RepeaterItem repeaterItem in rptUsersRoleList.Items)
+            {
 
                 //programatically reference the checkbox
                 CheckBox chkboxRoleCheckBox = repeaterItem.FindControl("chkboxRoleCheckBox") as CheckBox;
                 //see if chckboxRoleCheckBox text is  in the selectedUserRoles
-                if(selectedUserRoles.Contains<string>(chkboxRoleCheckBox.Text))
+                if (selectedUserRoles.Contains<string>(chkboxRoleCheckBox.Text))
                 {
                     chkboxRoleCheckBox.Checked = true;
                 }
@@ -87,16 +103,6 @@ namespace GoblinV1.Secure.AdminPages
                     chkboxRoleCheckBox.Checked = false;
                 }
             }
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void setRoles()
-        {
-            MembershipUser newUser = Membership.CreateUser("Ruchira", "Password");
-            Roles.AddUserToRole("Ruchira", "Role");
         }
 
 
@@ -110,8 +116,9 @@ namespace GoblinV1.Secure.AdminPages
             checRolesForSelectedUser();
         }
 
+
         protected void chkboxRoleCheckBox_CheckedChanged(object sender, EventArgs e)
-        { 
+        {
             //reference the checkbox that raised this event
             CheckBox chkboxRoleCheckBox = sender as CheckBox;
 
@@ -122,18 +129,22 @@ namespace GoblinV1.Secure.AdminPages
             string roleName = chkboxRoleCheckBox.Text;
 
             //check if role checkbox is checked
-            if(chkboxRoleCheckBox.Checked){
+            if (chkboxRoleCheckBox.Checked)
+            {
 
-                //add user to role if checked
-                Roles.AddUserToRole(selectedUserName, roleName);
+                //add user to role for identity if checked
+                m_adminEngine.addUserToRole(selectedUserName,  roleName);
 
                 //display a status message
-                ActionStatus.Text = string.Format("User {0} was removed from role {1}", selectedUserName, roleName);
+                ActionStatus.Text = string.Format("User {0} was added to role {1}", selectedUserName, roleName);
             }
             else
             {
-                //add user to role if checked
-                Roles.RemoveUserFromRole(selectedUserName, roleName);
+                //Remove user from role if checked
+           
+
+               //remove user to role if checked
+                m_adminEngine.removeUserFromRole(selectedUserName, roleName);
 
                 // Display a status message 
                 ActionStatus.Text = string.Format("User {0} was removed from role {1}.", selectedUserName, roleName);

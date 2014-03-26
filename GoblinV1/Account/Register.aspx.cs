@@ -67,8 +67,6 @@ namespace GoblinV1.Account
                 //}
                 
 
-               
-
                 //if (System.Web.HttpContext.Current.User.IsInRole("Customer"))
                 //{
                 //    //check if the user has entered his personal data if not send him to the page where he can do so

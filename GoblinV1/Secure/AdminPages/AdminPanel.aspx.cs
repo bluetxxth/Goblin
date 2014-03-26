@@ -9,13 +9,12 @@ using System.Web.UI.WebControls;
 
 namespace GoblinV1.Secure.AdminPages
 {
-    public partial class Administration : System.Web.UI.Page
+    public partial class AdminPanel : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-        }
 
+        }
 
         public IQueryable<Department> GetDepartments([QueryString("id")] int? departmentId)
         {
@@ -27,5 +26,6 @@ namespace GoblinV1.Secure.AdminPages
             }
             return query;
         }
+
     }
 }
