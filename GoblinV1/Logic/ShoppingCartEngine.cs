@@ -127,11 +127,12 @@ namespace GoblinV1.Logic
         }
 
         /// <summary>
-        /// Resets the items in the cart
+        /// Resets the items in the cart  @TODO needs to be reviewed
         /// </summary>
         public void ZeroCart()
         {
             HttpContext.Current.Session[CartSessionKey] = null;
+
         }
 
         /// <summary>
@@ -344,7 +345,6 @@ namespace GoblinV1.Logic
             {
                 try
                 {
-
                     //count
                     int CartItemCount = CartItemUpdates.Count();
 
@@ -381,8 +381,6 @@ namespace GoblinV1.Logic
                 }
             }
         }
-
-
 
 
         /// <summary>
@@ -490,7 +488,6 @@ namespace GoblinV1.Logic
             public bool RemoveItem;
         }
 
-
         /// <summary>
         /// Use existing cart id to find  shopping cart of the user
         /// </summary>
@@ -498,14 +495,19 @@ namespace GoblinV1.Logic
         /// <param name="userName"></param>
         public void MigrateCart(string cartId, string userName)
         {
+            //get the cart id with link to sql
             var shoppingCart = ctx.CartItems.Where(c => c.CartId == cartId);
+            //traverse te list of CarItems in the shopping cart
             foreach (CartItem item in shoppingCart)
             {
+                //assign the user name to the cart id
                 item.CartId = userName;
             }
+            //save the user name in a session
             HttpContext.Current.Session[CartSessionKey] = userName;
+
+            //save changes to db
             ctx.SaveChanges();
         }
-
     }
 }

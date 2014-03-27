@@ -33,6 +33,12 @@ namespace GoblinV1.Models
         [ForeignKey("AddressId")]
         public virtual Address BillingAddress  { get; set; }
 
+       
+        [ExcludeChar(@"\ ()^[<>.!@#%/]+$123456789")]
+        [DisplayName("Customer Name")]
+        [StringLength(150)]
+        public string UserName { get; set; }
+
         [Required(ErrorMessage = "Customer Name is required")]
         [ExcludeChar(@"\ ()^[<>.!@#%/]+$123456789")]
         [DisplayName("Customer Name")]

@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GoblinV1.UserPages {
+namespace GoblinV1.Secure.Staff {
     
     
-    public partial class CreateProduct {
+    public partial class ManageCustomers {
         
         /// <summary>
-        /// ProductGridView control.
+        /// CustomerGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ProductGridView;
+        protected global::System.Web.UI.WebControls.GridView CustomerGridView;
         
         /// <summary>
-        /// ProductFormView control.
+        /// CustomerFormView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView ProductFormView;
+        protected global::System.Web.UI.WebControls.FormView CustomerFormView;
     }
 }

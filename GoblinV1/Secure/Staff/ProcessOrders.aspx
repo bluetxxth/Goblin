@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Process Orders" Language="C#" MasterPageFile="~/MasterPages/AdminPanel.Master" AutoEventWireup="true" CodeBehind="ProcessOrders.aspx.cs" Inherits="GoblinV1.Secure.Staff.ProcessOrders" %>
+﻿<%@ Page Title="Process Orders" Language="C#" MasterPageFile="~/MasterPages/Admin.Master" AutoEventWireup="true" CodeBehind="ProcessOrders.aspx.cs" Inherits="GoblinV1.Secure.Staff.ProcessOrders" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">

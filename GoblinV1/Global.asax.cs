@@ -22,6 +22,7 @@ namespace GoblinV1
 
             // Initialize the product database.
            Database.SetInitializer(new DataBaseInitializer());
+            // Initialize the identity database
            Database.SetInitializer(new IdentityDBInitializer());
         }
     }

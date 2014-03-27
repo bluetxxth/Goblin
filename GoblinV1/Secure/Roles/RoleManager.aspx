@@ -11,16 +11,17 @@
                     <legend class="legend">Add / Remove Roles</legend>
                     <p>
                      <asp:Button ID="btnCreateRole" runat="server" Text="Create" OnClick="CreateRoleButton_Click" />
-                    <asp:TextBox ID="RoleName" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtRoleToAdd" runat="server"></asp:TextBox>
                     </p>
                      <asp:Button ID="btnRemoveRoles" runat="server" Text="Remove" OnClick="RemoveRoleButton_Click" />
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtRoleToRemove" runat="server"></asp:TextBox>
                    
                 </fieldset>
 
                 <!--View Roles-->
                 <fieldset class="adminFieldset">
                     <legend class="legend">View roles</legend>
+
                     <asp:GridView ID="RoleList" runat="server" AutoGenerateColumns="false"> <Columns> <asp:TemplateField HeaderText="Role"> <ItemTemplate> <asp:Label runat="server" ID="RoleNameLabel" Text='<%# Container.DataItem %>' /> </ItemTemplate> </asp:TemplateField> </Columns> </asp:GridView>
 
                 </fieldset>

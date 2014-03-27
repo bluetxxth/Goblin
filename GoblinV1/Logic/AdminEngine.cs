@@ -63,23 +63,6 @@ namespace GoblinV1.Logic
             set { m_idbctx = value; }
         }
 
-
-
-
-        ///// <summary>
-        ///// Get a complete list of roles
-        ///// </summary>
-        ///// <returns>a list of roles</returns>
-        //public List<IdentityRole> getIdentityRoleList()
-        //{
-        //    var allRoles = m_context.Roles.ToList();
-        //    //IEnumerable is a collection of a specified type
-        //    List<IdentityRole> roles = allRoles;
-
-        //    return roles;
-        //}
-
-
         /// <summary>
         /// get a list of all roles
         /// </summary>
@@ -229,9 +212,15 @@ namespace GoblinV1.Logic
             //check if the role exists
             if (MyRoleManager.RoleExists(roleName))
             {
-                var role = m_idbctx.Roles.Where(d => d.Name == roleName).FirstOrDefault();
+                var role = m_idbctx.Roles.Where(r => r.Name == roleName).FirstOrDefault();
                 m_idbctx.Roles.Remove(role);
                 m_idbctx.SaveChanges();
+            }
+            else
+            {
+
+                HttpContext.Current.Session["Error"] = roleName + " does not exist";
+                HttpContext.Current.Response.Redirect("~/UserPages/ErrorPage.aspx");
             }
         }
 

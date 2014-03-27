@@ -58,8 +58,13 @@ namespace GoblinV1.Account
                     //the GUID used to identify the anonymous shopping cart is 
                     //replaced with the user name. 
 
+                    //create new instance of shopping cart
                     ShoppingCartEngine usersShoppingCart = new ShoppingCartEngine();
+
+                    //retrieve GUID
                     String cartId = usersShoppingCart.GetCartId();
+
+                    //pass cartId and UserName to Migrate cart method
                     usersShoppingCart.MigrateCart(cartId, UserName.Text);
 
 

@@ -2,18 +2,17 @@
 using GoblinV1.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GoblinV1.UserPages
+namespace GoblinV1.Secure.Checkout
 {
-    public partial class CreateUser : System.Web.UI.Page
+    public partial class CheckOut : System.Web.UI.Page
     {
-        //instantiate store engine to get cart items
+
+                //instantiate store engine to get cart items
         ShoppingCartEngine cartEngine = new ShoppingCartEngine();
         private List<CartItem> m_items;
         private OrderItem m_orderItem;
@@ -26,9 +25,7 @@ namespace GoblinV1.UserPages
         {
             //get items from cart item list. Only Id comes from session the rest 
             m_items = cartEngine.GetCartItems();
-
         }
-
 
         /// <summary>
         /// Provides behavior for submit button
@@ -102,7 +99,7 @@ namespace GoblinV1.UserPages
                 {
                     m_orderItem = new OrderItem()
                     {
-    
+
                         // OrderId = order.OrderId,
                         ProductId = m_items[i].ProductId,
                         Quantity = m_items[i].Quantity,
@@ -164,7 +161,7 @@ namespace GoblinV1.UserPages
                     ctx.Configuration.ValidateOnSaveEnabled = true;
 
                 }
-                catch  (DbEntityValidationException ex)
+                catch (DbEntityValidationException ex)
                 {
 
                     //Session["Error"] = ex;
@@ -189,9 +186,11 @@ namespace GoblinV1.UserPages
 
                 }
 
-               Response.Redirect("OrderConfirmation.aspx");
-             
+                Response.Redirect("OrderConfirmation.aspx");
+
             }
+
         }
+
     }
 }

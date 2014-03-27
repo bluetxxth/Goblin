@@ -10,17 +10,6 @@ namespace GoblinV1.Models
 {
     public class DataBaseInitializer : DropCreateDatabaseIfModelChanges<EntityMappingContext>
     {
-        //private AdminEngine m_adminEngine = new AdminEngine();
-
-        //protected override void SeedAdmin(IdentityDbContext idbctx)
-        //{
-        //    GetAdmin().ForEach(d => idbctx.Admins.Add(d));
-        //}
-
-        // private static List<Admin> GetAdmin()
-        //{
-
-        //}
 
         protected override void Seed(EntityMappingContext context)
         {
@@ -209,7 +198,7 @@ namespace GoblinV1.Models
                     DepartmentId= 5,
                     DepartmentName = "Manage Users",
                     DepartmentDescription ="Administer users",
-                    DepartmentUrl = "/Staff/ManageUsers.aspx",
+                    DepartmentUrl = "/Staff/ManageCustomers.aspx",
                     DepartmentIcon = "department.jpg",
                },
 
@@ -219,7 +208,7 @@ namespace GoblinV1.Models
                     DepartmentId= 6,
                     DepartmentName = "Revenue Tracker",
                     DepartmentDescription ="Administer users",
-                    DepartmentUrl = "/Staff/ManageUsers.aspx",
+                    DepartmentUrl = "/Staff/RevenueTracker.aspx",
                     DepartmentIcon = "department.jpg",
                },
 

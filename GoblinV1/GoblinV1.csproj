@@ -259,14 +259,21 @@
     <Content Include="Global.asax" />
     <Content Include="Secure\AdminPages\Administrator.aspx" />
     <Content Include="Secure\AdminPages\AdminPanel.aspx" />
+    <Content Include="Secure\Checkout\CheckOut.aspx" />
+    <Content Include="Secure\Checkout\CheckOutCancel.aspx" />
+    <Content Include="Secure\Checkout\CheckOutcomplete.aspx" />
+    <Content Include="Secure\Checkout\CheckOutReview.aspx" />
+    <Content Include="Secure\Roles\ManageUsers.aspx" />
     <Content Include="Secure\Roles\Default.aspx" />
     <Content Include="Secure\Staff\ManageProducts.aspx" />
-    <Content Include="Secure\Staff\ManageUsers.aspx" />
     <Content Include="Secure\Staff\Logistics.aspx" />
+    <Content Include="Secure\Staff\ManageCustomers.aspx" />
     <Content Include="Secure\Staff\ProcessOrders.aspx" />
+    <Content Include="Secure\Staff\test.aspx" />
     <Content Include="Secure\UserPagesSecured\UserAdmin.aspx" />
     <Content Include="Secure\Roles\UsersToRoles.aspx" />
     <Content Include="Secure\Roles\RoleManager.aspx" />
+    <Content Include="Secure\UserPagesSecured\UserData.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserPages\About.aspx" />
     <Content Include="UserPages\AddToCart.aspx" />
@@ -426,6 +433,41 @@
     <Compile Include="Secure\AdminPages\AdminPanel.aspx.designer.cs">
       <DependentUpon>AdminPanel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Secure\Checkout\CheckOut.aspx.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOut.aspx.designer.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOutCancel.aspx.cs">
+      <DependentUpon>CheckOutCancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOutCancel.aspx.designer.cs">
+      <DependentUpon>CheckOutCancel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOutcomplete.aspx.cs">
+      <DependentUpon>CheckOutcomplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOutcomplete.aspx.designer.cs">
+      <DependentUpon>CheckOutcomplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOutReview.aspx.cs">
+      <DependentUpon>CheckOutReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Checkout\CheckOutReview.aspx.designer.cs">
+      <DependentUpon>CheckOutReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Roles\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Roles\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secure\Roles\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -440,13 +482,6 @@
     <Compile Include="Secure\Staff\ManageProducts.aspx.designer.cs">
       <DependentUpon>ManageProducts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\Staff\ManageUsers.aspx.cs">
-      <DependentUpon>ManageUsers.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Secure\Staff\ManageUsers.aspx.designer.cs">
-      <DependentUpon>ManageUsers.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Secure\Staff\Logistics.aspx.cs">
       <DependentUpon>Logistics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -454,12 +489,26 @@
     <Compile Include="Secure\Staff\Logistics.aspx.designer.cs">
       <DependentUpon>Logistics.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Secure\Staff\ManageCustomers.aspx.cs">
+      <DependentUpon>ManageCustomers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Staff\ManageCustomers.aspx.designer.cs">
+      <DependentUpon>ManageCustomers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secure\Staff\ProcessOrders.aspx.cs">
       <DependentUpon>ProcessOrders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Secure\Staff\ProcessOrders.aspx.designer.cs">
       <DependentUpon>ProcessOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Staff\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Staff\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\UserPagesSecured\UserAdmin.aspx.cs">
       <DependentUpon>UserAdmin.aspx</DependentUpon>
@@ -481,6 +530,13 @@
     </Compile>
     <Compile Include="Secure\Roles\RoleManager.aspx.designer.cs">
       <DependentUpon>RoleManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\UserPagesSecured\UserData.aspx.cs">
+      <DependentUpon>UserData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\UserPagesSecured\UserData.aspx.designer.cs">
+      <DependentUpon>UserData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

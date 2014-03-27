@@ -3,6 +3,7 @@
   <siteMapNode url="~/Secure" title="Secure"  description="Secure area">
     <siteMapNode url ="/Secure/Roles/RoleManager.aspx" title="Role Manager" description="Go to Role Manager Section"/>
     <siteMapNode url ="/Secure/Roles/UsersToRoles.aspx" title="User to Role" description="Go to Role User to roles section"/>
+    <siteMapNode url ="/Secure/Roles/ManageUsers.aspx" title="ManageUsers" description="Go to Role User to roles section"/>
     <!--<siteMapNode url ="~/AdminPages/Admin.aspx" title="Admin" description="Go to Admin"/>-->
     <!--<siteMapNode url ="~/AdminPages/CreateProduct.aspx" title="Create Product" description="Go to create product"/>-->
     <!--<siteMapNode url ="Secure/UserPagesSecured/UserAdmin.aspx" title="User Admin" description="Go toUser Admin"/>

@@ -88,10 +88,12 @@ namespace GoblinV1.Account
                 //migrate shopping cart 
                 using (ShoppingCartEngine usersShoppingCart = new ShoppingCartEngine())
                 {
+                    //get the GUID and assign to cardId
                     String cartId = usersShoppingCart.GetCartId();
+
+                    //pass cartId and User id to migrateCart method
                     usersShoppingCart.MigrateCart(cartId, user.Id);
                 }
-
 
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
 

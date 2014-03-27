@@ -16,10 +16,11 @@ namespace GoblinV1.Secure._Roles
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                displayRolesInGrid();
-            }
+            //if (!Page.IsPostBack)
+            //{
+            //    displayRolesInGrid();
+            //}
+            displayRolesInGrid();
         }
 
         /// <summary>
@@ -29,12 +30,14 @@ namespace GoblinV1.Secure._Roles
         /// <param name="e"></param>
         protected void CreateRoleButton_Click(object sender, EventArgs e)
         {
-            string newRoleName = RoleName.Text.Trim();
+            string newRoleName = txtRoleToAdd.Text.Trim();
 
             //add role
             m_adminEngine.createRole(newRoleName);
 
-            RoleName.Text = string.Empty;
+            txtRoleToAdd.Text = string.Empty;
+
+            HttpContext.Current.Response.Redirect("RoleManager.aspx");
 
         }
 
@@ -45,12 +48,14 @@ namespace GoblinV1.Secure._Roles
         /// <param name="e"></param>
         protected void RemoveRoleButton_Click(object sender, EventArgs e)
         {
-            string newRoleName = RoleName.Text.Trim();
+            string removeRoleName = txtRoleToRemove.Text.Trim();
 
             //Remove role
-            m_adminEngine.removeRole(newRoleName);
+            m_adminEngine.removeRole(removeRoleName);
 
-            RoleName.Text = string.Empty;
+            txtRoleToRemove.Text = string.Empty;
+
+            HttpContext.Current.Response.Redirect("RoleManager.aspx");
         }
 
         /// <summary>

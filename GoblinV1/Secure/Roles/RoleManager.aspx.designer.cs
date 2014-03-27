@@ -22,13 +22,13 @@ namespace GoblinV1.Secure._Roles {
         protected global::System.Web.UI.WebControls.Button btnCreateRole;
         
         /// <summary>
-        /// RoleName control.
+        /// txtRoleToAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox RoleName;
+        protected global::System.Web.UI.WebControls.TextBox txtRoleToAdd;
         
         /// <summary>
         /// btnRemoveRoles control.
@@ -40,13 +40,13 @@ namespace GoblinV1.Secure._Roles {
         protected global::System.Web.UI.WebControls.Button btnRemoveRoles;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtRoleToRemove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtRoleToRemove;
         
         /// <summary>
         /// RoleList control.

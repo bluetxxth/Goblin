@@ -35,9 +35,6 @@ namespace GoblinV1.UserPages
         {
 
             GetTotals();
-
-
-
         }
 
 
@@ -89,19 +86,16 @@ namespace GoblinV1.UserPages
             //create an order status object in order to set it to submitted
             OrderStatus orderstatus = ctx.OrderStatuses.Create();
 
-
             //get the cart items
             List<CartItem> cartItemList = cartEngine.GetCartItems();
 
            // Session["CartItems"] = cartItemList;
-    
-            
+         
             orderstatus.Status = "Created " + DateTime.Now.ToString();
 
             //Session["Error"] = orderstatus.Status;
             //Response.Redirect("/UserPages/ErrorPage.aspx");
-
-
+      
              try
             {
                 ctx.OrderStatuses.Add(orderstatus);
@@ -110,8 +104,7 @@ namespace GoblinV1.UserPages
                 ctx.Configuration.ValidateOnSaveEnabled = true;
             }
             catch (DbEntityValidationException ex)
-            {
-               
+            {             
                 var errorMessages = ex.EntityValidationErrors
                   .SelectMany(x => x.ValidationErrors)
                   .Select(x => x.ErrorMessage);
@@ -128,32 +121,33 @@ namespace GoblinV1.UserPages
 
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-
             }
 
              finally
              {
-
                 // && System.Web.HttpContext.Current.User.IsInRole("user")
-                 string customer = System.Web.HttpContext.Current.User.Identity.Name;
-
+                 string user = System.Web.HttpContext.Current.User.Identity.Name;
 
                 //check if the user is registered and what his role is
                  if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated &&  System.Web.HttpContext.Current.User.IsInRole("Customer"))
                  {
-               
+
                      //check if the user has entered his personal data if not send him to the page where he can do so
-                     Session["Error"] =  customer;
+                     using (var context = new EntityMappingContext())
+                     {
+                         var customer = new Customer();
 
-                     Response.Redirect("ErrorPage.aspx");
+                         if(customer.UserName == null){
 
-                     
-
+                         }
+                     }
+      
+                     //Session["Error"] =  customer;
+                     //Response.Redirect("ErrorPage.aspx");
                  }
 
                 // Response.Redirect("CreateUser.aspx");
              }
-
         }
 
         public List<CartItem> UpdateCartItems()

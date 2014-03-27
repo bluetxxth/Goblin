@@ -13,9 +13,12 @@
                 <fieldset class="adminFieldset">
                     <legend class="legend">RoleManager</legend>
                     <asp:Label ID="ActionStatus" runat="server" CssClass="Important"></asp:Label>
+
+                    <p>
                     <!--Dropdown user list-->
                     <asp:DropDownList ID="drpUserList" runat="server" AutoPostBack="true" DataTextField="UserName" OnSelectedIndexChanged="drpUserList_SelectedIndexChanged">
                     </asp:DropDownList>
+                    </p>
 
                     <asp:Repeater ID="rptUsersRoleList" runat="server">
                         <ItemTemplate>
@@ -27,7 +30,7 @@
                     </asp:Repeater>
                 </fieldset>
                 <!--end roleManager-->
-
+                </div>
              
 
         </fieldset>
