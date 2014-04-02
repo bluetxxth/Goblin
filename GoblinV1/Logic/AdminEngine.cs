@@ -95,7 +95,6 @@ namespace GoblinV1.Logic
 
             List<ApplicationUser> users = null;
 
-
             try
             {
                 var allUsers = m_context.Users.ToList();
@@ -111,7 +110,6 @@ namespace GoblinV1.Logic
 
             return users;
         }
-
 
         /// <summary>
         /// Return a list of identity users
@@ -129,8 +127,6 @@ namespace GoblinV1.Logic
 
             return users;
         }
-
-
 
         /// <summary>
         /// Get identity user list
@@ -155,7 +151,6 @@ namespace GoblinV1.Logic
 
             return usersInList;
         }
-
 
         /// <summary>
         /// Create role

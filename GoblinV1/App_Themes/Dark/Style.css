@@ -296,12 +296,34 @@ ul{
            */
 }
 
+
 article{
     padding-left:10px;
     padding-right:10px;
     margin:auto;
     margin-bottom:40px;
 }
+
+/* Order confirmation
+--------------------------------    
+*/
+
+.OrderConfirmationFieldset{
+    font-size:16px;
+    margin-bottom:20px;
+    padding:25px;
+    border-width:3px;
+}
+
+.OrderDataLegend{
+    font-weight: bold;
+}
+
+.lblOrderConfirmation {
+    font-weight:bold;
+    font-size:14px;
+}
+
 
 
 /*Fonts

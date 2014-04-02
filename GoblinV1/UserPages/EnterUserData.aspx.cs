@@ -1,4 +1,5 @@
-﻿using GoblinV1.Models;
+﻿using GoblinV1.Logic;
+using GoblinV1.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -15,6 +16,8 @@ namespace GoblinV1.UserPages
     /// </summary>
     public partial class EnterUserData : System.Web.UI.Page
     {
+
+        ShoppingCartEngine shoppingCart = new ShoppingCartEngine();
         /// <summary>
         /// entry point
         /// </summary>
@@ -105,7 +108,8 @@ namespace GoblinV1.UserPages
             store.Context.SaveChanges();
 
             //Finally create the order
-
+            //Create order
+            shoppingCart.CreateOrder(currentUser);
 
          
             HttpContext.Current.Response.Redirect("/Secure/UserPagesSecured/ConfirmOrder.aspx");

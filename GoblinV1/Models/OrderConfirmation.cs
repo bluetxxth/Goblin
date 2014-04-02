@@ -19,7 +19,7 @@ namespace GoblinV1.Models
         public string CustomerLast { get; set; }
         public string CustomerCell { get; set; }
         public string CustomerPhone { get; set; }
-        public string CustomeEmail { get; set; }
+        public string CustomerEmail { get; set; }
 
        //Address data
         public string BillingAddressName { get; set; }
@@ -41,6 +41,7 @@ namespace GoblinV1.Models
 
         //Product data
         public int Quantity { get; set; }
+        public string ProductName { get; set; }
         public string ProductSpec { get; set; }
         public double? ProductPrice { get; set; }
 

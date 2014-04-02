@@ -155,6 +155,9 @@ namespace GoblinV1.UserPages
                     //and just confirmation is required
                     if (!(currentUser.MyUserCCardInfo.CardNumber == null))
                     {
+                        //Create order
+                        shoppingCart.CreateOrder(currentUser);
+
                         //go to confirm
                         Response.Redirect("/Secure/UserPagesSecured/ConfirmOrder.aspx");
                     }
@@ -178,6 +181,9 @@ namespace GoblinV1.UserPages
             //check if the credit card number is null if not then just confirm
             if (!(currentUser.MyUserCCardInfo.CardNumber == null))
             {
+                //Create order
+                shoppingCart.CreateOrder(currentUser);
+
                 //go to confirm
                 Response.Redirect("/Secure/UserPagesSecured/ConfirmOrder.aspx");
             }

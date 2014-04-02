@@ -8,7 +8,7 @@ using System.Web;
 
 namespace GoblinV1.Models
 {
-    public class IdentityDBInitializer : DropCreateDatabaseIfModelChanges<IdentityDbContext>
+    public class IdentityDBInitializer : DropCreateDatabaseAlways<IdentityDbContext>
     {
 
         protected override void Seed(IdentityDbContext idbctx)
