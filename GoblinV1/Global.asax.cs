@@ -1,4 +1,5 @@
-﻿using GoblinV1.Models;
+﻿using GoblinV1.Logic;
+using GoblinV1.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,7 +24,11 @@ namespace GoblinV1
 
 
             //Initialize the identity database
-            Database.SetInitializer(new IdentityDBInitializer());
+           // Database.SetInitializer(new IdentityDBInitializer());
+
+            // Create the administrator role and user.
+            RoleActions roleActions = new RoleActions();
+            roleActions.createAdmin();
 
             // Initialize the product database.
             Database.SetInitializer(new DataBaseInitializer());

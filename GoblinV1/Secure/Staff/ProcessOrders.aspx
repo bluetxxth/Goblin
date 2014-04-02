@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
-    <h1><%#:Title %></h1>
+    <h1><%:Page.Title %></h1>
     <fieldset>
         <legend>
             <b>Process Orders</b>

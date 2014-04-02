@@ -371,6 +371,7 @@
     <Compile Include="Logic\ExcludeChar.cs" />
     <Compile Include="Logic\InventoryControlEngine.cs" />
     <Compile Include="Logic\OrderEngine.cs" />
+    <Compile Include="Logic\RoleActions.cs" />
     <Compile Include="Logic\ShoppingCartEngine.cs">
       <SubType>Code</SubType>
     </Compile>

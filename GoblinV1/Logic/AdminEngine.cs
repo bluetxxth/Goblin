@@ -92,7 +92,6 @@ namespace GoblinV1.Logic
         /// <returns></returns>
         public List<ApplicationUser> getApplicationUserList()
         {
-
             List<ApplicationUser> users = null;
 
             try

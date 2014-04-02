@@ -49,6 +49,7 @@ namespace GoblinV1.Account
                 var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
 
+
                 if (user != null)
                 {
 

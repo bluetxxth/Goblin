@@ -13,9 +13,11 @@ namespace GoblinV1.Models
 
         protected override void Seed(EntityMappingContext context)
         {
-
+            //seed categories
             GetCategories().ForEach(c => context.Categories.Add(c));
+            //seed products
             GetProducts().ForEach(p => context.Products.Add(p));
+            //seed departments
             GetDepartments().ForEach(d => context.Departments.Add(d));      
 
         }
