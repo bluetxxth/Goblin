@@ -43,14 +43,12 @@ namespace GoblinV1.Account
 
         protected void LogIn(object sender, EventArgs e)
         {
-
             if (IsValid)
             {
                 // Validate the user password
                 var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
 
-            
                 if (user != null)
                 {
 
@@ -66,7 +64,6 @@ namespace GoblinV1.Account
 
                     //pass cartId and UserName to Migrate cart method
                     usersShoppingCart.MigrateCart(cartId, UserName.Text);
-
 
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);

@@ -13,7 +13,7 @@
         CellPadding="4"
         ItemType="GoblinV1.Models.CartItem" 
         SelectMethod="GetShoppingCartItems"
-        CssClass="table table-striped table-bordered">
+        CssClass="table table-striped table-bordered" OnSelectedIndexChanged="CartList_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="ID" SortExpression="ProductID" />
             <asp:BoundField DataField="Product.ProductName" HeaderText="Name" />

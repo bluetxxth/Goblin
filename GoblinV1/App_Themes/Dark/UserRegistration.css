@@ -1,0 +1,26 @@
+﻿body {
+}
+
+.form-group{
+
+    color:#333333;
+    font-weight:bold;
+}
+
+.enterUserFieldset{
+    margin-bottom:20px;
+    padding:25px;
+    border-width:3px;
+  
+}
+
+.UserDataLegend{
+    font-weight: bold;
+}
+
+.col-md-2 control-label{
+    font-weight:bold;
+
+}
+
+

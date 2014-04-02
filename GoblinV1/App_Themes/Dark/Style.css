@@ -34,6 +34,8 @@ body {
 }
 
 
+
+
 /*header and header - related
 ---------------------------------------------------------------
 */
@@ -62,9 +64,7 @@ body {
 	text-align: left;
 }
 
-.site-logo {
-	
-}
+
 
 .site-title {
 	font-family: 'Charcoal', cursive;
@@ -82,10 +82,14 @@ body {
 	font-style: italic;
 }
 
+
+#Legend{
+    font-weight:bold;
+}
+
 /**
  * Navbar
  */
-
 
 #Menu1{
 
@@ -127,6 +131,19 @@ body {
     vertical-align:top;
     bottom:0;
 }
+
+
+/* Logged user
+--------------------
+ */
+
+.loggedUser{
+    float:left;
+    margin-left:40px;
+    margin-top: 10px;
+    color:white;
+}
+
 
 
 /**
@@ -310,6 +327,7 @@ a,a:visited {
 -----------------------------------------------------------
 */
 #footerwrapper {
+    clear:both;
 	height: 50px;
 }
 

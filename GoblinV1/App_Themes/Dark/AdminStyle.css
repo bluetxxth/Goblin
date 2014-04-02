@@ -308,7 +308,9 @@ a,a:visited {
 -----------------------------------------------------------
 */
 #footerwrapper {
+    clear:both;
 	height: 50px;
+    
 }
 
 #footer {

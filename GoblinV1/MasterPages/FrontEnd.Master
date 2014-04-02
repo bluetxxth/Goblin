@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link href="../App_Themes/Dark/Style.css" rel="stylesheet" />
+    <link href="../App_Themes/Dark/UserRegistration.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -22,26 +23,23 @@
 
                         <!--Datasources-->
                         <asp:SiteMapDataSource ID="Account" runat="server" ShowStartingNode ="false" SiteMapProvider="Account" />
-
-                          <asp:SiteMapDataSource ID="AdminPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="AdminPages"/>
-
+                        <asp:SiteMapDataSource ID="AdminPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="AdminPages"/>
                         <asp:SiteMapDataSource ID="UserPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="UserPages"/>
-
-
-
                         <asp:ContentPlaceHolder ID="contentCartCounter" runat="server">
-                             <div id ="cartCounterHolder" >
-                            <!--add the counter-->
-                            <a class="cart" runat="server" href="~/ShoppingCart" id="cartCount">&nbsp;</a>  
-                        </div>
+                            <div id ="cartCounterHolder" >
+        <!--add the counter--><a class="cart" runat="server" href="~/UserPages/ShoppingCart" id="cartCount">&nbsp;</a>
+                            </div>
                         </asp:ContentPlaceHolder>
+                      
+                            <asp:Label ID="lblLoggedUser" CssClass="loggedUser"   runat ="server" Text=""></asp:Label>
+                 
                        
+
                     <!-- menu 1 -->
                         <nav id = 'navbar1'>
                             <asp:Menu ID="Menu2" runat="server" Orientation="Horizontal" RenderingMode="List" 
                                DataSourceID="Account" >
-                            </asp:Menu>          
-
+                            </asp:Menu>
                         </nav>
 
              
@@ -49,16 +47,13 @@
                         <nav id = 'navbar2'>
                             <asp:Menu ID="Menu1" runat="server" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" DataSourceID="UserPages" >
                             </asp:Menu>
-    
                         </nav>
 
                     <!-- menu 3 -->
-                      <nav id = 'navbar3'>
+                        <nav id = 'navbar3'>
                             <asp:Menu ID="Menu3" runat="server" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" DataSourceID="AdminPages" >
-
                             </asp:Menu>
-                      </nav>
-
+                        </nav>
                         <div id ="search">
                         </div>
                     </header>
@@ -70,7 +65,6 @@
             <!-- main section-->
                 <div id='main'>
                     <asp:ContentPlaceHolder ID="cphMain" runat="server">
-   
                     </asp:ContentPlaceHolder>
                 </div>
 

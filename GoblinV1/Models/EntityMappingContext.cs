@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -16,8 +17,8 @@ namespace GoblinV1.Models
         /// </summary>
         public EntityMappingContext() : base("DefaultConnection") { }
 
-        //static EntityMappingContext() { Database.SetInitializer<EntityMappingContext>(new DataBaseInitializer()); }
-
+        static EntityMappingContext() { Database.SetInitializer<EntityMappingContext>(new DataBaseInitializer()); }
+        
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
@@ -29,14 +30,7 @@ namespace GoblinV1.Models
         public DbSet<Address> Addresses { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Department> Departments { get; set;}
-
-
-
-  
-
-
-
-
+        public DbSet<OrderConfirmation> OrderConfirmations { get; set; }
 
     }
 }

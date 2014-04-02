@@ -21,17 +21,21 @@ namespace GoblinV1.Models
 
         public string Processed { get;set; }
 
-        public virtual Address Address { get; set; }
+        //public int AddressId { get; set; }
+
+        //[ForeignKey("AddressId")]
+
+        public virtual Address BillingAddress{ get; set; }
 
         public virtual List<OrderItem> OrderItems { get; set; }
 
         public int Qty { get; set; }
 
         public double? Total { get; set; }
-        public int CustomerId { get; set; }
+        //public int CustomerId { get; set; }
 
-         [ForeignKey("CustomerId")]
-        public virtual Customer Customers { get; set; }
+        // [ForeignKey("CustomerId")]
+        //public virtual Customer Customers { get; set; }
 
         public bool IsProcessed { get; set;}
      

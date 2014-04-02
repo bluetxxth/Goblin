@@ -10,16 +10,16 @@
 namespace GoblinV1.UserPages {
     
     
-    public partial class OrderConfirmation {
+    public partial class ConfirmOrder {
         
         /// <summary>
-        /// txtOrderConfirmation control.
+        /// rptConfirmOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrderConfirmation;
+        protected global::System.Web.UI.WebControls.Repeater rptConfirmOrder;
         
         /// <summary>
         /// btnSubmit control.

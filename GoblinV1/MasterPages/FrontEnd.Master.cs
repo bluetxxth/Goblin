@@ -18,6 +18,10 @@ namespace GoblinV1.MasterPages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            string user = System.Web.HttpContext.Current.User.Identity.Name;
+
+            lblLoggedUser.Text = user;
+
             //if (Customer.Identity.IsAuthenticated)
             //{
             //    ViewState["username"] = Page.User.Identity.Name;

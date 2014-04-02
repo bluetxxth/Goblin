@@ -17,8 +17,5 @@ namespace GoblinV1.Models
         public string ItemName { get; set; }
         public string Specs { get; set; }
 
-        
-
-
     }
 }

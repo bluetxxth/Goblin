@@ -21,7 +21,6 @@ namespace GoblinV1.Secure.Staff
 
         }
 
-
         /// <summary>
         /// Get orders
         /// </summary>
@@ -31,8 +30,6 @@ namespace GoblinV1.Secure.Staff
             OrderEngine orderEngine = new OrderEngine();
             return orderEngine.GetOrder();
         }
-
-
 
 
         /// <summary>
@@ -49,9 +46,6 @@ namespace GoblinV1.Secure.Staff
 
             var rowIndex = ((GridViewRow)((Control)sender).NamingContainer).RowIndex + 1;
 
-
-
-
             //Change the status or the order
             var order = (from myorder in ctx.Orders
                          where myorder.OrderId == rowIndex // get the corresponding order
@@ -60,21 +54,17 @@ namespace GoblinV1.Secure.Staff
             order.Processed = DateTime.Now.ToString();
             order.IsProcessed = true;
 
-
             //Session["Error"] = rowIndex;
             //Response.Redirect("/UserPages/ErrorPage.aspx");
 
             try
             {
-
                 ctx.SaveChanges();
                 //validate
                 ctx.Configuration.ValidateOnSaveEnabled = true;
             }
             catch (DbEntityValidationException ex)
             {
-
-
                 var errorMessages = ex.EntityValidationErrors
                   .SelectMany(x => x.ValidationErrors)
                   .Select(x => x.ErrorMessage);
@@ -94,7 +84,7 @@ namespace GoblinV1.Secure.Staff
             }
             finally
             {
-                Response.Redirect("Admin.aspx");
+                Response.Redirect("/Secure/Staff/ProcessOrders.aspx");
             }
         }
 
@@ -110,11 +100,11 @@ namespace GoblinV1.Secure.Staff
             ctx.Orders.Remove(order);
             try
             {
-
                 ctx.SaveChanges();
                 //validate
                 ctx.Configuration.ValidateOnSaveEnabled = true;
             }
+
             catch (DbEntityValidationException ex)
             {
 
@@ -137,7 +127,7 @@ namespace GoblinV1.Secure.Staff
             }
             finally
             {
-                Response.Redirect("Admin.aspx");
+                Response.Redirect("/Secure/Staff/ProcessOrders.aspx");
             }
         }
     }

@@ -29,6 +29,11 @@ namespace GoblinV1.Models
         [DisplayName("AStreet No.")]
         public string StreetNo { get; set; }
 
+
+        public string Apartment { get; set; }
+        public string Stair { get; set; }
+
+
         [Required(ErrorMessage = "City Name is required")]
         [ExcludeChar(@"\ ()^[<>.!@#%/]+$123456789")]
         [DisplayName("City Name")]

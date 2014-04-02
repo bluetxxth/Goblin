@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Web;
 
@@ -91,9 +92,22 @@ namespace GoblinV1.Logic
         /// <returns></returns>
         public List<ApplicationUser> getApplicationUserList()
         {
-            var allUsers = m_context.Users.ToList();
-            //get all the user accounts
-            List<ApplicationUser> users = allUsers;
+
+            List<ApplicationUser> users = null;
+
+
+            try
+            {
+                var allUsers = m_context.Users.ToList();
+                users = allUsers;
+
+            }
+            catch (EntityCommandExecutionException ex)
+            {
+                    HttpContext.Current.Session["Error"] = ex;
+
+                    HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
+            }
 
             return users;
         }

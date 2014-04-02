@@ -16,11 +16,9 @@ namespace GoblinV1.Models
 
             GetCategories().ForEach(c => context.Categories.Add(c));
             GetProducts().ForEach(p => context.Products.Add(p));
-            GetDepartments().ForEach(d => context.Departments.Add(d));
-      
+            GetDepartments().ForEach(d => context.Departments.Add(d));      
 
         }
-
 
 
         /// <summary>

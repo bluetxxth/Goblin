@@ -1,6 +1,7 @@
 ﻿using GoblinV1.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
@@ -12,10 +13,17 @@ namespace GoblinV1.Logic
     public class ShoppingCartEngine : IDisposable
     {
 
-
         private EntityMappingContext ctx = new EntityMappingContext();
         public const string CartSessionKey = "CartId"; //cartID from session cookie
         private bool m_instock = false;
+
+        //instantiate store engine to get cart items
+        private List<CartItem> m_items;
+        private OrderItem m_orderItem;
+        private int m_orderQuantity;
+        private int m_lastOrderId;
+
+
         public int MyStock { get; set; }
         public int MyQuantity { get; set; }
         public int ProductID { get; set; }
@@ -468,15 +476,25 @@ namespace GoblinV1.Logic
         public int GetCount()
         {
             ShoppingCartId = GetCartId();
+            int? count = 0;
 
-            // Get the count of each item in the cart and sum them up          
-            int? count = (from cartItems in ctx.CartItems
-                          where cartItems.CartId == ShoppingCartId
-                          select (int?)cartItems.Quantity).Sum();
+            try
+            {
+                // Get the count of each item in the cart and sum them up          
+                count = (from cartItems in ctx.CartItems
+                              where cartItems.CartId == ShoppingCartId
+                              select (int?)cartItems.Quantity).Sum();
+
+            }
+            catch (EntityCommandExecutionException ex)
+            {
+                HttpContext.Current.Session["Error"] = ex;
+
+               HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
+            }
             // Return 0 if all entries are null         
             return count ?? 0;
         }
-
 
         /// <summary>
         /// Structure with options for for shopping cart Update
@@ -509,5 +527,9 @@ namespace GoblinV1.Logic
             //save changes to db
             ctx.SaveChanges();
         }
+
+
+
+
     }
 }

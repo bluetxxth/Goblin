@@ -15,15 +15,21 @@ namespace GoblinV1
     {
         void Application_Start(object sender, EventArgs e)
         {
-           //new Models.EntityMappingContext().Products.ToList();
+             //new EntityMappingContext().Products.ToList();
+           
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+
+            //Initialize the identity database
+            Database.SetInitializer(new IdentityDBInitializer());
+
             // Initialize the product database.
-           Database.SetInitializer(new DataBaseInitializer());
-            // Initialize the identity database
-           Database.SetInitializer(new IdentityDBInitializer());
+            Database.SetInitializer(new DataBaseInitializer());
+
+
+
         }
     }
 }
