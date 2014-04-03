@@ -22,6 +22,7 @@ namespace GoblinV1.MasterPages
 
             lblLoggedUser.Text = user;
 
+
             //if (Customer.Identity.IsAuthenticated)
             //{
             //    ViewState["username"] = Page.User.Identity.Name;
@@ -64,7 +65,8 @@ namespace GoblinV1.MasterPages
                 //format the cart count
                 string cartStr = string.Format("Cart [{0}]", usersShoppingCart.GetCount());
 
-                if (cartStr != null)
+
+                if (cartStr != null && cartCount != null)
                 {
                     try
                    {

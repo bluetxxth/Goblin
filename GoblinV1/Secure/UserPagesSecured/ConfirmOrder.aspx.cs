@@ -28,7 +28,6 @@ namespace GoblinV1.UserPages
         private double m_orderTotal;
         private int m_orderQuantity;
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -111,10 +110,7 @@ namespace GoblinV1.UserPages
             {
                 cartEngine.EmptyCart();
                 Response.Redirect("~/Default.aspx");
-                
             }
-
-
          
            // //start by getting the current user
            // AdminEngine adminEngine = new AdminEngine();
@@ -371,7 +367,5 @@ namespace GoblinV1.UserPages
 
 
         }
-
-    
     }
 }

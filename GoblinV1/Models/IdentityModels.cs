@@ -110,8 +110,6 @@ namespace GoblinV1.Models
         //public System.Data.Entity.DbSet<MyUserBankInfo> MyUserBankInfo { get; set; }
     }
 
-
-
     #region Helpers
     public class UserManager : UserManager<ApplicationUser>
     {

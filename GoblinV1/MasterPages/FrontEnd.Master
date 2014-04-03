@@ -20,7 +20,7 @@
 
                 <!-- Header -->
                     <header id='header'>
-
+                    
                         <!--Datasources-->
                         <asp:SiteMapDataSource ID="Account" runat="server" ShowStartingNode ="false" SiteMapProvider="Account" />
                         <asp:SiteMapDataSource ID="AdminPages" runat="server"  ShowStartingNode ="false" SiteMapProvider="AdminPages"/>
@@ -30,8 +30,7 @@
         <!--add the counter--><a class="cart" runat="server" href="~/UserPages/ShoppingCart" id="cartCount">&nbsp;</a>
                             </div>
                         </asp:ContentPlaceHolder>
-                      
-                            <asp:Label ID="lblLoggedUser" CssClass="loggedUser"   runat ="server" Text=""></asp:Label>
+                        <asp:Label ID="lblLoggedUser" CssClass="loggedUser"   runat ="server" Text=""></asp:Label>
                  
                        
 

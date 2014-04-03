@@ -192,6 +192,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\AuthError.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
@@ -273,6 +274,7 @@
     <Content Include="Secure\UserPagesSecured\UserAdmin.aspx" />
     <Content Include="Secure\Roles\UsersToRoles.aspx" />
     <Content Include="Secure\Roles\RoleManager.aspx" />
+    <Content Include="UserPages\UserAdminPanel.aspx" />
     <Content Include="Secure\UserPagesSecured\UserData.aspx" />
     <Content Include="Site.Master" />
     <Content Include="UserPages\About.aspx" />
@@ -301,6 +303,8 @@
     <Content Include="Secure\Web.config" />
     <Content Include="Secure\UserPagesSecured\Web.config" />
     <Content Include="Secure\Roles\Web.config" />
+    <Content Include="UserPages\RuleSet1.ruleset" />
+    <Content Include="UserPages\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -319,6 +323,13 @@
     <Content Include="WebAdministrator.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AuthError.aspx.cs">
+      <DependentUpon>AuthError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AuthError.aspx.designer.cs">
+      <DependentUpon>AuthError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -529,6 +540,13 @@
     </Compile>
     <Compile Include="Secure\Roles\RoleManager.aspx.designer.cs">
       <DependentUpon>RoleManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\UserAdminPanel.aspx.cs">
+      <DependentUpon>UserAdminPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\UserAdminPanel.aspx.designer.cs">
+      <DependentUpon>UserAdminPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\UserPagesSecured\UserData.aspx.cs">
       <DependentUpon>UserData.aspx</DependentUpon>

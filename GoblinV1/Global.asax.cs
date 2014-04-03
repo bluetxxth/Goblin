@@ -33,8 +33,6 @@ namespace GoblinV1
             // Initialize the product database.
             Database.SetInitializer(new DataBaseInitializer());
 
-
-
         }
     }
 }
