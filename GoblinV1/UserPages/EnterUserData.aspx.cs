@@ -25,8 +25,7 @@ namespace GoblinV1.UserPages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+            
         }
 
         /// <summary>
@@ -48,72 +47,80 @@ namespace GoblinV1.UserPages
             if(currentUser == null){
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                 authenticationManager.SignOut();
-                HttpContext.Current.Response.Redirect("/Account/Login.aspx");
+                HttpContext.Current.Response.Redirect("~/Account/Login.aspx");
             }
 
-           
+            if(Page.IsValid){
+          
             //instantiate MyUserInfo
             currentUser.MyUserInfo = new MyUserInfo();
 
-            currentUser.MyUserInfo.FirstName = FirstName.Text;
-            currentUser.MyUserInfo.MiddleName = MiddleName.Text;
-            currentUser.MyUserInfo.LastName = LastName.Text;
-            currentUser.MyUserInfo.Email = Email.Text;
-            currentUser.MyUserInfo.Telephone = Telephone.Text;
-            currentUser.MyUserInfo.Cellphone = CellPhone.Text;
+            currentUser.MyUserInfo.FirstName = txtFirstName.Text;
+            currentUser.MyUserInfo.MiddleName = txtMiddleName.Text;
+            currentUser.MyUserInfo.LastName = txtLastName.Text;
+            currentUser.MyUserInfo.Email = txtEmail.Text;
+            currentUser.MyUserInfo.Telephone = txtTelephone.Text;
+            currentUser.MyUserInfo.Cellphone = txtCellPhone.Text;
 
             //instantiate BillingAddress
             currentUser.BillingAddress = new MyUserBillingAddress();
 
-            currentUser.BillingAddress.AddressName = BillingAddressName.Text;
-            currentUser.BillingAddress.AddressNumber = BillingAddressNumber.Text;
-            currentUser.BillingAddress.Stair = BillingStair.Text;
-            currentUser.BillingAddress.Apartment = BillingApartment.Text;
-            currentUser.BillingAddress.City = BillingCity.Text;
-            currentUser.BillingAddress.Country = BillingCountry.Text;
-            currentUser.BillingAddress.Zipcode = BillingZipcode.Text;
+            currentUser.BillingAddress.AddressName = txtBillingAddressName.Text;
+            currentUser.BillingAddress.AddressNumber = txtBillingAddressNumber.Text;
+            currentUser.BillingAddress.Stair = txtBillingStair.Text;
+            currentUser.BillingAddress.Apartment = txtBillingApartment.Text;
+            currentUser.BillingAddress.City = txtBillingCity.Text;
+            currentUser.BillingAddress.Country = txtBillingCountry.Text;
+            currentUser.BillingAddress.Zipcode = txtBillingZipcode.Text;
             
-
             //instantiate Shipping Address
             currentUser.ShippingAddress = new MyUserShippingAddress();
 
-            currentUser.ShippingAddress.AddressName = ShippingAddressName.Text;
-            currentUser.ShippingAddress.AddressNumber = ShippingAddressNumber.Text;
-            currentUser.ShippingAddress.Stair = ShippingAddressStair.Text;
-            currentUser.ShippingAddress.Apartment = ShippingAddressApartment.Text;
-            currentUser.ShippingAddress.City = ShippingAddressCity.Text;
-            currentUser.ShippingAddress.Country = ShippingAddressCountry.Text;
-            currentUser.ShippingAddress.Zipcode = ShippingAddressZipcode.Text;
-
+            currentUser.ShippingAddress.AddressName = txtShippingAddressName.Text;
+            currentUser.ShippingAddress.AddressNumber = txtShippingAddressNumber.Text;
+            currentUser.ShippingAddress.Stair = txtShippingAddressStair.Text;
+            currentUser.ShippingAddress.Apartment = txtShippingAddressApartment.Text;
+            currentUser.ShippingAddress.City = txtShippingAddressCity.Text;
+            currentUser.ShippingAddress.Country = txtShippingAddressCountry.Text;
+            currentUser.ShippingAddress.Zipcode = txtShippingAddressZipcode.Text;
 
             //instantiate Credit card info
             currentUser.MyUserCCardInfo = new MyUserCCardInfo();
 
-            currentUser.MyUserCCardInfo.CardName = CardName.Text;
-            currentUser.MyUserCCardInfo.CardNumber = CardName.Text;
-            currentUser.MyUserCCardInfo.CardExpiryDate = CardExpiryDate.Text;
-            currentUser.MyUserCCardInfo.CardSecurityCode = CardSecurityCode.Text;
+            currentUser.MyUserCCardInfo.CardName = txtCardName.Text;
+            currentUser.MyUserCCardInfo.CardNumber = txtCardNumber.Text;
+            currentUser.MyUserCCardInfo.CardExpiryDate = txtCardExpiryDate.Text;
+            currentUser.MyUserCCardInfo.CardSecurityCode = txtCardSecurityCode.Text;
 
             ////instantiate Bank info
             //currentUser.MyUserBankInfo = new MyUserBankInfo();
-
             //currentUser.MyUserBankInfo.BankName = BankName.Text;
             //currentUser.MyUserBankInfo.BankAccountNo = BankAccNumber.Text;
             //currentUser.MyUserBankInfo.BicNo = BankBicNo.Text;
             //currentUser.MyUserBankInfo.BankSwift = BankSwift.Text;
 
 
+            //Create customer
+            Customer customer = new Customer()
+            {
+                FirstName = currentUser.MyUserInfo.FirstName,
+                MiddleName = currentUser.MyUserInfo.MiddleName,
+                LastName = currentUser.MyUserInfo.LastName,
+                Phone = currentUser.MyUserInfo.Telephone,
+                CellPhone = currentUser.MyUserInfo.Cellphone,
+                Email = currentUser.MyUserInfo.Email
+                //BillingAddress = billingAddress
+            };
+
             //store all
-    
             store.Context.SaveChanges();
 
             //Finally create the order
             //Create order
             shoppingCart.CreateOrder(currentUser);
 
-         
-            HttpContext.Current.Response.Redirect("/Secure/UserPagesSecured/ConfirmOrder.aspx");
-
+            Response.Redirect("~/Secure/UserPagesSecured/ConfirmOrder.aspx");
+            }
         }
     }
 }

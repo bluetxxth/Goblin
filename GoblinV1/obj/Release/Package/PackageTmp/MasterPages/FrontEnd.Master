@@ -5,65 +5,108 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+
     <link href="../App_Themes/Dark/Style.css" rel="stylesheet" />
+    <link href="../App_Themes/Dark/UserRegistration.css" rel="stylesheet" />
+    <link href="../App_Themes/Dark/Rating.css" rel="stylesheet" />
+    <link href="../App_Themes/Dark/Contact.css" rel="stylesheet" />
+
+
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            <div id='pagewrapper'>
-            <!-- menu section-->
-                <div id='menuwrapper'>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <div id='pagewrapper'>
+                    <!-- menu section-->
+                    <div id='menuwrapper'>
 
-                <!-- Header -->
-                    <header id='header'>
+                        <!-- Header -->
+                        <header id='header'>
 
-                    <!-- menu 2 -->
-                        <nav id = 'navbar2'>
-                        </nav>
+                            <div id="headerPartLeft">
+                                <div id="banner">
+                                    <a href="~/../Default.aspx">
+                                    <p class="site-title">
+                                        Goblin</p>
+                                    <br />
+                                    <br />
+                                    <hr class ="titleLine" />
+                                    <p class="site-slogan">
+                                        Your hosting company</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="headerPartCenter">
 
-                    <!-- menu 1 -->
-                        <nav id = 'navbar'>
-                            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
-                        <!-- here it was necessary to set this to remove the SkipLink   ->>> SkipLinkText=""-->
-                            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" IncludeStyleBlock="False" Orientation="Horizontal" RenderingMode="List" SkipLinkText="">
 
-                            </asp:Menu>
-                        </nav>
-                        <div id ="search">
-                        </div>
-                    </header>
-                <!--end of header-->
+                                <a href="~/../Default.aspx">
+                                <asp:Image ID="Image1" runat="server"  ImageUrl ="~/Catalog/Images/Assets/logo1.png" alt="logo" width="200" height="200"/></a>
 
-                </div>
-            <!-- end menu wrapper-->
+                            </div>
 
-            <!-- main section-->
-                <div id='main'>
-                    <asp:ContentPlaceHolder ID="cphMain" runat="server">
-   
-                    </asp:ContentPlaceHolder>
-                </div>
+                            <!--Datasources-->
+                            <asp:SiteMapDataSource ID="Account" runat="server" ShowStartingNode="false" SiteMapProvider="Account" />
+                            <asp:SiteMapDataSource ID="AdminPages" runat="server" ShowStartingNode="false" SiteMapProvider="AdminPages" />
+                            <asp:SiteMapDataSource ID="UserPages" runat="server" ShowStartingNode="false" SiteMapProvider="UserPages" />
+                            <asp:ContentPlaceHolder ID="contentCartCounter" runat="server">
+                                <div id="cartCounterHolder">
+        <!--add the counter--><a class="cart" runat="server" href="~/UserPages/ShoppingCart" id="cartCount">&nbsp;</a>
+                                </div>
+                            </asp:ContentPlaceHolder>
+                            
 
-            <!-- footer section-->
-                <div id='footerwraper'>
-                    <footer id='footer1'>
-                    </footer>
-                    <div id='footer2'>
-                        <span class="sitefooter">Copyright (c) Gabriel Nieva&nbsp;&nbsp;</span>
+                            <!-- menu 1 -->
+                            <nav id='navbar1'>
+                                <asp:Menu ID="Menu2" runat="server" Orientation="Horizontal" RenderingMode="List"
+                                    DataSourceID="Account">
+                                </asp:Menu>
+                            </nav>
+
+                            <!-- menu 2 -->
+                            <nav id='navbar2'>
+                                <asp:Menu ID="Menu1" runat="server"  Orientation="Horizontal" RenderingMode="List" DataSourceID="UserPages">
+                                </asp:Menu>
+                            </nav>
+
+                            <!-- menu 3 -->
+                                <asp:Label ID="lblLoggedUser" CssClass="loggedUser" runat="server" Text=""></asp:Label>
+                            <div id="search">
+                            </div>
+                        </header>
+                        <!--end of header-->
+
                     </div>
-                    <footer id='footer3'>
-                    </footer>
-                </div>
-            </div>
-        <!--end pagewrapper-->
+                    <!-- end menu wrapper-->
 
-            <div>
-            </div>
-        </asp:ContentPlaceHolder>
-    </div>
+                    <!-- main section-->
+                    <div id='main'>
+                        <asp:ContentPlaceHolder ID="cphMain" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+                    <!-- footer section-->
+                    <div id='footerwraper'>
+                        <footer id='footer1'>
+                        </footer>
+                        <div id='footer2'>
+                            <span class="sitefooter">Copyright (c) Gabriel Nieva&nbsp;&nbsp;</span>
+                        </div>
+                        <footer id='footer3'>
+                        </footer>
+                    </div>
+                </div>
+                <!--end pagewrapper-->
+
+                <div>
+                </div>
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>

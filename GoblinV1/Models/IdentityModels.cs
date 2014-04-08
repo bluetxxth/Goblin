@@ -116,6 +116,7 @@ namespace GoblinV1.Models
         public UserManager()
             : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
         {
+
         }
     }
 }

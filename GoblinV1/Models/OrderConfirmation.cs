@@ -40,7 +40,7 @@ namespace GoblinV1.Models
         public string ShippingCity { get; set; }
 
         //Product data
-        public int Quantity { get; set; }
+
         public string ProductName { get; set; }
         public string ProductSpec { get; set; }
         public double? ProductPrice { get; set; }
@@ -59,7 +59,9 @@ namespace GoblinV1.Models
         public string CCardSecurityCode { get; set; }
 
         //Totals
+        public int Quantity { get; set; }
         public double? Subtotal { get; set; }
+        public double? Total { get;set; }
         public virtual Address BillingAddress { get;set; }
     }
 }

@@ -41,8 +41,15 @@ namespace GoblinV1.Account
                     //create a user role
                     CreateRole("Customer");
 
+                    var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                    store.AutoSaveChanges = false;
+                    var currentUserId = User.Identity.GetUserId();
+                    var manager = new UserManager<ApplicationUser>(store);
+                    var currentUser = manager.FindById(User.Identity.GetUserId());
+
+
                     //get current user
-                    var currentUser = userManager.FindByName(user.UserName);
+                    //var currentUser = userManager.FindByName(user.UserName);
 
                     StatusMessage.Text = string.Format("User {0} was created successfully!", user.UserName);
                     IdentityHelper.SignIn(userManager, user, isPersistent: false);
@@ -59,6 +66,7 @@ namespace GoblinV1.Account
 
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
 
+
                     //Add user to role
                     var roleresult = userManager.AddToRole(currentUser.Id, "Customer");
 
@@ -69,7 +77,7 @@ namespace GoblinV1.Account
                         Response.Redirect("/UserPages/ErrorPage.aspx");
                     }
 
-                    if (!userManager.IsInRole(user.Id, "Customer"))
+                    if (!System.Web.HttpContext.Current.User.IsInRole("Customer"))
                     {
 
                         Session["Error"] = "user is not in role";

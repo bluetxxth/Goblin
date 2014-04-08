@@ -155,7 +155,7 @@ namespace GoblinV1.Models
                     DepartmentId= 1,
                     DepartmentName = "Administration",
                     DepartmentDescription ="Administer employees",
-                    DepartmentUrl = "/Roles/Default.aspx",
+                    DepartmentUrl = "/ManagerRoles/Default.aspx",
                     DepartmentIcon = "department.jpg",
                },
 
@@ -165,7 +165,7 @@ namespace GoblinV1.Models
                     DepartmentId= 2,
                     DepartmentName = "Logistics",
                     DepartmentDescription ="Shipments handling",
-                    DepartmentUrl = "/Staff/Logistics.aspx",
+                    DepartmentUrl = "/ManagerLogistics/Logistics.aspx",
                     DepartmentIcon = "department.jpg",
 
 
@@ -176,7 +176,7 @@ namespace GoblinV1.Models
                     DepartmentId= 3,
                     DepartmentName = "Manage Products",
                     DepartmentDescription ="Manage products",
-                    DepartmentUrl = "/Staff/ManageProducts.aspx",
+                    DepartmentUrl = "/ManagerProducts/Default.aspx",
                     DepartmentIcon = "department.jpg",
 
 
@@ -187,7 +187,7 @@ namespace GoblinV1.Models
                     DepartmentId= 4,
                     DepartmentName = "Proces Orders",
                     DepartmentDescription ="Process orders",
-                    DepartmentUrl = "/Staff/ProcessOrders.aspx",
+                    DepartmentUrl = "/ManagerLogistics/ProcessOrders.aspx",
                     DepartmentIcon = "department.jpg",
 
 
@@ -198,7 +198,7 @@ namespace GoblinV1.Models
                     DepartmentId= 5,
                     DepartmentName = "Manage Users",
                     DepartmentDescription ="Administer users",
-                    DepartmentUrl = "/Staff/ManageCustomers.aspx",
+                    DepartmentUrl = "/ManagerCustomer/ManageCustomers.aspx",
                     DepartmentIcon = "department.jpg",
                },
 
@@ -208,7 +208,7 @@ namespace GoblinV1.Models
                     DepartmentId= 6,
                     DepartmentName = "Revenue Tracker",
                     DepartmentDescription ="Administer users",
-                    DepartmentUrl = "/Staff/RevenueTracker.aspx",
+                    DepartmentUrl = "/ManagerRevenue/RevenueTracker.aspx",
                     DepartmentIcon = "department.jpg",
                },
 

@@ -1,8 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Contact.Master" AutoEventWireup="true" CodeBehind="ContactUs.aspx.cs" Inherits="GoblinV1.UserPages.ContactUs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/FrontEnd.Master" AutoEventWireup="true" CodeBehind="ContactUs.aspx.cs" Inherits="GoblinV1.UserPages.ContactUs" %>
+<%@ OutputCache Duration="120" VaryByParam="None" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
+
+  
     <asp:Panel ID="Panel1" runat="server">
 
         <h2>Contact form</h2>
@@ -13,31 +16,38 @@
         </p>
         <fieldset id="contactForm">
             <legend>Contact form</legend>
-           
-                <div id="headings">
-                    <p>Name:</p>
-                    <p>Email Address:</p>
-                    <p>Subject:</p>
-                    <p>Message:</p>
-                </div>
-                <div id="inputFields">
-                    <p><asp:TextBox ID="txtName" runat="server" Width="190px"></asp:TextBox></p>
-                     <p><asp:TextBox ID="txtEmailAddress" runat="server" Width="193px"></asp:TextBox></p>
-                    <p> <asp:TextBox ID="txtSubject" runat="server" Width="194px"></asp:TextBox></p>
+
+            <div id="headings">
+                <p>Name:</p>
+                <p>Email Address:</p>
+                <p>Subject:</p>
+                <p>Message:</p>
+            </div>
 
 
-                </div>
-                <div id="textMessage">
-                   
-                   <asp:TextBox id="txtMssgBody" TextMode="multiline" Columns="50" Rows="5" runat="server" />
+            <div id="inputFields">
+                <p>
+                    <asp:TextBox ID="txtName" runat="server" Width="190px"></asp:TextBox></p>
+                <p>
+                    <asp:TextBox ID="txtEmailAddress" runat="server" Width="193px"></asp:TextBox></p>
+                <p>
+                    <asp:TextBox ID="txtSubject" runat="server" Width="194px"></asp:TextBox></p>
 
-                </div>
+            </div>
 
-                <div id="buttonHolder">
 
-                    <asp:Button CssClass="btnContactMsgSend" ID="btnContactMsgSend" runat="server" Text="Send" OnClick="btnContactMsgSend_Click" />
-                    <asp:Button CssClass="btnContactMsgClear" ID="btnContactMsgClear" runat="server" Text="Clear" OnClick="btnContactMsgClear_Click" />
-                </div>
+            <div id="textMessage">
+                
+                <asp:TextBox ID="txtMssgBody" TextMode="multiline" Columns="50" Rows="10" runat="server" CssClass ="textArea" />
+                
+            </div>
+            
+
+            <div id="buttonHolder">
+
+                <asp:Button CssClass="btnContactMsgSend" ID="btnContactMsgSend" runat="server" Text="Send" OnClick="btnContactMsgSend_Click" />
+                <asp:Button CssClass="btnContactMsgClear" ID="btnContactMsgClear" runat="server" Text="Clear" OnClick="btnContactMsgClear_Click" />
+            </div>
 
         </fieldset>
 

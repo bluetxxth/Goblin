@@ -1,0 +1,20 @@
+﻿
+.rating_star  
+    {  
+        font-size: 0pt;  
+        width: 13px;  
+        height: 12px;  
+        margin: 0px;  
+        padding: 0px;  
+        cursor: pointer;  
+        display: block;  
+        background-repeat: no-repeat;  
+    }  
+    .rating_filled   
+    {  
+        background-image: url(Images/FilledStar.png);  
+    }  
+    .rating_empty   
+    {  
+        background-image: url(Images/EmptyStar.png);  
+    }  

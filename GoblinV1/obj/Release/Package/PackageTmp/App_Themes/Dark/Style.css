@@ -7,6 +7,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Shojumaru);
 @import url(../css);
+@import url(../Admin.css);
 
 /**
  * Structure
@@ -23,6 +24,18 @@ body {
 .ContentPlaceHolder1_cphMain_lblError .lblError { word-wrap: break-word; }
 
 
+#leftSide{
+    float:left;
+}
+
+
+#rightSide{
+    float:left;
+}
+
+
+
+
 /*header and header - related
 ---------------------------------------------------------------
 */
@@ -36,58 +49,200 @@ body {
 
 #header {
 	border: 2px solid #999;
-	border-top-left-radius: 30px;
-	border-top-right-radius: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+    background-color:white;
+    height:250px;
+    position:relative;
+    background-color:black;
 }
+
+#headerPartLeft{
+    margin-top:50px;
+	float:left;
+    margin-left:40px;
+
+ 
+}
+
+#headerPartCenter{
+		float:left;
+		margin-left: 100px;
+		margin-top: 20px;
+
+}
+
+#headerPartRight{
+		float:left;
+}
+
+
+.titleLine{
+    margin-top:10px;
+    width:400px;
+}
+
 
 .site-logo,.site-title,.site-slogan {
 	display: table-cell;
 	width: inherit;
 	vertical-align: middle;
 	text-align: left;
+    
 }
 
-.site-logo {
-	
-}
+
+
+
 
 .site-title {
-	font-family: 'Charcoal', cursive;
+	font-family: 'Bauhaus 93', cursive;
 	line-height: 0;
-	font-size: 3em;
+	font-size: 4em;
 	padding-left: 20px;
-	color: #333;
-	text-shadow: #ccc 4px -4px 4px;
+	color: silver;
+	/*text-shadow: #ccc 4px -4px 4px;*/
 }
 
 .site-slogan {
 	font-family: 'bauhaus', cursive;
-	font-size: 14px;
+    color:white;
+	font-size: 16px;
 	padding-left: 20px;
 	font-style: italic;
+}
+
+
+#Legend{
+    font-weight:bold;
+}
+
+
+#timer{
+    margin-left:20px;
+    margin-top:30px;
 }
 
 /**
  * Navbar
  */
-#navbar {
-	height: 30px;
-	font-family: arial;
-	font-weight: bold;
-	margin-top:100px;
-	padding: 10px 10px 10px 8px;
-	background: #000000;
-	border-top-style:solid;
-	border-top-color: yellow;
-	border-top-width:10px;
-}
 
 #Menu1{
 
     margin-bottom:30px;
 }
 
-#navbar a {
+/*  Navigation
+ ----------------------------------------------------------
+*/
+
+/*  Cart counter 
+-----------------------
+*/
+
+#cartCounterHolder{
+    float:right;
+    width:auto;
+	height: 30px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top:5px;
+	padding: 10px 10px 10px 8px;
+	background: #000000;
+    border-radius: 0px 0px 0px 0px;
+    position: relative;
+    bottom:0px;
+    vertical-align:top;
+}
+
+#cartCounterHolder a{
+
+    padding: 10px 10px;
+	padding-top: 5px;
+	text-decoration: none;
+	vertical-align:middle;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	color: #fff;
+    vertical-align:top;
+    bottom:0;
+}
+
+
+/* Logged user
+--------------------
+ */
+
+
+.loggedUser{
+    font-size:15px;
+    font-family:Verdana, italic;
+    font-style:italic;
+    float:right;
+    margin-left:40px;
+    margin-top: 17px;
+    color:white;
+}
+
+
+/**
+ * Navbar 1
+ */
+#navbar1 {
+    float:right;
+    width:auto;
+	height: 30px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top:0px;
+	padding: 10px 10px 10px 8px;
+	background: #000000;
+    border-radius: 0px 0px 0px 0px;
+    position: relative;
+    bottom:0px;
+    vertical-align:top;
+}
+
+#navbar1 a {
+	padding: 10px 10px;
+	padding-top: 5px;
+	text-decoration: none;
+	vertical-align:middle;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	color: #fff;
+    vertical-align:top;
+    bottom:0;
+}
+
+#navbar1 a:hover,#navbar a.selected {
+
+	background: #ffffff;
+	color:#000000;
+	border: 2px solid #666;
+}
+
+/**
+ * Navbar 2
+ */
+#navbar2{
+
+    float:left;
+    width:auto;
+	height: 30px;
+	font-family: arial;
+	font-weight: bold;
+	margin-top:100px;
+    margin-bottom:20px;
+	padding: 10px 10px 10px 8px;
+	background: #000000;
+    vertical-align:bottom;
+    position:absolute;
+    bottom:0;
+ 
+}
+
+#navbar2 a {
 	padding: 10px 10px;
 	padding-top: 5px;
 	text-decoration: none;
@@ -96,11 +251,10 @@ body {
 	border-radius: 10px;
 	color: #fff;
 }
-#navbar{
-		vertical-align:middle;
-}
 
-#navbar a:hover,#navbar a.selected {
+
+
+#navbar2 a:hover,#navbar a.selected {
 
 	background: #ffffff;
 	color:#000000;
@@ -109,20 +263,42 @@ body {
 
 
 /**
- * Navbar
+ * Navbar 3
  */
-#navbar2 {
+#navbar3{
+    clear: both;
     float:right;
-    width:300px;
+    width:auto;
 	height: 30px;
 	font-family: arial;
 	font-weight: bold;
-	margin-top:0px;
+	margin-top:130px;
+    margin-bottom:10px;
 	padding: 10px 10px 10px 8px;
 	background: #000000;
-    border-radius: 50px 0px 0px 0px;
-    position: relative;
-    bottom:-50px;
+    vertical-align:bottom;
+    bottom:0;
+ 
+
+
+}
+
+#navbar3 a {
+ 
+	padding: 10px 10px;
+	padding-top: 5px;
+	text-decoration: none;
+	vertical-align:middle;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	color: #fff;
+}
+
+#navbar3 a:hover,#navbar a.selected {
+
+	background: #ffffff;
+	color:#000000;
+	border: 2px solid #666;
 }
 
 #banner {
@@ -144,18 +320,31 @@ ul{
 	margin: 20px auto;
 	width: 80%;
 	background-color: #fff;
-	border: 1px solid #999;
 	
 	margin-left:auto;
 	margin-right:auto;
 	padding:25px;
-	min-height: 50em;
-	box-shadow: 10px 100px 10px #888;
+	min-height: 35em;
+	/*box-shadow: 10px 100px 10px #888;
 	box-shadow: 10px 10px 10px #888;
 	box-shadow: 10px 10px 10px #888;
+
+    border: 1px solid #999;
 	border: dotted 1px;
 	border-radius: 0px;
+           */
 }
+
+
+/*Transparent roll-over image
+----------------------------------------------
+*/
+img:hover{
+opacity:0.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+
 
 article{
     padding-left:10px;
@@ -163,6 +352,27 @@ article{
     margin:auto;
     margin-bottom:40px;
 }
+
+/* Order confirmation
+--------------------------------    
+*/
+
+.OrderConfirmationFieldset{
+    font-size:16px;
+    margin-bottom:20px;
+    padding:25px;
+    border-width:3px;
+}
+
+.OrderDataLegend{
+    font-weight: bold;
+}
+
+.lblOrderConfirmation {
+    font-weight:bold;
+    font-size:14px;
+}
+
 
 
 /*Fonts
@@ -188,6 +398,7 @@ a,a:visited {
 -----------------------------------------------------------
 */
 #footerwrapper {
+    clear:both;
 	height: 50px;
 }
 

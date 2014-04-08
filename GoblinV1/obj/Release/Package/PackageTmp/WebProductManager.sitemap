@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="~Secure" title="Secure"  description="Secure area">
+      <siteMapNode url ="~/Secure/ManagerProducts/Default.aspx" title="Default" description="Go to Home section in product manager"/>
+      <siteMapNode url ="~/Secure/ManagerProducts/AddProduct.aspx" title="Add Product" description="Go to add product section"/>
+      <siteMapNode url ="~/Secure/ManagerProducts/ManageProducts.aspx" title="Product Manager" description="Go to product manager section"/>
+    </siteMapNode>
+</siteMap>

@@ -4,6 +4,20 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
     <h2><%: Title %>.</h2>
+
+
+        <%--required to include ajax components--%>
+    <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit " TagPrefix="ajaxToolkit" %>
+
+    <!--script manager for ajax-->
+    <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
+
+    <!--password strength extender-->
+     <ajaxToolkit:PasswordStrength ID="PasswordStrength1" runat="server" TargetControlID="Password" MinimumLowerCaseCharacters="3" MinimumNumericCharacters="2" MinimumUpperCaseCharacters="3"></ajaxToolkit:PasswordStrength>
+
+         <ajaxToolkit:PasswordStrength ID="PasswordStrength2" runat="server" TargetControlID="ConfirmPassword" MinimumLowerCaseCharacters="3" MinimumNumericCharacters="2" MinimumUpperCaseCharacters="3"></ajaxToolkit:PasswordStrength>
+
+
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
@@ -22,6 +36,9 @@
                 <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
                     CssClass="text-danger" ErrorMessage="The user name field is required." />
+
+                           <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid input" ValidationExpression="^[a-zåäö A-ZÅÄÖ' .\s]{1,40}$" ControlToValidate="UserName" Display="Dynamic"></asp:RegularExpressionValidator>
+
             </div>
         </div>
         <div class="form-group">

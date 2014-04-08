@@ -32,6 +32,7 @@ namespace GoblinV1.Models
         public int Qty { get; set; }
 
         public double? Total { get; set; }
+
         //public int CustomerId { get; set; }
 
         // [ForeignKey("CustomerId")]

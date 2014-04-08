@@ -12,11 +12,11 @@ namespace GoblinV1.Logic
     public class AdminEngine
     {
 
-       private ApplicationDbContext m_context = new ApplicationDbContext();
-       private IdentityDbContext m_idbctx = new IdentityDbContext();
-       private UserManager m_userManager = new UserManager();
-       private RoleManager<IdentityRole> m_roleManager; 
-       private List<IdentityUser> m_identityUserList = new List<IdentityUser>();
+        private ApplicationDbContext m_context = new ApplicationDbContext();
+        private IdentityDbContext m_idbctx = new IdentityDbContext();
+        private UserManager m_userManager = new UserManager();
+        private RoleManager<IdentityRole> m_roleManager;
+        private List<IdentityUser> m_identityUserList = new List<IdentityUser>();
 
         /// <summary>
         /// Constructs an object of type AdminEngine
@@ -52,7 +52,7 @@ namespace GoblinV1.Logic
         /// <summary>
         /// Provide accessor and mutator to m_userManager
         /// </summary>
-        public UserManager MyUserManager 
+        public UserManager MyUserManager
         {
             get { return m_userManager; }
             set { m_userManager = value; }
@@ -102,9 +102,9 @@ namespace GoblinV1.Logic
             }
             catch (EntityCommandExecutionException ex)
             {
-                    HttpContext.Current.Session["Error"] = ex;
+                HttpContext.Current.Session["Error"] = ex;
 
-                    HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
+                HttpContext.Current.Response.Redirect("/UserPages/ErrorPage.aspx");
             }
 
             return users;
@@ -141,10 +141,11 @@ namespace GoblinV1.Logic
 
             List<string> userName = new List<string>();
 
-            foreach(IdentityUser user in userList){
+            foreach (IdentityUser user in userList)
+            {
 
                 userName.Add(user.UserName);
-             
+
                 n++;
             }
 
@@ -171,7 +172,7 @@ namespace GoblinV1.Logic
         public void addUserToRole(string userName, string roleName)
         {
 
-            var user = new ApplicationUser() { UserName = userName};
+            var user = new ApplicationUser() { UserName = userName };
 
             var selectedUser = MyUserManager.FindByName(user.UserName);
 
@@ -288,7 +289,7 @@ namespace GoblinV1.Logic
                 myRoleList.Add(role.ToString());
             }
 
-           return myRoleList;
+            return myRoleList;
         }
 
         /// <summary>
@@ -304,14 +305,15 @@ namespace GoblinV1.Logic
 
             return myIdentityRoleList;
         }
-        
+
 
         /// <summary>
         /// Get a list application users
         /// </summary>
         /// <param name="user">the aaplication user</param>
         /// <returns>a string representation of the application user list</returns>
-        public List<string> getApplicationUserlist(ApplicationUser user){
+        public List<string> getApplicationUserlist(ApplicationUser user)
+        {
 
             List<string> myApplicationUserList = getApplicationUserlist(user);
 
@@ -335,8 +337,38 @@ namespace GoblinV1.Logic
             return userNameString;
         }
 
+        /// <summary>
+        /// Add products to database
+        /// </summary>
+        /// <param name="ProductName"></param>
+        /// <param name="ProductSpec"></param>
+        /// <param name="ProductPrice"></param>
+        /// <param name="ProductCategory"></param>
+        /// <param name="ProductImagePath"></param>
+        /// <returns></returns>
+        public bool AddProduct(string ProductName, string ProductSpec, string ProductPrice, string ProductCategory, string ProductImagePath)
+        {
 
-        
+            var myProduct = new Product();
+            myProduct.ProductName = ProductName;
+            myProduct.Specifications = ProductSpec;
+            myProduct.UnitPrice = Convert.ToDouble(ProductPrice);
+            myProduct.ProductImagePath = ProductImagePath;
+            myProduct.CategoryId = Convert.ToInt32(ProductCategory);
 
+            using (EntityMappingContext ctx = new EntityMappingContext())
+            {
+                // Add product to DB.
+                ctx.Products.Add(myProduct);
+                ctx.SaveChanges();
+            }
+            // Success.
+            return true;
+        }
     }
+
+
+
+
 }
+

@@ -13,5 +13,13 @@ namespace GoblinV1
         {
          
         }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
+        }
+
+
+
     }
 }

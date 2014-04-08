@@ -22,6 +22,7 @@ namespace GoblinV1.Logic
         private OrderItem m_orderItem;
         private int m_orderQuantity;
         private int m_lastOrderId;
+        private int m_lastOrderConfirmationId;
 
 
         public int MyStock { get; set; }
@@ -555,54 +556,6 @@ namespace GoblinV1.Logic
             using (var context = new EntityMappingContext())
             {
 
-                //initialize type to avoid nulle refference
-
-                ////CreateAddress
-                //Address billingAddress = new Address()
-                //{
-                //    //Address part
-                //    StreetName = currentUser.BillingAddress.AddressName,
-                //    StreetNo = currentUser.BillingAddress.AddressNumber,
-                //    City = currentUser.BillingAddress.City,
-                //    Country = currentUser.BillingAddress.Country,
-                //    ZipCode = currentUser.BillingAddress.Zipcode,
-                //};
-
-
-                ////Create customer
-                //Customer customer = new Customer()
-                //{
-                //    FirstName = currentUser.MyUserInfo.FirstName,
-                //    MiddleName = currentUser.MyUserInfo.MiddleName,
-                //    LastName = currentUser.MyUserInfo.LastName,
-                //    Phone = currentUser.MyUserInfo.Telephone,
-                //    CellPhone = currentUser.MyUserInfo.Cellphone,
-                //    Email = currentUser.MyUserInfo.Email
-
-                //    //BillingAddress = billingAddress
-                //};
-
-
-                ////add delivery address
-                //Address deliveryAddress = new Address()
-                //{
-                //    //Address part
-                //    StreetName = currentUser.ShippingAddress.AddressName,
-                //    StreetNo = currentUser.ShippingAddress.AddressNumber,
-                //    City = currentUser.ShippingAddress.City,
-                //    Country = currentUser.ShippingAddress.Country,
-                //    ZipCode = currentUser.ShippingAddress.Zipcode,
-                //};
-
-                ////Shippment
-                //Shippment shipment = new Shippment()
-                //{
-                //    CreatedOn = DateTime.Now,
-                //    State = "Not shipped",
-
-                //    DeliveryAddress = deliveryAddress
-                //};
-
                 //Session["Error"] = m_items;
                 //Response.Redirect("/UserPages/ErrorPage.aspx");
 
@@ -653,7 +606,7 @@ namespace GoblinV1.Logic
 
                     SubTotal = m_orderItem.Price,
                     Tax = 0.25,
-                    Total = (m_orderItem.Price * (0.25)) + m_orderItem.Price,
+                    Total = (m_orderItem.Price * (0.25)) + m_orderItem.Quantity,
                     //       BillingAddress = billingAddress,
 
                 };
@@ -667,6 +620,7 @@ namespace GoblinV1.Logic
                     CustomerLast = currentUser.MyUserInfo.LastName,
                     CustomerPhone = currentUser.MyUserInfo.Telephone,
                     CustomerCell = currentUser.MyUserInfo.Cellphone,
+                    CustomerEmail = currentUser.MyUserInfo.Email,
 
                     BillingAddressName = currentUser.BillingAddress.AddressName,
                     BillingAddressNo = currentUser.BillingAddress.AddressNumber,
@@ -685,46 +639,11 @@ namespace GoblinV1.Logic
 
                     ////Product Data
                     ProductName = m_orderItem.ItemName,
-                    Quantity = m_orderItem.Quantity,
+                    Quantity =  order.Qty,
                     ProductSpec = m_orderItem.Specs,
                     ProductPrice = m_orderItem.Price,
-
-
-                    ////Customer info
-                    //CustomerName = customer.FirstName,
-                    //CustomerMiddle = customer.MiddleName,
-                    //CustomerLast = customer.LastName,
-                    //CustomerCell = customer.CellPhone,
-                    //CustomerPhone = customer.Phone,
-
-                    ////Billing Address info
-                    //BillingAddressName = customer.BillingAddress.StreetName,
-                    //BillingAddressNo = customer.BillingAddress.StreetNo,
-                    //BillingApartment = customer.BillingAddress.Apartment,
-                    //BillingStair = customer.BillingAddress.Stair,
-                    //BillingZipCode = customer.BillingAddress.ZipCode,
-                    //BillingCountry = customer.BillingAddress.Country,
-                    //BillingCity = customer.BillingAddress.City,
-
-                    ////Shipping Address info
-                    //ShippingAddressName = customer.ShippingAddress.StreetName,
-                    //ShippingAddressNo = customer.ShippingAddress.StreetNo,
-                    //ShippingApartment = customer.ShippingAddress.Apartment,
-                    //ShippingStair = customer.ShippingAddress.Stair,
-                    //ShippingZipCode = customer.ShippingAddress.ZipCode,
-                    //ShippingCountry = customer.ShippingAddress.Country,
-                    //ShippingCity = customer.ShippingAddress.City,
-
-                    ////Product Data
-                    //Quantity = m_orderItem.Quantity,
-                    //ProductSpec = m_orderItem.Specs,
-                    //ProductPrice = m_orderItem.Price,
-
-                    ////Payment Data - Bank
-                    //BankName = currentUser.MyUserBankInfo.BankName,
-                    //BankAccount = currentUser.MyUserBankInfo.BankAccountNo,
-                    //BankBicNo = currentUser.MyUserBankInfo.BicNo,
-                    //BankSwiftCode = currentUser.MyUserBankInfo.BankSwift,
+                    Subtotal = (order.Total * order.Qty),
+                    Total = ((order.Total * order.Qty) * 1.25),
 
                     //Payment Data - Credit Card
                     CCardName = currentUser.MyUserCCardInfo.CardName,
@@ -734,18 +653,83 @@ namespace GoblinV1.Logic
 
                 };
 
+                //initialize type to avoid nulle refference
+
+                //CreateAddress
+                Address billingAddress = new Address()
+                {
+                    //Address part
+                    StreetName = currentUser.BillingAddress.AddressName,
+                    StreetNo = currentUser.BillingAddress.AddressNumber,
+                    City = currentUser.BillingAddress.City,
+                    Country = currentUser.BillingAddress.Country,
+                    ZipCode = currentUser.BillingAddress.Zipcode,
+                };
+
+
+
+                //Create customer
+                Customer customer = new Customer()
+                {
+                    FirstName = currentUser.MyUserInfo.FirstName,
+                    MiddleName = currentUser.MyUserInfo.MiddleName,
+                    LastName = currentUser.MyUserInfo.LastName,
+                    Phone = currentUser.MyUserInfo.Telephone,
+                    CellPhone = currentUser.MyUserInfo.Cellphone,
+                    Email = currentUser.MyUserInfo.Email
+
+                    //BillingAddress = billingAddress
+                };
+
+
+                //add delivery address
+                Address deliveryAddress = new Address()
+                {
+                    //Address part
+                    StreetName = currentUser.ShippingAddress.AddressName,
+                    StreetNo = currentUser.ShippingAddress.AddressNumber,
+                    City = currentUser.ShippingAddress.City,
+                    Country = currentUser.ShippingAddress.Country,
+                    ZipCode = currentUser.ShippingAddress.Zipcode,
+                };
+
+
+                //Shippment
+                Shippment shipment = new Shippment()
+                {
+                 
+                   State = "Not shipped",
+                   
+                   AddresName = currentUser.ShippingAddress.AddressName,
+                   AddressNo = currentUser.ShippingAddress.AddressNumber,
+                   AddresApt = currentUser.ShippingAddress.Apartment,
+                   AddresStair = currentUser.ShippingAddress.Stair,
+                   Country = currentUser.ShippingAddress.Country,
+                   City = currentUser.ShippingAddress.City,
+                   ZipCode = currentUser.ShippingAddress.Zipcode,      
+                              
+
+                };
+
                 try
                 {
 
                     // ctx.OrderStatuses.Add(orderStatus);
-                    //ctx.Customers.Add(customer);
+                    ctx.Addresses.Add(billingAddress);
+                    ctx.Customers.Add(customer);
                     ctx.Orders.Add(order);
                     ctx.Invoices.Add(invoice);
-                    //ctx.Shipments.Add(shipment);
                     ctx.OrderConfirmations.Add(orderConfirmation);
+                    ctx.Shipments.Add(shipment);
                     ctx.SaveChanges();
+
+
                     m_lastOrderId = order.OrderId;
                     HttpContext.Current.Session["lastId"] = m_lastOrderId;
+
+                    m_lastOrderConfirmationId = orderConfirmation.OrderId;
+                    HttpContext.Current.Session["lastOrderConfId"] = m_lastOrderId;
+                    
 
                     //validate
                     ctx.Configuration.ValidateOnSaveEnabled = true;
@@ -782,7 +766,7 @@ namespace GoblinV1.Logic
 
                     anorder.Submitted = DateTime.Now.ToString();
                     ctx.SaveChanges();
-
+                   
                 }
 
                 ////reset the cart for next order

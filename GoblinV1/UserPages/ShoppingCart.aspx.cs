@@ -147,7 +147,7 @@ namespace GoblinV1.UserPages
                     //creating object
                     currentUser.MyUserCCardInfo = new MyUserCCardInfo();
                     //go to enter data
-                    Response.Redirect("/UserPages/EnterUserData.aspx");
+                    Response.Redirect("~/UserPages/EnterUserData.aspx");
 
                 }
                 else
@@ -159,12 +159,12 @@ namespace GoblinV1.UserPages
                         shoppingCart.CreateOrder(currentUser);
 
                         //go to confirm
-                        Response.Redirect("/Secure/UserPagesSecured/ConfirmOrder.aspx");
+                        Response.Redirect("~/Secure/UserPagesSecured/ConfirmOrder.aspx");
                     }
                     else
                     {
                         //if not then enter user data
-                        Response.Redirect("/UserPages/EnterUserData.aspx");
+                        Response.Redirect("~/UserPages/EnterUserData.aspx");
 
                     }
                 }
@@ -185,7 +185,7 @@ namespace GoblinV1.UserPages
                 shoppingCart.CreateOrder(currentUser);
 
                 //go to confirm
-                Response.Redirect("/Secure/UserPagesSecured/ConfirmOrder.aspx");
+                Response.Redirect("~/Secure/UserPagesSecured/ConfirmOrder.aspx");
             }
 
             //if the user name is null then login

@@ -111,7 +111,7 @@ namespace GoblinV1.UserPages
             {
 
                 btnBack.Visible = true;
-                Response.Redirect("CreateUser.aspx");
+                Response.Redirect("/UserPages/EnterUserData.aspx");
             }
 
             //Whatever error

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AjaxControlToolkit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -76,6 +78,27 @@ namespace GoblinV1.UserPages
             }
            
 
+        }
+
+        protected void btnSend_Click(object sender, EventArgs e)
+        {
+            NoBotState state;
+            // if condition to check the response state of NoBot
+            if (NoBot1.IsValid(out state))
+            {
+                Label2.Text = state.ToString();
+            }
+            else
+            {
+                Label2.Text = state.ToString();
+            }
+            StringBuilder sb = new StringBuilder();
+            // foreach loop to get cached IP address and datetime assocated with it(when last postback was occurred)
+            foreach (System.Collections.Generic.KeyValuePair<DateTime, string> keyValue in NoBot.GetCopyOfUserAddressCache())
+            {
+                sb.AppendFormat("{0}: {1}<br />", keyValue.Key.ToString(), keyValue.Value);
+            }
+            Label4.Text = sb.ToString();
         }
 
     }
