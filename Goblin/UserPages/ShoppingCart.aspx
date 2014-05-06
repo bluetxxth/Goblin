@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/FrontEnd.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="Goblin.UserPages.ShoppingCart" %>
-<%@ OutputCache Duration="120" VaryByParam="None" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMain" runat="server">
-    <div id="ShoppingCartTitle" runat="server" class="ContentHead">
+
+   <div id="ShoppingCartTitle" runat="server" class="ContentHead">
         <h1>Shopping Cart</h1>
     </div>
     <asp:GridView ID="CartList" runat="server"
@@ -13,7 +13,7 @@
         CellPadding="4"
         ItemType="Goblin.Model.CartItem" 
         SelectMethod="GetShoppingCartItems"
-        CssClass="table table-striped table-bordered" OnSelectedIndexChanged="CartList_SelectedIndexChanged">
+        CssClass="table table-striped table-bordered">
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="ID" SortExpression="ProductID" />
             <asp:BoundField DataField="Product.ProductName" HeaderText="Name" />
@@ -46,8 +46,18 @@
         </strong>
     </div>
     <br />
+
+        <table> 
+    <tr>
+      <td>
+
+      </td>
+      <td>
+        <!--Checkout Placeholder -->
+      </td>
+    </tr>
+    </table>
     <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
     <asp:Button ID="btnCheckOut" runat="server" Text="Checkout" OnClick="btnCheckOut_Click" />
     <asp:Button ID="btnContinueShopping" runat="server" Text="Continue Shopping" OnClick="btnContinueShopping_Click" />
-
 </asp:Content>

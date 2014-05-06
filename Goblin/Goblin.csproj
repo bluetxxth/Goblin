@@ -282,7 +282,6 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
-    <Content Include="UserPages\RuleSet1.ruleset" />
     <Content Include="UserPages\Web.config" />
     <Content Include="Secure\AdminPages\Web.config" />
     <Content Include="Secure\Checkout\Web.config" />

@@ -13,12 +13,14 @@ namespace Goblin.BLL
   public class ShoppingCartEngine : IDisposable
     {
 
+
         private EntityMappingContext ctx = new EntityMappingContext();
         public const string CartSessionKey = "CartId"; //cartID from session cookie
         private bool m_instock = false;
 
         //instantiate store engine to get cart items
         private List<CartItem> m_items;
+
         private OrderItem m_orderItem;
         private int m_orderQuantity;
         private int m_lastOrderId;
@@ -242,6 +244,8 @@ namespace Goblin.BLL
 
             return myQuantity;
         }
+
+
 
         /// <summary>
         /// Diminish inventory availability for a given product
@@ -665,6 +669,7 @@ namespace Goblin.BLL
                 };
 
 
+
                 //Create customer
                 Customer customer = new Customer()
                 {
@@ -705,10 +710,12 @@ namespace Goblin.BLL
                     City = currentUser.ShippingAddress.City,
                     ZipCode = currentUser.ShippingAddress.Zipcode,
 
+
                 };
 
                 try
                 {
+
                     // ctx.OrderStatuses.Add(orderStatus);
                     ctx.Addresses.Add(billingAddress);
                     ctx.Customers.Add(customer);

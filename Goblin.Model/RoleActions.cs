@@ -16,7 +16,7 @@ namespace Goblin.Model
             // Access the application context and create result variables.
             ApplicationDbContext context = new ApplicationDbContext();
 
-            IdentityResult idTestUserResult;
+            //IdentityResult idTestUserResult;
             IdentityResult IdRoleResult;
             IdentityResult IdUserResult;
             IdentityResult idLogisticsResult;
@@ -100,15 +100,15 @@ namespace Goblin.Model
 
             };
 
-            //create test user
-            var testUser = new ApplicationUser()
-            {
-                UserName = "test",
+            ////create test user
+            //var testUser = new ApplicationUser()
+            //{
+            //    UserName = "test",
 
-            };
+            //};
 
 
-            idTestUserResult = userMgr.Create(appUser, "123456");
+         //   idTestUserResult = userMgr.Create(testUser, "123456");
 
             IdUserResult = userMgr.Create(appUser, "123456");
 
@@ -128,7 +128,7 @@ namespace Goblin.Model
 
                 idProductManagerResult = userMgr.AddToRole(productManagerUser.Id, "ProductManager");
 
-                idTestUserResult = userMgr.AddToRole(productManagerUser.Id, "Customer");
+                //idTestUserResult = userMgr.AddToRole(productManagerUser.Id, "Customer");
 
 
                 if (!IdUserResult.Succeeded)

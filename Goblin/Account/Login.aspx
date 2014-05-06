@@ -22,6 +22,25 @@
             <section id="loginForm">
                 <div class="form-horizontal">
                     <h4>Use a local account to log in.</h4>
+
+                    <h1 class="testing">Please note for testing purposes</h1>
+                    <ol>
+                        <li>To test the administration section login as <b>Admin</b> with password <b>123456</b><br />
+                        </li>
+
+                        <li>To test the administration section's Product Manager login as <b>ProductManager</b> with password <b>123456</b><br />
+                        </li>
+                        <li>To test the administration section's Logistics Manager login as <b>LogisticsManager</b> with password <b>123456</b><br />
+                        </li>
+
+                        <li>To test the <b>user panel</b> create an account and login. The link to the user panel will show up in the primary navigation bar <br />
+                        </li>
+
+                    </ol>
+
+
+
+
                     <hr />
 
                     <!--show the login status added by Gabriel Nieva-->

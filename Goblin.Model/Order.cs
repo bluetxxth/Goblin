@@ -39,7 +39,7 @@ namespace Goblin.Model
         public bool IsProcessed { get; set;}
 
 
-        public ICollection OrderStatuses { get; set; }
+       // public ICollection OrderStatuses { get; set; }
      
 
 

@@ -7,7 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
 using Goblin.BLL;
-using GoblinV1.Models;
 using System.Web.ModelBinding;
 using System.Data.Entity.Validation;
 using System.Collections.Specialized;
@@ -43,7 +42,7 @@ namespace Goblin.UserPages
         /// <returns>a list of shopping cart items</returns>
         public List<CartItem> GetShoppingCartItems()
         {
-            ShoppingCartEngine shoppingCart = new ShoppingCartEngine();
+            //ShoppingCartEngine shoppingCart = new ShoppingCartEngine();
 
             return shoppingCart.GetCartItems();
         }
@@ -261,10 +260,6 @@ namespace Goblin.UserPages
             UpdateCartItems();
         }
 
-        protected void CartList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

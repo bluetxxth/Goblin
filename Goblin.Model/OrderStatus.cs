@@ -13,7 +13,7 @@ namespace Goblin.Model
         public int OrderStatusId { get; set; }
         public string Status { get; set; }
         public bool Processed { get; set; }
-        public ICollection<Order> Orders { get; set; }
-        public ICollection<OrderItem> OrderItems { get;set; }
+       // public ICollection<Order> Orders { get; set; }
+    
     }
 }
