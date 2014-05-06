@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Secure/ManagerRoles/Default.aspx" title="Home"  description="Secure area">
+    <siteMapNode url ="~/Secure/ManagerRoles/RoleManager.aspx" title="Role Manager" description="Go to Role Manager Section"/>
+    <siteMapNode url ="~/Secure/ManagerRoles/UsersToRoles.aspx" title="User to Role" description="Go to Role User to roles section"/>
+    <!--<siteMapNode url ="/Secure/ManagerRoles/ManageUsers.aspx" title="ManageUsers" description="Go to Role User to roles section"/>-->
+    <!--<siteMapNode url ="~/AdminPages/Admin.aspx" title="Admin" description="Go to Admin"/>-->
+    <!--<siteMapNode url ="~/AdminPages/CreateProduct.aspx" title="Create Product" description="Go to create product"/>-->
+    <!--<siteMapNode url ="Secure/UserPagesSecured/UserAdmin.aspx" title="User Admin" description="Go toUser Admin"/>
+    <siteMapNode url ="Secure/Staff/Logistics.aspx" title="Logistics" description="Go to Logistics"/>-->
+  </siteMapNode>
+</siteMap>
