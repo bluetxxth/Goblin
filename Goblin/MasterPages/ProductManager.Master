@@ -32,13 +32,12 @@
                                         <br />
                                         <hr class="titleLine" />
                                         <p class="site-slogan">
-                                            Your hosting company
+                                            Your webshop
                                         </p>
                                     </a>
                                 </div>
                             </div>
                             <div id="headerPartCenter">
-
 
                                 <a href="~/../Default.aspx">
                                     <asp:Image ID="Image1" runat="server" ImageUrl="~/Catalog/Images/Assets/logo1.png" alt="logo" Width="200" Height="200" /></a>
@@ -88,8 +87,6 @@
 
                     <!-- main section-->
                     <div id='main'>
-
-
                         <!--left side menu-->
                         <div id="leftSide">
                             <%--<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />--%>

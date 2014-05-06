@@ -11,8 +11,6 @@ namespace Goblin.Model
     /// </summary>
     public class Product
     {
-
-     
           [ScaffoldColumn(false)]
         public int ProductID { get; set; }
 

@@ -665,7 +665,6 @@ namespace Goblin.BLL
                 };
 
 
-
                 //Create customer
                 Customer customer = new Customer()
                 {
@@ -706,12 +705,10 @@ namespace Goblin.BLL
                     City = currentUser.ShippingAddress.City,
                     ZipCode = currentUser.ShippingAddress.Zipcode,
 
-
                 };
 
                 try
                 {
-
                     // ctx.OrderStatuses.Add(orderStatus);
                     ctx.Addresses.Add(billingAddress);
                     ctx.Customers.Add(customer);

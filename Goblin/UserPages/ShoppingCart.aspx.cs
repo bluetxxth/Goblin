@@ -91,7 +91,7 @@ namespace Goblin.UserPages
             // Session["CartItems"] = cartItemList;
 
             orderstatus.Status = "Created " + DateTime.Now.ToString();
-
+      
             //Session["Error"] = orderstatus.Status;
             //Response.Redirect("/UserPages/ErrorPage.aspx");
 
@@ -123,6 +123,9 @@ namespace Goblin.UserPages
             }
 
 
+            //now deal with registering the user's data. If he / she is not registered
+            //He will be prompted to register, otherwise he will proceed to simply checkout
+
             AdminEngine adminEngine = new AdminEngine();
 
             //// && System.Web.HttpContext.Current.User.IsInRole("user")
@@ -136,7 +139,6 @@ namespace Goblin.UserPages
             var currentUserId = User.Identity.GetUserId();
             var manager = new UserManager<ApplicationUser>(store);
             var currentUser = manager.FindById(User.Identity.GetUserId());
-
 
 
             //if the current user is null he is not authenticated
