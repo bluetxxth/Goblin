@@ -31,7 +31,6 @@ namespace Goblin.UserPages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             GetTotals();
         }
 
@@ -42,8 +41,6 @@ namespace Goblin.UserPages
         /// <returns>a list of shopping cart items</returns>
         public List<CartItem> GetShoppingCartItems()
         {
-            //ShoppingCartEngine shoppingCart = new ShoppingCartEngine();
-
             return shoppingCart.GetCartItems();
         }
 
@@ -139,7 +136,6 @@ namespace Goblin.UserPages
             var manager = new UserManager<ApplicationUser>(store);
             var currentUser = manager.FindById(User.Identity.GetUserId());
 
-
             //if the current user is null he is not authenticated
             if (!(currentUser == null))
             {
@@ -195,7 +191,6 @@ namespace Goblin.UserPages
             {
                 HttpContext.Current.Response.Redirect("~/Account/Login.aspx");
             }
-
         }
 
 

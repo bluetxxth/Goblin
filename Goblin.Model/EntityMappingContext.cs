@@ -31,6 +31,7 @@ namespace Goblin.Model
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Department> Departments { get; set;}
         public DbSet<OrderConfirmation> OrderConfirmations { get; set; }
+       public DbSet<LineItem> LineItems {get; set;}
 
     }
 }

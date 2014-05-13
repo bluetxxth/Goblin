@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Goblin.Model
 {
+    [Serializable]
     public class CartItem
     {
         

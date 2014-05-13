@@ -17,7 +17,7 @@ namespace Goblin.Model
         public string ItemName { get; set; }
         public string Specs { get; set; }
 
-        public ICollection<OrderStatus> OrderStatuses { get; set; }
+        //public ICollection<OrderStatus> OrderStatuses { get; set; }
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/FrontEnd.Master" AutoEventWireup="true" CodeBehind="ConfirmOrder.aspx.cs" Inherits="Goblin.UserPages.ConfirmOrder" %>
-<%@ OutputCache Duration="15" VaryByParam="None" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -187,7 +187,6 @@
 
                 </fieldset>
                 <!--End credit card data-->
-
                 <fieldset class="OrderConfirmationFieldset">
                     <legend class="OrderDataLegend">Order Summary</legend>
 
@@ -196,7 +195,6 @@
                         </asp:Label>
                         <%# Eval("Quantity")  %>
                         <br />
-
                     </td>
 
                     <td align="left" width="60%" runat="server" id="Td26">
@@ -204,12 +202,12 @@
                         </asp:Label><%# Eval("ProductName" ,"{0:c}" )  %>
                         <br />
                     </td>
-                    <td align="left" width="60%" runat="server" id="Td27">
+  <%--                  <td align="left" width="60%" runat="server" id="Td27">
                         <asp:Label ID="lblProductPrice" runat="server" Text="Product price: " CssClass="lblOrderConfirmation">
                         </asp:Label>
                         <%# Eval("ProductPrice" ,"{0:c}" )  %>
                         <br />
-                    </td>
+                    </td>--%>
                     <td align="left" width="60%" runat="server" id="Td28">
                         <asp:Label ID="lblSubtotal" runat="server" Text="Subtotal: " CssClass="lblOrderConfirmation">
                         </asp:Label>
@@ -223,7 +221,6 @@
                         <%# Eval("Total" ,"{0:c}" )  %>
                         <br />
                     </td>
-
 
                 </fieldset>
                 <!--End summary-->

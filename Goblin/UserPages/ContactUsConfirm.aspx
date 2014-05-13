@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/FrontEnd.Master" AutoEventWireup="true" CodeBehind="ContactUsConfirm.aspx.cs" Inherits="Goblin.UserPages.ContactUsConfirm" %>
-<%@ OutputCache Duration="120" VaryByParam="None" %>
 <%@ PreviousPageType VirtualPath="~/UserPages/ContactUs.aspx" %> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

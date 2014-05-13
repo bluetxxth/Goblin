@@ -19,7 +19,7 @@ namespace Goblin.UserPages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit .ToolkitScriptManager ToolkitScriptManager1;
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
         /// Label1 control.
@@ -64,7 +64,7 @@ namespace Goblin.UserPages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit .NoBot NoBot1;
+        protected global::AjaxControlToolkit.NoBot NoBot1;
         
         /// <summary>
         /// lblName control.
@@ -108,9 +108,9 @@ namespace Goblin.UserPages {
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new UserPages.ContactUs PreviousPage {
+        public new Goblin.UserPages.ContactUs PreviousPage {
             get {
-                return ((UserPages.ContactUs)(base.PreviousPage));
+                return ((Goblin.UserPages.ContactUs)(base.PreviousPage));
             }
         }
     }

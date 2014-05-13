@@ -41,8 +41,8 @@ namespace Goblin.UserPages
                 }
                 else
                 {
-                    Debug.Fail("ERROR : We should never get to AddToCart.aspx without a ProductId.");
-                    throw new Exception("ERROR : It is illegal to load AddToCart.aspx without setting a ProductId.");
+                    Debug.Fail("ERROR : accessing AddToCart.aspx without a ProductId.");
+                    throw new Exception("ERROR : illegal action accessing AddToCart.aspx without ProductId.");
                 }
 
                 Response.Redirect("ShoppingCart.aspx");

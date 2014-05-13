@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/FrontEnd.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="Goblin.UserPages.ProductList" %>
-<%@ OutputCache Duration="120" VaryByParam="None" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using AjaxControlToolkit;
 
+
 namespace Goblin.UserPages
 {
     public partial class ConfirmOrder : System.Web.UI.Page
@@ -59,9 +60,6 @@ namespace Goblin.UserPages
                 bindOrderConfirmationToRepeater();
             }
 
-           
-
-          
         }
 
         /// <summary>
@@ -78,8 +76,6 @@ namespace Goblin.UserPages
                 rptConfirmOrder.DataBind();
             }
         }
-
-
 
 
         /// <summary>
@@ -139,14 +135,24 @@ namespace Goblin.UserPages
 
             finally
             {
+
+                
+                //Session["Error"] = m_items.Count;
+                //Response.Redirect("/UserPages/ErrorPage.aspx");
+               
+                //traverse the cartItem list and reduce inventory on each item ordered
+                for (int i = 0; i < m_items.Count; i++)
+                {
+                    cartEngine.DiminishInventory(m_items[i].ProductId, m_items[i].Quantity);
+
+                }
+
+                //empty the cart for next order
                 cartEngine.EmptyCart();
-                Response.Redirect("~/Default.aspx");
+                //to the shop
+                HttpContext.Current.Response.Redirect("~/UserPages/Products.aspx");
 
             }
-         
- 
-
-
         }
     }
 }

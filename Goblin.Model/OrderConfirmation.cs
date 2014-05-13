@@ -9,8 +9,14 @@ namespace Goblin.Model
     public class OrderConfirmation
     {
         public int OrderConfirmationId { get; set; }
-        public int OrderId { get; set; }
-        [ForeignKey ("OrderId")]
+
+        ////Product data
+        //public int ProductID { get; set; }
+
+        //[ForeignKey("ProductID")]
+        //public Product Product { get; set; }
+        //public int OrderId { get; set; }
+        //[ForeignKey ("OrderId")]
         public virtual Order Order { get; set; }
 
         //Customer Data
@@ -39,7 +45,6 @@ namespace Goblin.Model
         public string ShippingCountry { get; set; }
         public string ShippingCity { get; set; }
 
-        //Product data
 
         public string ProductName { get; set; }
         public string ProductSpec { get; set; }
@@ -57,11 +62,17 @@ namespace Goblin.Model
         public string CCardNo { get; set; }
         public string CCArdExpiryDate { get; set; }
         public string CCardSecurityCode { get; set; }
+        public string Created { get; set; }
+
 
         //Totals
         public int Quantity { get; set; }
         public double? Subtotal { get; set; }
         public double? Total { get;set; }
         public virtual Address BillingAddress { get;set; }
+        public virtual Address ShippingAddress { get; set; }
+
+        public List<LineItem> LineItems { get; set; }
+
     }
 }

@@ -22,6 +22,9 @@
     <ajaxToolkit:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server" TargetControlID ="txtCardExpiryDate" WatermarkText ="xx/xx" WatermarkCssClass="watermarked"></ajaxToolkit:TextBoxWatermarkExtender>
     <ajaxToolkit:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" runat="server" TargetControlID ="txtCardSecurityCode" WatermarkText ="xxxx" WatermarkCssClass="watermarked"></ajaxToolkit:TextBoxWatermarkExtender>
 
+     <ajaxToolkit:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender4" runat="server" TargetControlID ="txtTelephone" WatermarkText ="123456789" WatermarkCssClass="watermarked"></ajaxToolkit:TextBoxWatermarkExtender>
+
+     <ajaxToolkit:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender5" runat="server" TargetControlID ="txtCellPhone" WatermarkText ="123-1234567" WatermarkCssClass="watermarked"></ajaxToolkit:TextBoxWatermarkExtender>
 
     <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
@@ -87,7 +90,7 @@
             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtTelephone"
                 CssClass="text-danger" ErrorMessage="Telephone field required." />
 
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Invalid input" ValidationExpression="^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$" ControlToValidate="txtTelephone"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Invalid input" ValidationExpression="^(\d{9}|\d{11})$" ControlToValidate="txtTelephone"></asp:RegularExpressionValidator>
 
         </div>
 

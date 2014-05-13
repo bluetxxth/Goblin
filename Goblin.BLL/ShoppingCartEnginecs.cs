@@ -20,18 +20,32 @@ namespace Goblin.BLL
 
         //instantiate store engine to get cart items
         private List<CartItem> m_items;
+        private List<int> m_listIds;
+        private List<int> m_listQuantity;
 
+        private LineItem m_lineItem;
+        private Order m_order;
         private OrderItem m_orderItem;
-        private int m_orderQuantity;
+
+     
         private int m_lastOrderId;
         private int m_lastOrderConfirmationId;
 
+        ////Product Data
+        private string m_ProductName;
+        private int m_orderQuantity;
+        private double m_ProductPrice;
+        private double m_Subtotal;
+        private double m_Total;
 
         public int MyStock { get; set; }
         public int MyQuantity { get; set; }
         public int ProductID { get; set; }
         public string ShoppingCartId { get; set; }
 
+        public List<int> GetIDList { get; set; }
+
+        public List<int> GetQuantityList { get; set; }
 
         /// <summary>
         /// Adds items to shoppint cart
@@ -120,7 +134,7 @@ namespace Goblin.BLL
 
             }
             //remove from inventory
-            DiminishInventory();
+           // DiminishInventory();
             ctx.SaveChanges();
         }
 
@@ -250,19 +264,25 @@ namespace Goblin.BLL
         /// <summary>
         /// Diminish inventory availability for a given product
         /// </summary>
-        public void DiminishInventory()
+        public void DiminishInventory(int productId, int quantity)
         {
             //HttpContext.Current.Session["Error"] = ProductID;
             //HttpContext.Current.Response.Redirect("ErrorPage.aspx");
 
+
+            //HttpContext.Current.Session["Error"] = "productId" + productId + "quantity:" + quantity;
+            //HttpContext.Current.Response.Redirect("ErrorPage.aspx");
+
             //Change the status or the order
             var product = (from myproduct in ctx.Products
-                           where myproduct.ProductID == ProductID // get the corresponding order
+                           where myproduct.ProductID == productId // get the corresponding order
                            select myproduct).FirstOrDefault();  // this will fetch the record.
 
-            int mystock = Convert.ToInt32(product.Stock);
+           int mystock = Convert.ToInt32(product.Stock);
 
-            product.Stock--;
+           int  myProductStock = mystock - quantity;
+
+            product.Stock = myProductStock;
 
 
             try
@@ -289,10 +309,7 @@ namespace Goblin.BLL
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
-            finally
-            {
-                HttpContext.Current.Response.Redirect("ShoppingCart.aspx");
-            }
+
         }
 
 
@@ -538,6 +555,9 @@ namespace Goblin.BLL
         /// <param name="currentUser"></param>
         public void CreateOrder(ApplicationUser currentUser)
         {
+
+
+
             //start by getting the current user
             AdminEngine adminEngine = new AdminEngine();
 
@@ -558,10 +578,18 @@ namespace Goblin.BLL
             using (var context = new EntityMappingContext())
             {
 
+
+          
+
+                
                 //Session["Error"] = m_items;
                 //Response.Redirect("/UserPages/ErrorPage.aspx");
 
                 m_items = GetCartItems();
+
+                    //lists to store ids and quantity respectively
+                    m_listIds = new List<int>();
+                    m_listQuantity = new List<int>();
 
                 //fill order items - from the cart
                 //get just the product id and the quantity. The rest I search for
@@ -578,7 +606,19 @@ namespace Goblin.BLL
 
                     };
 
-                    m_orderQuantity = m_items[i].Quantity;
+                    //add items and their corresponding id
+                    m_listIds.Add(m_items[i].ProductId);
+                    m_listQuantity.Add(m_items[i].ProductId);
+
+
+                    //Product Data
+                   m_ProductName += Environment.NewLine + m_items[i].Product.ProductName + ","; // drop lines
+                   m_orderQuantity += m_items[i].Quantity;
+                   m_ProductPrice = Convert.ToDouble(m_items[i].Product.UnitPrice);
+                   m_Subtotal += m_items[i].Quantity * Convert.ToDouble(m_items[i].Product.UnitPrice);
+                   m_Total = m_Subtotal * 1.25;
+
+
                     try
                     {
                         // Add OrderDetail to DB.
@@ -592,26 +632,11 @@ namespace Goblin.BLL
                     }
                 }
 
-                //create order
-                Order order = new Order()
-                {
-                    Created = DateTime.Now.ToString(),
-                    Qty = m_orderQuantity,
-                    //calculate the pr
-                    Total = ((m_orderItem.Price * m_orderQuantity)),
-                    //       Address = billingAddress,
-                };
 
-                //Generate invoice
-                Invoice invoice = new Invoice()
-                {
+                    HttpContext.Current.Session["m_listIds"] = m_listIds;
+                    HttpContext.Current.Session["m_listQuantity"] = m_listQuantity;
 
-                    SubTotal = m_orderItem.Price,
-                    Tax = 0.25,
-                    Total = (m_orderItem.Price * (0.25)) + m_orderItem.Quantity,
-                    //       BillingAddress = billingAddress,
-
-                };
+               
 
                 //Generate Order Confirmation
                 OrderConfirmation orderConfirmation = new OrderConfirmation()
@@ -638,14 +663,16 @@ namespace Goblin.BLL
                     ShippingStair = currentUser.ShippingAddress.Stair,
                     ShippingZipCode = currentUser.ShippingAddress.Zipcode,
                     ShippingCity = currentUser.ShippingAddress.City,
+                    ShippingCountry = currentUser.ShippingAddress.Country,
+
 
                     ////Product Data
-                    ProductName = m_orderItem.ItemName,
-                    Quantity = order.Qty,
+                    ProductName = m_ProductName,
+                    Quantity = m_orderQuantity,
                     ProductSpec = m_orderItem.Specs,
-                    ProductPrice = m_orderItem.Price,
-                    Subtotal = (order.Total * order.Qty),
-                    Total = ((order.Total * order.Qty) * 1.25),
+                    Subtotal = m_Subtotal,
+                    Total = m_Total,
+
 
                     //Payment Data - Credit Card
                     CCardName = currentUser.MyUserCCardInfo.CardName,
@@ -654,6 +681,46 @@ namespace Goblin.BLL
                     CCardSecurityCode = currentUser.MyUserCCardInfo.CardSecurityCode,
 
                 };
+
+
+                //for (int i = 0; i < m_items.Count; i++)
+                //{
+
+                //    //instantiate orderEngine to access GetLineItem method
+                //    OrderEngine orderEngine = new OrderEngine();
+
+                    //get the item list
+                    //List<LineItem> itemList = orderEngine.GetLineItems();
+
+                    //create order
+                   m_order = new Order()
+                    {
+                        Created = DateTime.Now.ToString(),
+                        BillingAddress = orderConfirmation.BillingAddress,
+                        ShippingAddress = orderConfirmation.ShippingAddress,
+                        CustomerName = currentUser.UserName,
+                        Total = orderConfirmation.Total,
+
+
+                    };
+
+                //}
+
+
+
+
+                //Generate invoice
+                Invoice invoice = new Invoice()
+                {
+
+                    SubTotal = m_orderItem.Price,
+                    Tax = 0.25,
+                    Total = (m_orderItem.Price * (0.25)) + m_orderItem.Quantity,
+                    //       BillingAddress = billingAddress,
+
+                };
+
+
 
                 //initialize type to avoid nulle refference
 
@@ -668,8 +735,7 @@ namespace Goblin.BLL
                     ZipCode = currentUser.BillingAddress.Zipcode,
                 };
 
-
-
+   
                 //Create customer
                 Customer customer = new Customer()
                 {
@@ -682,7 +748,7 @@ namespace Goblin.BLL
 
                     //BillingAddress = billingAddress
                 };
-
+        
 
                 //add delivery address
                 Address deliveryAddress = new Address()
@@ -694,6 +760,8 @@ namespace Goblin.BLL
                     Country = currentUser.ShippingAddress.Country,
                     ZipCode = currentUser.ShippingAddress.Zipcode,
                 };
+
+         
 
 
                 //Shippment
@@ -713,24 +781,50 @@ namespace Goblin.BLL
 
                 };
 
+
+
                 try
                 {
 
-                    // ctx.OrderStatuses.Add(orderStatus);
-                    ctx.Addresses.Add(billingAddress);
-                    ctx.Customers.Add(customer);
-                    ctx.Orders.Add(order);
-                    ctx.Invoices.Add(invoice);
+            
                     ctx.OrderConfirmations.Add(orderConfirmation);
+                    ctx.Orders.Add(m_order);
+                   // ctx.LineItems.Add(m_lineItem); // Add OrderDetail to DB.
+                    ctx.Invoices.Add(invoice);
+                    ctx.Customers.Add(customer);
+                    ctx.Addresses.Add(billingAddress);
                     ctx.Shipments.Add(shipment);
                     ctx.SaveChanges();
 
 
-                    m_lastOrderId = order.OrderId;
+
+
+                    // Prepare for the items to be saved. this is used to display the line items
+                    List<CartItem> orderDetailList = GetCartItems();
+
+                    // Add OrderDetail information to the DB for each product purchased.
+                    for (int i = 0; i < orderDetailList.Count; i++)
+                    {
+                        // Create a new OrderDetail object.
+                        m_lineItem = new LineItem();
+
+                        m_lineItem.OrderId = m_order.OrderId;
+                        m_lineItem.UserName = currentUser.UserName;
+                        m_lineItem.ProductID = orderDetailList[i].ProductId;
+                        m_lineItem.ProductName = orderDetailList[i].Product.ProductName;
+                        m_lineItem.Quantity = orderDetailList[i].Quantity;
+                        m_lineItem.UnitPrice = orderDetailList[i].Product.UnitPrice;
+
+                        ctx.LineItems.Add(m_lineItem);
+                        ctx.SaveChanges();
+                    }
+      
+
+                    m_lastOrderId = m_order.OrderId;
                     HttpContext.Current.Session["lastId"] = m_lastOrderId;
 
-                    m_lastOrderConfirmationId = orderConfirmation.OrderId;
-                    HttpContext.Current.Session["lastOrderConfId"] = m_lastOrderId;
+                    m_lastOrderConfirmationId = orderConfirmation.OrderConfirmationId;
+                    HttpContext.Current.Session["lastOrderConfId"] = m_lastOrderConfirmationId;
 
 
                     //validate
@@ -773,14 +867,11 @@ namespace Goblin.BLL
 
                 ////reset the cart for next order
                 //// cartEngine.ZeroCart();
-                //EmptyCart();
+                // EmptyCart();
                 //HttpContext.Current.Response.Redirect("/UserPages/Products.aspx");
 
             }//end EntityMappingContext
 
         }
-
-
-
     }
 }

@@ -11,9 +11,6 @@
     <link href="../App_Themes/Dark/Rating.css" rel="stylesheet" />
     <link href="../App_Themes/Dark/Contact.css" rel="stylesheet" />
 
-
-
-
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -32,22 +29,23 @@
                             <div id="headerPartLeft">
                                 <div id="banner">
                                     <a href="~/../Default.aspx">
-                                    <p class="site-title">
-                                        Goblin</p>
-                                    <br />
-                                    <br />
-                                    <hr class ="titleLine" />
-                                    <p class="site-slogan">
-                                        Your webshop</p>
+                                        <p class="site-title">
+                                            Goblin
+                                        </p>
+                                        <br />
+                                        <br />
+                                        <hr class="titleLine" />
+                                        <p class="site-slogan">
+                                            Your webshop
+                                        </p>
                                     </a>
                                 </div>
                             </div>
                             <div id="headerPartCenter">
 
 
-                                <a href="~/../Default.aspx">
-                                <asp:Image ID="Image1" runat="server"  ImageUrl ="~/Catalog/Images/Assets/logo1.png" alt="logo" width="200" height="200"/></a>
-
+                                <%--<a href="/Default.aspx">
+                                <asp:Image ID="Image1" runat="server"  ImageUrl ="~/Catalog/Images/Assets/logo1.png" alt="logo" width="200" height="200"/></a>--%>
                             </div>
 
                             <!--Datasources-->
@@ -56,10 +54,11 @@
                             <asp:SiteMapDataSource ID="UserPages" runat="server" ShowStartingNode="false" SiteMapProvider="UserPages" />
                             <asp:ContentPlaceHolder ID="contentCartCounter" runat="server">
                                 <div id="cartCounterHolder">
-        <!--add the counter--><a class="cart" runat="server" href="~/UserPages/ShoppingCart" id="cartCount">&nbsp;</a>
+                                    <!--add the counter-->
+                                    <a class="cart" runat="server" href="~/UserPages/ShoppingCart" id="cartCount">&nbsp;</a>
                                 </div>
                             </asp:ContentPlaceHolder>
-                            
+
 
                             <!-- menu 1 -->
                             <nav id='navbar1'>
@@ -70,12 +69,12 @@
 
                             <!-- menu 2 -->
                             <nav id='navbar2'>
-                                <asp:Menu ID="Menu1" runat="server"  Orientation="Horizontal" RenderingMode="List" DataSourceID="UserPages">
+                                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" RenderingMode="List" DataSourceID="UserPages">
                                 </asp:Menu>
                             </nav>
 
                             <!-- menu 3 -->
-                                <asp:Label ID="lblLoggedUser" CssClass="loggedUser" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lblLoggedUser" CssClass="loggedUser" runat="server" Text=""></asp:Label>
                             <div id="search">
                             </div>
                         </header>

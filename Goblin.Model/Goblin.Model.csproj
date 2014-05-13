@@ -88,12 +88,18 @@
     <Compile Include="EntityMappingContext.cs" />
     <Compile Include="IdentityDBInitializer.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Invoice.cs" />
+    <Compile Include="Invoice.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LineItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Order.cs" />
     <Compile Include="OrderConfirmation.cs" />
     <Compile Include="OrderItem.cs" />
-    <Compile Include="OrderStatus.cs" />
-    <Compile Include="PaymentType.cs" />
+    <Compile Include="OrderStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleActions.cs" />

@@ -25,5 +25,34 @@ namespace Goblin.BLL
 
         }
 
+       /// <summary>
+       /// get the order confirmations
+       /// </summary>
+       /// <returns></returns>
+        public List<OrderConfirmation> GetOrderConfirmation()
+        {
+            return ctx.OrderConfirmations.Select(orderConfirmation => orderConfirmation).ToList();
+
+        }
+
+
+       /// <summary>
+       /// Get the Order Items
+       /// </summary>
+       /// <returns></returns>
+        public List<OrderItem> GetOrderItems()
+        {
+            return ctx.OrderItems.Select(orderItem => orderItem).ToList();
+        }
+
+       /// <summary>
+       /// Get the Line Items
+       /// </summary>
+       /// <returns></returns>
+        public List<LineItem> GetLineItems()
+        {
+            return ctx.LineItems.Select(lineItem => lineItem).ToList();
+        }
+
     }
 }
